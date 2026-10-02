@@ -478,6 +478,51 @@
     .js .reveal{opacity:1; transform:none; transition:none;}
     *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
   }
+     /* purple-only background glow, like the reference */
+body::before{
+  background:
+    radial-gradient(700px 520px at 8% 0%, rgba(124,58,237,.38), transparent 62%),
+    radial-gradient(620px 480px at 96% 12%, rgba(167,139,250,.22), transparent 62%),
+    radial-gradient(760px 560px at 12% 45%, rgba(91,33,182,.30), transparent 62%),
+    radial-gradient(640px 500px at 95% 70%, rgba(124,58,237,.26), transparent 60%),
+    radial-gradient(720px 560px at 30% 98%, rgba(139,92,246,.28), transparent 62%) !important;
+}
+
+/* animated gradient headline */
+.hero h1{
+  background:linear-gradient(100deg,#fff 0%,#C4B5FD 35%,#8B5CF6 60%,#fff 100%);
+  background-size:220% auto; -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent;
+  animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards, shine 6s linear infinite;
+}
+@keyframes shine{to{background-position:220% center;}}
+
+/* glassy cards with glow + 3D tilt */
+.panel,.cs-card,.quote,.patent-box,.now,.metric,.stat{
+  background:linear-gradient(160deg,rgba(124,58,237,.14),rgba(21,11,43,.85));
+  border-color:var(--line);
+  backdrop-filter:blur(6px);
+}
+.work-item,.panel,.cs-card{transition:transform .25s ease, box-shadow .25s ease, border-color .25s;}
+.panel:hover,.cs-card:hover{border-color:var(--violet); box-shadow:0 10px 40px -12px rgba(139,92,246,.55);}
+.work-visual{box-shadow:0 0 30px -8px rgba(139,92,246,.6);}
+
+/* glowing buttons */
+.btn.primary,.chip[aria-pressed="true"],.rchip[aria-pressed="true"]{
+  background:linear-gradient(135deg,#7C3AED,#A855F7); border-color:transparent; color:#fff;
+  box-shadow:0 6px 24px -6px rgba(168,85,247,.7);
+}
+.btn:hover{box-shadow:0 8px 28px -8px rgba(168,85,247,.8);}
+
+/* floating orb behind the hero, like the planet in the reference */
+.hero::after{
+  content:""; position:absolute; right:-120px; top:40px; width:420px; height:420px; border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,rgba(167,139,250,.55),rgba(91,33,182,.25) 55%,transparent 70%);
+  filter:blur(8px); z-index:0; pointer-events:none; animation:float 9s ease-in-out infinite;
+}
+.hero{position:relative; overflow:hidden;}
+@keyframes float{50%{transform:translateY(-24px) scale(1.04);}}
+.progress{background:linear-gradient(90deg,#7C3AED,#C4B5FD,#7C3AED);}
 </style>
 </head>
 <body>
@@ -1238,6 +1283,16 @@ var SITE = {
       setTimeout(tick, delay);
     }
     tick();
+       /* tilt cards toward the pointer */
+if (!reduce && window.matchMedia('(hover: hover)').matches){
+  $$('.panel,.cs-card,.stat').forEach(function(c){
+    c.addEventListener('pointermove', function(e){
+      var r = c.getBoundingClientRect(), x = (e.clientX-r.left)/r.width-.5, y = (e.clientY-r.top)/r.height-.5;
+      c.style.transform = 'perspective(800px) rotateY('+(x*6)+'deg) rotateX('+(-y*6)+'deg) translateY(-2px)';
+    });
+    c.addEventListener('pointerleave', function(){ c.style.transform=''; });
+  });
+}
   })();
 
   /* ---------- COUNTERS ---------- */
