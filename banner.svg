@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="340" viewBox="0 0 1200 340" role="img" aria-label="Hemashree V I portfolio banner with an animated LIDAR radar sweep">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0F0C22"/><stop offset="1" stop-color="#1C1640"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="78%" cy="50%" r="45%">
+      <stop offset="0" stop-color="#8B5CF6" stop-opacity=".35"/><stop offset="1" stop-color="#8B5CF6" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#C4B5FD" stroke-opacity=".07"/>
+    </pattern>
+    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2DD4BF" stop-opacity=".55"/><stop offset="1" stop-color="#2DD4BF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="txt" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#F3F0FF"/><stop offset="1" stop-color="#C4B5FD"/>
+    </linearGradient>
+    <clipPath id="radarClip"><circle cx="935" cy="170" r="130"/></clipPath>
+  </defs>
+  <style>
+    .t{font-family:'Segoe UI',system-ui,-apple-system,Helvetica,Arial,sans-serif}
+    .m{font-family:ui-monospace,'Cascadia Code',Consolas,monospace}
+    .blip{animation:blip 4s ease-in-out infinite}
+    .b2{animation-delay:1.3s}.b3{animation-delay:2.4s}.b4{animation-delay:.6s}
+    @keyframes blip{0%,55%,100%{opacity:.1}62%,85%{opacity:1}}
+    .live{animation:live 1.6s ease-in-out infinite}
+    @keyframes live{50%{opacity:.25}}
+    .rise{opacity:0;animation:rise 1s ease-out forwards}
+    .r2{animation-delay:.25s}.r3{animation-delay:.5s}
+    @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  </style>
+
+  <rect width="1200" height="340" rx="22" fill="url(#bg)"/>
+  <rect width="1200" height="340" rx="22" fill="url(#grid)"/>
+  <rect width="1200" height="340" rx="22" fill="url(#glow)"/>
+
+  <!-- text -->
+  <g class="rise">
+    <text x="64" y="104" class="t" font-size="22" fill="#2DD4BF">こんにちは, I'm</text>
+  </g>
+  <g class="rise r2">
+    <text x="62" y="178" class="t" font-size="74" font-weight="700" letter-spacing="-2" fill="url(#txt)">Hemashree V I</text>
+  </g>
+  <g class="rise r3">
+    <text x="64" y="222" class="t" font-size="22" fill="#A9A1C9">AI &amp; Cyber-Physical Systems Engineer · VIT Chennai</text>
+    <text x="64" y="262" class="m" font-size="16" fill="#C4B5FD">vision · robotics · embedded &amp; IoT · backend &amp; DevOps</text>
+  </g>
+
+  <!-- radar -->
+  <g>
+    <circle cx="935" cy="170" r="130" fill="#0F0C22" fill-opacity=".55" stroke="#2DD4BF" stroke-opacity=".45"/>
+    <circle cx="935" cy="170" r="95" fill="none" stroke="#2DD4BF" stroke-opacity=".18"/>
+    <circle cx="935" cy="170" r="60" fill="none" stroke="#2DD4BF" stroke-opacity=".18"/>
+    <circle cx="935" cy="170" r="25" fill="none" stroke="#2DD4BF" stroke-opacity=".18"/>
+    <path d="M805 170H1065M935 40V300" stroke="#2DD4BF" stroke-opacity=".12"/>
+    <g clip-path="url(#radarClip)">
+      <g>
+        <path d="M935 170 L1065 170 A130 130 0 0 0 1027 78 Z" fill="url(#beam)"/>
+        <line x1="935" y1="170" x2="1065" y2="170" stroke="#2DD4BF" stroke-width="2"/>
+        <animateTransform attributeName="transform" type="rotate" from="0 935 170" to="-360 935 170" dur="4s" repeatCount="indefinite"/>
+      </g>
+    </g>
+    <!-- points / hazards -->
+    <circle class="blip" cx="985" cy="112" r="6" fill="#F5B841"/>
+    <circle class="blip b2" cx="872" cy="220" r="6" fill="#F5B841"/>
+    <circle class="blip b3" cx="1002" cy="228" r="5" fill="#34D399"/>
+    <circle class="blip b4" cx="880" cy="118" r="4" fill="#C4B5FD"/>
+    <!-- rover -->
+    <path d="M935 158 L947 170 L935 182 L923 170 Z" fill="#C4B5FD"/>
+  </g>
+
+  <!-- HUD -->
+  <g class="m" font-size="12" fill="#A9A1C9">
+    <circle class="live" cx="1092" cy="56" r="5" fill="#34D399"/>
+    <text x="1104" y="60">live</text>
+    <text x="808" y="322" fill="#F5B841">● hazard</text><text x="890" y="322" fill="#34D399">● person</text><text x="976" y="322" fill="#C4B5FD">◆ rover</text>
+  </g>
+</svg>
