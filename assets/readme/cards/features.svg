@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-labelledby="feat-t feat-d">
+<title id="feat-t">What's inside</title>
+<desc id="feat-d">Start lights: Five red lights, lights out, and the name launches in. Click to skip.; Pick your seat: Recruiter, Engineer, Explorer or Gamer. Every row reorders for you.; F1 transitions: An original top-down car drives up the screen between sections.; Skills arc: Cards swing along an arc as you scroll, with real tech logos.; Starting grid: Projects ranked P1 to P8, rows that slide in, hover previews.; Deep dives: Highlights as laps, behind-the-scenes photos and code links.; Mini-games: Four playable demos built from real projects, on the classic site.; Built with care: Keyboard friendly, responsive, and it honours reduced motion.</desc>
+
+<style>
+.serif{font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,'Times New Roman',serif}
+.sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace}
+.kick{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace;font-size:12px;letter-spacing:3px;fill:#C77B9B}
+.twinkle{animation:tw 4s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.15}50%{opacity:.9}}
+.pulse{animation:pl 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pl{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.35)}}
+.spin{animation:sp 60s linear infinite;transform-box:view-box}
+@keyframes sp{to{transform:rotate(360deg)}}
+.float{animation:fl 6s ease-in-out infinite}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.fadein{animation:fi 1.2s ease-out both}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+</style>
+
+<defs>
+  <radialGradient id="feat-bg" cx="70%" cy="30%" r="90%">
+    <stop offset="0" stop-color="#2A0E1B"/>
+    <stop offset=".55" stop-color="#190B12"/>
+    <stop offset="1" stop-color="#10070C"/>
+  </radialGradient>
+  <radialGradient id="feat-glowA" cx="50%" cy="50%" r="50%">
+    <stop offset="0" stop-color="#701A3D" stop-opacity=".45"/>
+    <stop offset="1" stop-color="#701A3D" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="feat-glowB" cx="50%" cy="50%" r="50%">
+    <stop offset="0" stop-color="#F8F0F3" stop-opacity=".12"/>
+    <stop offset="1" stop-color="#F8F0F3" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="feat-silver" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#FFFFFF"/>
+    <stop offset=".5" stop-color="#D8C4CD"/>
+    <stop offset="1" stop-color="#C77B9B"/>
+  </linearGradient>
+  <linearGradient id="feat-rule" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#C77B9B" stop-opacity="0"/>
+    <stop offset=".25" stop-color="#C77B9B" stop-opacity=".8"/>
+    <stop offset="1" stop-color="#C77B9B" stop-opacity="0"/>
+  </linearGradient>
+  <pattern id="feat-grid" width="28" height="28" patternUnits="userSpaceOnUse">
+    <path d="M28 0H0V28" fill="none" stroke="#C77B9B" stroke-opacity=".05"/>
+  </pattern>
+  <filter id="feat-soft" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="3"/>
+  </filter>
+</defs>
+
+<rect x="1" y="1" width="1198" height="558" rx="22" fill="url(#feat-bg)" stroke="#3A1828"/>
+<rect x="1" y="1" width="1198" height="558" rx="22" fill="url(#feat-grid)"/>
+<ellipse cx="600" cy="252" rx="420" ry="392" fill="url(#feat-glowA)"/>
+<ellipse cx="600" cy="308" rx="300" ry="280" fill="url(#feat-glowB)"/>
+<g class="fadein" style="animation-delay:0.0s">
+<rect x="32" y="32" width="271" height="238" rx="18" fill="#1F0C16" stroke="#4E2236"/>
+<rect x="32" y="50" width="3" height="54" rx="1.5" fill="#C77B9B"/>
+<text x="283" y="66" class="mono" font-size="12" fill="#7C6570" text-anchor="end" letter-spacing="2">01</text>
+<g transform="translate(54 58)" fill="none" stroke="#E5B5C7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="4" cy="12" r="3.6" fill="#FF8FB1" stroke="none"><animate attributeName="opacity" values=".25;1;1;.25" keyTimes="0;0.10;.85;1" dur="3s" repeatCount="indefinite"/></circle><circle cx="13" cy="12" r="3.6" fill="#FF8FB1" stroke="none"><animate attributeName="opacity" values=".25;1;1;.25" keyTimes="0;0.22;.85;1" dur="3s" repeatCount="indefinite"/></circle><circle cx="22" cy="12" r="3.6" fill="#FF8FB1" stroke="none"><animate attributeName="opacity" values=".25;1;1;.25" keyTimes="0;0.34;.85;1" dur="3s" repeatCount="indefinite"/></circle><circle cx="31" cy="12" r="3.6" fill="#FF8FB1" stroke="none"><animate attributeName="opacity" values=".25;1;1;.25" keyTimes="0;0.46;.85;1" dur="3s" repeatCount="indefinite"/></circle><circle cx="40" cy="12" r="3.6" fill="#FF8FB1" stroke="none"><animate attributeName="opacity" values=".25;1;1;.25" keyTimes="0;0.58;.85;1" dur="3s" repeatCount="indefinite"/></circle><rect x="-2" y="4" width="48" height="16" rx="4"/></g>
+<text x="54" y="148" class="serif" font-size="25" fill="#F8F0F3" text-anchor="start" >Start lights</text>
+<text x="54" y="182" class="sans" font-size="13.5" fill="#B6A3AC" text-anchor="start" >Five red lights, lights out, and</text><text x="54" y="202" class="sans" font-size="13.5" fill="#B6A3AC" text-anchor="start" >the name launches in. Click to</text><text x="54" y="222" class="sans" font-size="13.5" fill="#B6A3AC" text-anchor="start" >skip.</text>
+<rect x="54" y="252" width="36" height="2" rx="1" fill="#C77B9B"><animate attributeName="width" values="36;227;36" dur="6s" repeatCount="indefinite"/></rect>
+</g>
+<g class="fadein" style="animation-delay:0.1s">
+<rect x="316" y="32" width="271" height="238" rx="18" fill="#1F0C16" stroke="#4E2236"/>
+<rect x="316" y="50" width="3" height="54" rx="1.5" fill="#C77B9B"/>
+<text x="567" y="66" class="mono" font-size="12" fill="#7C6570" text-anchor="end" letter-spacing="2">02</text>
+<g transform="translate(338 58)" fill="none" stroke="#E5B5C7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="8" r="5"/><path d="M8 30c0-8 5-13 12-13s12 5 12 13"/><path d="M36 4l4 4-4 4" stroke="#FF8FB1"/></g>
+<text x="338" y="148" class="serif" font-size="25" fill="#F8F0F3" text-anchor="start" >Pick your seat</text>
+<text x="338" y="182" class="sans" font-size="13.5" fill="#B6A3AC" text-anchor="start" >Recruiter, Engineer, Explorer or</text><text x="338" y="202" class="sans" font-size="13.5" fill="#B6A3AC" text-anchor="start" >Gamer. Every row reorders for you.</text>
+<rect x="338" y="252" width="36" height="2" rx="1" fill="#C77B9B"><animate attributeName="width" values="36;227;36" dur="7s" repeatCount="indefinite"/></rect>
+</g>
+<g class="fadein" style="animation-delay:0.2s">
+<rect x="600" y="32" width="271" height="238" rx="18" fill="#1F0C16" stroke="#4E2236"/>
+<rect x="600" y="50" width="3" height="54" rx="1.5" fill="#C77B9B"/>
+<text x="851" y="66" class="mono" font-size="12" fill="#7C6570" text-anchor="end" letter-spacing="2">03</text>
+<g transform="translate(622 58)" fill="none" stroke="#E5B5C7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 2h10l3 10v18l-3 6H16l-3-6V12z" fill="#FF8FB1" fill-opacity=".25" stroke="#FF8FB1"/><path d="M8 4h26M8 34h26" stroke="#F8F0F3"/><circle cx="21" cy="18" r="3" fill="#F8F0F3" stroke="none"/></g>
+<text x="622" y="148" class="serif" font-size="25" fill="#F8F0F3" text-anchor="start" >F1 transitions</text>
+<text x="622" y="182" class="sans" font-size="13.5" fill="#B6A3AC" text-anchor="start" >An original top-down car drives up</text><text x="622" y="202" class="sans" font-size="13.5" fill="#B6A3AC" text-anchor="start" >the screen between sections.</text>
+<rect x="622" y="252" width="36" height="2" rx="1" fill="#C77B9B"><animate attributeName="width" values="36;227;36" dur="8s" repeatCount="indefinite"/></rect>
+</g>
+<g class="fadein" style="animation-delay:0.3s">
+<rect x="884" y="32" width="271" height="238" rx="18" fill="#1F0C16" stroke="#4E2236"/>
+<rect x="884" y="50" width="3" height="54" rx="1.5" fill="#C77B9B"/>
+<text x="1135" y="66" class="mono" font-size="12" fill="#7C6570" text-anchor="end" letter-spacing="2">04</text>
+<g transform="translate(906 58)" fill="none" stroke="#E5B5C7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="0" y="6" width="16" height="22" rx="3" transform="rotate(-18 8 30)"/><rect x="12" y="6" width="16" height="22" rx="3" transform="rotate(0 20 30)" stroke="#FF8FB1"/><rect x="24" y="6" width="16" height="22" rx="3" transform="rotate(18 32 30)"/></g>
+<text x="906" y="148" class="serif" font-size="25" fill="#F8F0F3" text-anchor="start" >Skills arc</text>
+<text x="906" y="182" class="sans" font-size="13.5" fill="#B6A3AC" text-anchor="start" >Cards swing along an arc as you</text><text x="906" y="202" class="sans" font-size="13.5" fill="#B6A3AC" text-anchor="start" >scroll, with real tech logos.</text>
+<rect x="906" y="252" width="36" height="2" rx="1" fill="#C77B9B"><animate attributeName="width" values="36;227;36" dur="9s" repeatCount="indefinite"/></rect>
+</g>
+<g class="fadein" style="animation-delay:0.4s">
+<rect x="32" y="286" width="271" height="238" rx="18" fill="#1F0C16" stroke="#4E2236"/>
+<rect x="32" y="304" width="3" height="54" rx="1.5" fill="#C77B9B"/>
+<text x="283" y="320" class="mono" font-size="12" fill="#7C6570" text-anchor="end" letter-spacing="2">05</text>
+<g transform="translate(54 312)" fill="none" stroke="#E5B5C7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 34V4"/><path d="M6 5h24l-5 6 5 6H6" fill="#FF8FB1" fill-opacity=".3" stroke="#FF8FB1"/><text x="14" y="32" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,'Times New Roman',serif" font-style="italic" font-size="12" fill="#F8F0F3" stroke="none">P1</text></g>
+<text x="54" y="402" class="serif" font-size="25" fill="#F8F0F3" text-anchor="start" >Starting grid</text>
+<text x="54" y="436" class="sans" font-size="13.5" fill="#B6A3AC" text-anchor="start" >Projects ranked P1 to P8, rows</text><text x="54" y="456" class="sans" font-size="13.5" fill="#B6A3AC" text-anchor="start" >that slide in, hover previews.</text>
+<rect x="54" y="506" width="36" height="2" rx="1" fill="#C77B9B"><animate attributeName="width" values="36;227;36" dur="10s" repeatCount="indefinite"/></rect>
+</g>
+<g class="fadein" style="animation-delay:0.5s">
+<rect x="316" y="286" width="271" height="238" rx="18" fill="#1F0C16" stroke="#4E2236"/>
+<rect x="316" y="304" width="3" height="54" rx="1.5" fill="#C77B9B"/>
+<text x="567" y="320" class="mono" font-size="12" fill="#7C6570" text-anchor="end" letter-spacing="2">06</text>
+<g transform="translate(338 312)" fill="none" stroke="#E5B5C7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="38" height="28" rx="4"/><path d="M2 12h38"/><path d="M8 18h16M8 24h24" stroke="#F8F0F3" stroke-opacity=".7"/></g>
+<text x="338" y="402" class="serif" font-size="25" fill="#F8F0F3" text-anchor="start" >Deep dives</text>
+<text x="338" y="436" class="sans" font-size="13.5" fill="#B6A3AC" text-anchor="start" >Highlights as laps,</text><text x="338" y="456" class="sans" font-size="13.5" fill="#B6A3AC" text-anchor="start" >behind-the-scenes photos and code</text><text x="338" y="476" class="sans" font-size="13.5" fill="#B6A3AC" text-anchor="start" >links.</text>
+<rect x="338" y="506" width="36" height="2" rx="1" fill="#C77B9B"><animate attributeName="width" values="36;227;36" dur="11s" repeatCount="indefinite"/></rect>
+</g>
+<g class="fadein" style="animation-delay:0.6s">
+<rect x="600" y="286" width="271" height="238" rx="18" fill="#1F0C16" stroke="#4E2236"/>
+<rect x="600" y="304" width="3" height="54" rx="1.5" fill="#C77B9B"/>
+<text x="851" y="320" class="mono" font-size="12" fill="#7C6570" text-anchor="end" letter-spacing="2">07</text>
+<g transform="translate(622 312)" fill="none" stroke="#E5B5C7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="10" width="38" height="20" rx="10"/><path d="M11 16v8M7 20h8" stroke="#F8F0F3"/><circle cx="29" cy="17" r="2" fill="#FF8FB1" stroke="none"/><circle cx="33" cy="22" r="2" fill="#FF8FB1" stroke="none"/></g>
+<text x="622" y="402" class="serif" font-size="25" fill="#F8F0F3" text-anchor="start" >Mini-games</text>
+<text x="622" y="436" class="sans" font-size="13.5" fill="#B6A3AC" text-anchor="start" >Four playable demos built from</text><text x="622" y="456" class="sans" font-size="13.5" fill="#B6A3AC" text-anchor="start" >real projects, on the classic</text><text x="622" y="476" class="sans" font-size="13.5" fill="#B6A3AC" text-anchor="start" >site.</text>
+<rect x="622" y="506" width="36" height="2" rx="1" fill="#C77B9B"><animate attributeName="width" values="36;227;36" dur="12s" repeatCount="indefinite"/></rect>
+</g>
+<g class="fadein" style="animation-delay:0.7s">
+<rect x="884" y="286" width="271" height="238" rx="18" fill="#1F0C16" stroke="#4E2236"/>
+<rect x="884" y="304" width="3" height="54" rx="1.5" fill="#C77B9B"/>
+<text x="1135" y="320" class="mono" font-size="12" fill="#7C6570" text-anchor="end" letter-spacing="2">08</text>
+<g transform="translate(906 312)" fill="none" stroke="#E5B5C7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 34S4 24 4 13a8 8 0 0 1 17-3 8 8 0 0 1 17 3c0 11-17 21-17 21z" fill="#FF8FB1" fill-opacity=".2" stroke="#FF8FB1"/><path d="M14 18l5 5 9-9" stroke="#F8F0F3"/></g>
+<text x="906" y="402" class="serif" font-size="25" fill="#F8F0F3" text-anchor="start" >Built with care</text>
+<text x="906" y="436" class="sans" font-size="13.5" fill="#B6A3AC" text-anchor="start" >Keyboard friendly, responsive, and</text><text x="906" y="456" class="sans" font-size="13.5" fill="#B6A3AC" text-anchor="start" >it honours reduced motion.</text>
+<rect x="906" y="506" width="36" height="2" rx="1" fill="#C77B9B"><animate attributeName="width" values="36;227;36" dur="13s" repeatCount="indefinite"/></rect>
+</g>
+</svg>

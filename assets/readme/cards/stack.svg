@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 440" width="1200" height="440" role="img" aria-labelledby="stack-t stack-d">
+<title id="stack-t">Built by hand</title>
+<desc id="stack-d">Project layout: hemashreevi.github.io/; ├─ index.html (home page); ├─ assets/js/data.js (all the content); ├─ assets/js/app.js (intro, profiles, rows, car); ├─ assets/css/site.css (styles); ├─ assets/img/ (photos, certificates, logos); ├─ assets/readme/ (this README's art); ├─ classic/ (original site + mini-games); ├─ scripts/ (card + screenshot builders); └─ resume.pdf. Stack: HTML5, CSS3, JavaScript, Inline SVG, Web Animations API, IntersectionObserver, GitHub Pages, Google Fonts</desc>
+
+<style>
+.serif{font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,'Times New Roman',serif}
+.sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace}
+.kick{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace;font-size:12px;letter-spacing:3px;fill:#C77B9B}
+.twinkle{animation:tw 4s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.15}50%{opacity:.9}}
+.pulse{animation:pl 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pl{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.35)}}
+.spin{animation:sp 60s linear infinite;transform-box:view-box}
+@keyframes sp{to{transform:rotate(360deg)}}
+.float{animation:fl 6s ease-in-out infinite}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.fadein{animation:fi 1.2s ease-out both}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+</style>
+
+<defs>
+  <radialGradient id="stack-bg" cx="70%" cy="30%" r="90%">
+    <stop offset="0" stop-color="#2A0E1B"/>
+    <stop offset=".55" stop-color="#190B12"/>
+    <stop offset="1" stop-color="#10070C"/>
+  </radialGradient>
+  <radialGradient id="stack-glowA" cx="50%" cy="50%" r="50%">
+    <stop offset="0" stop-color="#701A3D" stop-opacity=".45"/>
+    <stop offset="1" stop-color="#701A3D" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="stack-glowB" cx="50%" cy="50%" r="50%">
+    <stop offset="0" stop-color="#F8F0F3" stop-opacity=".12"/>
+    <stop offset="1" stop-color="#F8F0F3" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="stack-silver" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#FFFFFF"/>
+    <stop offset=".5" stop-color="#D8C4CD"/>
+    <stop offset="1" stop-color="#C77B9B"/>
+  </linearGradient>
+  <linearGradient id="stack-rule" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#C77B9B" stop-opacity="0"/>
+    <stop offset=".25" stop-color="#C77B9B" stop-opacity=".8"/>
+    <stop offset="1" stop-color="#C77B9B" stop-opacity="0"/>
+  </linearGradient>
+  <pattern id="stack-grid" width="28" height="28" patternUnits="userSpaceOnUse">
+    <path d="M28 0H0V28" fill="none" stroke="#C77B9B" stroke-opacity=".05"/>
+  </pattern>
+  <filter id="stack-soft" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="3"/>
+  </filter>
+</defs>
+
+
+<rect x="1" y="1" width="1198" height="438" rx="22" fill="url(#stack-bg)" stroke="#3A1828"/>
+<rect x="1" y="1" width="1198" height="438" rx="22" fill="url(#stack-grid)"/>
+<ellipse cx="960" cy="132" rx="420" ry="308" fill="url(#stack-glowA)"/>
+<ellipse cx="240" cy="308" rx="300" ry="220" fill="url(#stack-glowB)"/>
+<rect x="32" y="30" width="640" height="380" rx="14" fill="#10070C" fill-opacity=".85" stroke="#4E2236"/>
+<path d="M32 66H672" stroke="#3A1828"/>
+<circle cx="52" cy="48" r="5" fill="#FF8FB1" fill-opacity=".7"/><circle cx="70" cy="48" r="5" fill="#C77B9B" fill-opacity=".7"/><circle cx="88" cy="48" r="5" fill="#8FE3C8" fill-opacity=".7"/>
+<text x="352.0" y="53" class="mono" font-size="12" fill="#B6A3AC" text-anchor="middle" >tree -L 2</text>
+<g opacity="0"><animate attributeName="opacity" values="0;1" begin="0.20s" dur=".3s" fill="freeze"/><text x="60" y="100" class="mono" font-size="13.5" fill="#F8F0F3" text-anchor="start" >hemashreevi.github.io/</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" begin="0.32s" dur=".3s" fill="freeze"/><text x="60" y="129" class="mono" font-size="13.5" fill="#D8C4CD" text-anchor="start" >├─ index.html</text><text x="362" y="129" class="mono" font-size="12.5" fill="#7C6570" text-anchor="start" ># home page</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" begin="0.44s" dur=".3s" fill="freeze"/><text x="60" y="158" class="mono" font-size="13.5" fill="#D8C4CD" text-anchor="start" >├─ assets/js/data.js</text><text x="362" y="158" class="mono" font-size="12.5" fill="#7C6570" text-anchor="start" ># all the content</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" begin="0.56s" dur=".3s" fill="freeze"/><text x="60" y="187" class="mono" font-size="13.5" fill="#D8C4CD" text-anchor="start" >├─ assets/js/app.js</text><text x="362" y="187" class="mono" font-size="12.5" fill="#7C6570" text-anchor="start" ># intro, profiles, rows, car</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" begin="0.68s" dur=".3s" fill="freeze"/><text x="60" y="216" class="mono" font-size="13.5" fill="#D8C4CD" text-anchor="start" >├─ assets/css/site.css</text><text x="362" y="216" class="mono" font-size="12.5" fill="#7C6570" text-anchor="start" ># styles</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" begin="0.80s" dur=".3s" fill="freeze"/><text x="60" y="245" class="mono" font-size="13.5" fill="#D8C4CD" text-anchor="start" >├─ assets/img/</text><text x="362" y="245" class="mono" font-size="12.5" fill="#7C6570" text-anchor="start" ># photos, certificates, logos</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" begin="0.92s" dur=".3s" fill="freeze"/><text x="60" y="274" class="mono" font-size="13.5" fill="#D8C4CD" text-anchor="start" >├─ assets/readme/</text><text x="362" y="274" class="mono" font-size="12.5" fill="#7C6570" text-anchor="start" ># this README's art</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" begin="1.04s" dur=".3s" fill="freeze"/><text x="60" y="303" class="mono" font-size="13.5" fill="#D8C4CD" text-anchor="start" >├─ classic/</text><text x="362" y="303" class="mono" font-size="12.5" fill="#7C6570" text-anchor="start" ># original site + mini-games</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" begin="1.16s" dur=".3s" fill="freeze"/><text x="60" y="332" class="mono" font-size="13.5" fill="#D8C4CD" text-anchor="start" >├─ scripts/</text><text x="362" y="332" class="mono" font-size="12.5" fill="#7C6570" text-anchor="start" ># card + screenshot builders</text></g><g opacity="0"><animate attributeName="opacity" values="0;1" begin="1.28s" dur=".3s" fill="freeze"/><text x="60" y="361" class="mono" font-size="13.5" fill="#D8C4CD" text-anchor="start" >└─ resume.pdf</text></g>
+<rect x="700" y="30" width="226" height="104" rx="16" fill="#1F0C16" stroke="#4E2236"/><rect x="700" y="46" width="3" height="72" rx="1.5" fill="#C77B9B"/><text x="722" y="88" class="serif" font-size="38" fill="#F8F0F3" text-anchor="start" >0</text><text x="722" y="114" class="sans" font-size="13" fill="#B6A3AC" text-anchor="start" >frameworks</text><rect x="938" y="30" width="226" height="104" rx="16" fill="#1F0C16" stroke="#4E2236"/><rect x="938" y="46" width="3" height="72" rx="1.5" fill="#C77B9B"/><text x="960" y="88" class="serif" font-size="38" fill="#F8F0F3" text-anchor="start" >0</text><text x="960" y="114" class="sans" font-size="13" fill="#B6A3AC" text-anchor="start" >build steps</text><rect x="700" y="148" width="226" height="104" rx="16" fill="#1F0C16" stroke="#4E2236"/><rect x="700" y="164" width="3" height="72" rx="1.5" fill="#C77B9B"/><text x="722" y="206" class="serif" font-size="38" fill="#F8F0F3" text-anchor="start" >1</text><text x="722" y="232" class="sans" font-size="13" fill="#B6A3AC" text-anchor="start" >content file</text><rect x="938" y="148" width="226" height="104" rx="16" fill="#1F0C16" stroke="#4E2236"/><rect x="938" y="164" width="3" height="72" rx="1.5" fill="#C77B9B"/><text x="960" y="206" class="serif" font-size="38" fill="#F8F0F3" text-anchor="start" >31</text><text x="960" y="232" class="sans" font-size="13" fill="#B6A3AC" text-anchor="start" >self-hosted logos</text>
+<rect x="700" y="284" width="56" height="24" rx="12" fill="#1F0C16" stroke="#4E2236"/><text x="711" y="300" class="mono" font-size="11" fill="#D8C4CD" text-anchor="start" >HTML5</text>
+<rect x="763.55" y="284" width="49" height="24" rx="12" fill="#1F0C16" stroke="#4E2236"/><text x="774.55" y="300" class="mono" font-size="11" fill="#D8C4CD" text-anchor="start" >CSS3</text>
+<rect x="820.39" y="284" width="89" height="24" rx="12" fill="#1F0C16" stroke="#4E2236"/><text x="831.39" y="300" class="mono" font-size="11" fill="#D8C4CD" text-anchor="start" >JavaScript</text>
+<rect x="917.49" y="284" width="89" height="24" rx="12" fill="#1F0C16" stroke="#4E2236"/><text x="928.49" y="300" class="mono" font-size="11" fill="#D8C4CD" text-anchor="start" >Inline SVG</text>
+<rect x="1014.59" y="284" width="143" height="24" rx="12" fill="#1F0C16" stroke="#4E2236"/><text x="1025.5900000000001" y="300" class="mono" font-size="11" fill="#D8C4CD" text-anchor="start" >Web Animations API</text>
+<rect x="700" y="316" width="156" height="24" rx="12" fill="#1F0C16" stroke="#4E2236"/><text x="711" y="332" class="mono" font-size="11" fill="#D8C4CD" text-anchor="start" >IntersectionObserver</text>
+<rect x="864.2" y="316" width="103" height="24" rx="12" fill="#1F0C16" stroke="#4E2236"/><text x="875.2" y="332" class="mono" font-size="11" fill="#D8C4CD" text-anchor="start" >GitHub Pages</text>
+<rect x="974.72" y="316" width="103" height="24" rx="12" fill="#1F0C16" stroke="#4E2236"/><text x="985.72" y="332" class="mono" font-size="11" fill="#D8C4CD" text-anchor="start" >Google Fonts</text>
+
+</svg>

@@ -1,137 +1,100 @@
-<div align="center">
-
-<img src="./banner.svg" alt="Hemashree V I — AI & Cyber-Physical Systems Engineer" width="100%"/>
-
-<a href="https://git.io/typing-svg">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&duration=2800&pause=900&color=8B5CF6&center=true&vCenter=true&multiline=false&width=640&height=40&lines=%F0%9F%A6%AF+Co-inventor+of+a+fall-predicting+smart+walker;%F0%9F%A4%96+Building+a+disaster-response+rover;%F0%9F%A6%B7+97%25+accurate+dental+X-ray+detection;%F0%9F%9B%A0%EF%B8%8F+Microservices+that+find+their+own+bugs;%F0%9F%8E%AE+4+mini-games+inside+%E2%80%94+come+play!" alt="Typing intro"/>
+<a href="https://hemashreevi.github.io">
+  <img src="./assets/readme/cards/hero.svg" width="100%" alt="HEMASHREE Portfolio. A motorsport-themed portfolio: start lights, a starting grid and an F1 car between pages. Vanilla HTML, CSS and JavaScript on GitHub Pages.">
 </a>
 
-<p>
-  <a href="https://hemashreevi.github.io"><img src="https://img.shields.io/badge/🌐_Visit_live_site-hemashreevi.github.io-8B5CF6?style=for-the-badge" alt="Live site"/></a>
+<p align="center">
+  <a href="https://hemashreevi.github.io"><img src="https://img.shields.io/badge/Live_site-hemashreevi.github.io-701A3D?style=for-the-badge&labelColor=190B12&logo=githubpages&logoColor=F8F0F3" alt="Live site"></a>
+  <a href="https://github.com/HemashreeVI"><img src="https://img.shields.io/badge/GitHub-HemashreeVI-701A3D?style=for-the-badge&labelColor=190B12&logo=github&logoColor=F8F0F3" alt="GitHub profile"></a>
+  <a href="https://www.linkedin.com/in/hema-shree-373622289"><img src="https://img.shields.io/badge/LinkedIn-Connect-701A3D?style=for-the-badge&labelColor=190B12&logo=linkedin&logoColor=F8F0F3" alt="LinkedIn"></a>
+  <a href="./resume.pdf"><img src="https://img.shields.io/badge/Résumé-PDF-701A3D?style=for-the-badge&labelColor=190B12&logo=adobeacrobatreader&logoColor=F8F0F3" alt="Résumé"></a>
 </p>
 
-<p>
-  <img src="https://img.shields.io/badge/Three.js-3D_hero-000000?style=flat-square&logo=threedotjs&logoColor=white" alt="Three.js"/>
-  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML5"/>
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS3"/>
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript"/>
-  <img src="https://img.shields.io/badge/GitHub_Pages-deployed-222222?style=flat-square&logo=githubpages&logoColor=white" alt="GitHub Pages"/>
-  <img src="https://img.shields.io/github/last-commit/HemashreeVI/HemashreeVI.github.io?style=flat-square&color=2DD4BF&label=updated" alt="Last commit"/>
+<img src="./assets/readme/cards/title-preview.svg" width="100%" alt="01 Preview: Take a look.">
+
+<a href="https://hemashreevi.github.io/?profile=recruiter"><img src="./assets/readme/framed-hero.webp" width="100%" alt="The home page: name, role, live stats and photo, with featured projects underneath"></a>
+
+<table>
+  <tr>
+    <td width="50%"><img src="./assets/readme/framed-lights.webp" width="100%" alt="Intro: five red start lights"><p align="center"><sub><b>Start lights</b> · five reds…</sub></p></td>
+    <td width="50%"><img src="./assets/readme/framed-launch.webp" width="100%" alt="Intro: lights out and the name launches in"><p align="center"><sub><b>Lights out</b> · and away we go</sub></p></td>
+  </tr>
+  <tr>
+    <td><img src="./assets/readme/framed-gate.webp" width="100%" alt="Profile picker: Who's on the grid today?"><p align="center"><sub><b>Pick your seat</b> · Recruiter, Engineer, Explorer or Gamer</sub></p></td>
+    <td><img src="./assets/readme/framed-car.webp" width="100%" alt="An F1 car drives up the screen as the page changes"><p align="center"><sub><b>F1 transition</b> · the car drives you to the next section</sub></p></td>
+  </tr>
+  <tr>
+    <td><img src="./assets/readme/framed-skills.webp" width="100%" alt="Skill cards swinging along an arc"><p align="center"><sub><b>Skills arc</b> · cards swing as you scroll</sub></p></td>
+    <td><img src="./assets/readme/framed-modal.webp" width="100%" alt="Project detail for the Hazard Rover with photos"><p align="center"><sub><b>Deep dive</b> · highlights, photos and code</sub></p></td>
+  </tr>
+  <tr>
+    <td><img src="./assets/readme/framed-rows.webp" width="100%" alt="Rows of experience, projects on the starting grid"><p align="center"><sub><b>Rows</b> · experience and the starting grid</sub></p></td>
+    <td align="center"><img src="./assets/readme/framed-mobile.webp" width="52%" alt="The site on a phone"><p align="center"><sub><b>Mobile</b> · same race, smaller screen</sub></p></td>
+  </tr>
+</table>
+
+<img src="./assets/readme/cards/title-features.svg" width="100%" alt="02 Features: What's inside.">
+<img src="./assets/readme/cards/features.svg" width="100%" alt="Start lights; pick your seat (Recruiter, Engineer, Explorer or Gamer); F1 car transitions; skills arc; starting grid P1 to P8; project deep dives; four mini-games; built with care: keyboard friendly, responsive, reduced motion.">
+
+> 💡 **Tip:** send recruiters `https://hemashreevi.github.io/?profile=recruiter` and they skip straight past the picker.
+
+<img src="./assets/readme/cards/title-projects.svg" width="100%" alt="03 Projects: On the grid.">
+<img src="./assets/readme/cards/projects.svg" width="100%" alt="P1 Smart Walker, P2 Hazard Rover, P3 Dental X-Ray AI, P4 RootLens, P5 TriageIQ, P6 Smart Grocer, P7 Intrusion Detection, P8 Jarvis.">
+
+<p align="center">
+  <a href="https://github.com/HemashreeVI/Rover"><img src="https://img.shields.io/badge/P2-Hazard_Rover-451126?style=flat-square&labelColor=190B12&logo=github&logoColor=F8F0F3" alt="Hazard Rover repo"></a>
+  <a href="https://github.com/HemashreeVI/AI_Malocclusion_Detection"><img src="https://img.shields.io/badge/P3-Dental_X--Ray_AI-451126?style=flat-square&labelColor=190B12&logo=github&logoColor=F8F0F3" alt="Dental X-Ray AI repo"></a>
+  <a href="https://github.com/HemashreeVI/rootlens"><img src="https://img.shields.io/badge/P4-RootLens-451126?style=flat-square&labelColor=190B12&logo=github&logoColor=F8F0F3" alt="RootLens repo"></a>
+  <a href="https://github.com/HemashreeVI/TriageIQ"><img src="https://img.shields.io/badge/P5-TriageIQ-451126?style=flat-square&labelColor=190B12&logo=github&logoColor=F8F0F3" alt="TriageIQ repo"></a>
+  <a href="https://github.com/HemashreeVI/smart-grocer"><img src="https://img.shields.io/badge/P6-Smart_Grocer-451126?style=flat-square&labelColor=190B12&logo=github&logoColor=F8F0F3" alt="Smart Grocer repo"></a>
+  <a href="https://github.com/HemashreeVI/JarvisAI"><img src="https://img.shields.io/badge/P8-Jarvis-451126?style=flat-square&labelColor=190B12&logo=github&logoColor=F8F0F3" alt="Jarvis repo"></a>
 </p>
 
-</div>
+<img src="./assets/readme/cards/title-stack.svg" width="100%" alt="04 Stack: Built by hand.">
+<img src="./assets/readme/cards/stack.svg" width="100%" alt="Project layout and stack: index.html, assets/js/data.js with all the content, assets/js/app.js, assets/css/site.css, images, classic site with the mini-games, scripts. No framework, no build step, one content file, 31 self-hosted logos. HTML5, CSS3, JavaScript, inline SVG, Web Animations API, IntersectionObserver, GitHub Pages, Google Fonts.">
 
----
-
-## ✨ What's inside
-
-The home page is a **motorsport-themed portfolio**:
-
-| | Feature | What it does |
-|:-:|---|---|
-| 🚦 | **Start lights** | Five red lights, lights out, and the name launches in. Click or press any key to skip. |
-| 👤 | **"Who's on the grid today?"** | Pick *Recruiter, Engineer, Explorer* or *Gamer*. The intro and the order of every row change for you. Share `?profile=recruiter` to skip the picker. |
-| 🏁 | **Hero** | Photo, driver-style tag, live stats and a spotlight that follows your mouse. |
-| 🎞️ | **Rows that slide in** | Featured projects, the starting grid (P1–P8), what's in the garage, experience, certifications, Singapore 2025 photos and fun facts. |
-| 🃏 | **Skills arc** | Skill cards swing along an arc as you scroll, each with real tech logos. |
-| 🏎️ | **F1 car transitions** | Moving between sections, an original top-down F1 car drives up the screen and wipes to the next one. |
-| 📺 | **Project detail** | Synopsis, tech stack, highlights (laps), behind-the-scenes photos and more builds. |
-| 🎮 | **Mini-games** | The four games open in the classic site. |
-
-The **[classic portfolio](https://hemashreevi.github.io/classic/)** is still there, with the 3D LIDAR hero, the "Hiring for…" switch, Detection mode (<kbd>D</kbd>), the patent blueprint and the games.
-
-## 🎮 Mini-games for visitors
-
-| | Game | Built from | What you do |
-|:-:|---|---|---|
-| 🦯 | **Keep them standing** | Smart walker patent | Change tilt, weight shift and obstacles, and watch the fall-risk score react |
-| 🥭 | **Freshness check** | Smart Grocer | Age a mango and see whether the shop should keep, discount or remove it |
-| 🔍 | **Incident hunt** | RootLens | One service broke. Find which one before the errors spread |
-| あ | **Hiragana sprint** | Japanese, studied at VIT Chennai | 3D flip cards. Pick the right reading and build a streak |
-
-## 🚀 Projects featured
-
-<div align="center">
-
-| Project | Area | Code |
-|---|---|:-:|
-| 🦯 **IoT smart walker**, fall-risk prediction · *patent filing in progress* | Embedded & IoT | 🔒 |
-| 🤖 **Disaster-response rover**, SLAM, YOLO and safe-path planning | Robotics | — |
-| 🦷 **Dental malocclusion detection**, YOLOv9 + Grad-CAM, ~97% accuracy | Computer vision | [![repo](https://img.shields.io/badge/-repo-8B5CF6?style=flat-square&logo=github)](https://github.com/HemashreeVI/AI_Malocclusion_Detection) |
-| 🥬 **Smart Grocer**, multimodal produce spoilage detection | Vision + IoT | [![repo](https://img.shields.io/badge/-repo-8B5CF6?style=flat-square&logo=github)](https://github.com/HemashreeVI/smart-grocer) |
-| 🔍 **RootLens**, AI-assisted root-cause analysis for microservices | Backend & DevOps | [![repo](https://img.shields.io/badge/-repo-8B5CF6?style=flat-square&logo=github)](https://github.com/HemashreeVI/rootlens) |
-| 🎫 **TriageIQ**, real-time LLM support-ticket triage | LLM systems | [![repo](https://img.shields.io/badge/-repo-8B5CF6?style=flat-square&logo=github)](https://github.com/HemashreeVI/TriageIQ) |
-| 🛡️ **Intrusion detection & threat modeling** | Security | — |
-| 🎙️ **Jarvis**, offline voice assistant | Automation | [![repo](https://img.shields.io/badge/-repo-8B5CF6?style=flat-square&logo=github)](https://github.com/HemashreeVI/JarvisAI) |
-
-</div>
-
-## 🧰 Skills shown on the site
-
-<div align="center">
-
-**Languages**<br/>
-<img src="https://skillicons.dev/icons?i=py,java,js,html,css&theme=dark" alt="Languages"/>
-
-**Machine learning & vision**<br/>
-<img src="https://skillicons.dev/icons?i=pytorch,tensorflow,opencv&theme=dark" alt="ML"/>
-
-**Embedded & robotics**<br/>
-<img src="https://skillicons.dev/icons?i=arduino,raspberrypi&theme=dark" alt="Embedded"/>
-
-**Backend & DevOps**<br/>
-<img src="https://skillicons.dev/icons?i=fastapi,flask,docker,kafka,prometheus,grafana,sqlite&theme=dark" alt="Backend"/>
-
-**Apps, data & tools**<br/>
-<img src="https://skillicons.dev/icons?i=firebase,flutter,mysql,git,github,vscode&theme=dark" alt="Tools"/>
-
-</div>
-
-## 🗂️ Repo structure
-
-```
-HemashreeVI.github.io/
-├── index.html             # streaming-style home page
-├── assets/
-│   ├── css/site.css       # styles
-│   ├── js/data.js         # ALL the content: projects, experience, skills, photos, links
-│   ├── js/app.js          # intro, profiles, rows, previews, modals
-│   └── img/               # photos and certificates
-├── classic/index.html     # the original portfolio, with the mini-games
-├── resume.pdf
-└── README.md
-```
-
-## 💻 Run it locally
+<img src="./assets/readme/cards/title-run.svg" width="100%" alt="05 Run: Run it locally.">
 
 ```bash
 git clone https://github.com/HemashreeVI/HemashreeVI.github.io.git
-cd HemashreeVI.github.io
-python -m http.server 8000
+cd HemashreeVI.github.io && python3 -m http.server 8000   # then open http://localhost:8000
 ```
-Then open **http://localhost:8000** in your browser.
 
-> 🛠️ **Editing content:** everything on the home page comes from `assets/js/data.js`. Add a project, change a photo or reorder a profile's rows there; no build step needed. After editing CSS or JS, bump the `?v=` number on the three links in `index.html` so visitors get the new files instead of a cached copy.
+**Editing content.** Everything on the home page comes from [`assets/js/data.js`](./assets/js/data.js): projects, photos, experience, skills, the order of rows for each profile. Change it there; there is no build step. After editing CSS or JS, bump the `?v=` number on the three links in `index.html` so visitors get the new files instead of a cached copy.
 
-## ⌨️ Shortcuts (classic site)
+**Rebuilding this README's art** (needs Python 3 and Pillow):
+
+```bash
+python3 scripts/build_readme_cards.py   # animated SVG cards  → assets/readme/cards/
+python3 scripts/frame_screens.py        # framed screenshots  → assets/readme/framed-*.webp
+```
+
+<details>
+<summary><b>⌨️ Classic site shortcuts</b></summary>
+<br>
+
+The [classic portfolio](https://hemashreevi.github.io/classic/) keeps the 3D LIDAR hero, the "Hiring for…" switch, the patent blueprint and the four mini-games.
 
 | Key | Action |
 |:-:|---|
 | <kbd>T</kbd> | Toggle dark / light theme |
 | <kbd>D</kbd> | Toggle detection mode |
 
----
+</details>
 
-<div align="center">
+<details>
+<summary><b>🙏 Credits</b></summary>
+<br>
 
-### 📬 Let's connect
+Tech logos come from [Devicon](https://github.com/devicons/devicon) (MIT) and [Simple Icons](https://github.com/simple-icons/simple-icons) (CC0); see [`assets/img/logos/CREDITS.md`](./assets/img/logos/CREDITS.md). The F1 car, posters and README cards are original drawings.
 
-<a href="mailto:shreejith2005@gmail.com"><img src="https://img.shields.io/badge/Email-shreejith2005@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/></a>
-<a href="https://www.linkedin.com/in/hema-shree-373622289"><img src="https://img.shields.io/badge/LinkedIn-Hemashree_V_I-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
-<a href="https://github.com/HemashreeVI"><img src="https://img.shields.io/badge/GitHub-HemashreeVI-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/></a>
+</details>
 
-<br/><br/>
+<img src="./assets/readme/cards/title-connect.svg" width="100%" alt="06 Connect: Let's talk.">
 
-<sub>よろしくお願いします · Made with 💜 by Hemashree V I</sub>
+<p align="center">
+  <a href="mailto:shreejith2005@gmail.com"><img src="https://img.shields.io/badge/Email-shreejith2005@gmail.com-701A3D?style=for-the-badge&labelColor=190B12&logo=gmail&logoColor=F8F0F3" alt="Email"></a>
+  <a href="https://www.linkedin.com/in/hema-shree-373622289"><img src="https://img.shields.io/badge/LinkedIn-hema--shree-701A3D?style=for-the-badge&labelColor=190B12&logo=linkedin&logoColor=F8F0F3" alt="LinkedIn"></a>
+  <a href="https://leetcode.com/u/hemashree_272005/"><img src="https://img.shields.io/badge/LeetCode-hemashree__272005-701A3D?style=for-the-badge&labelColor=190B12&logo=leetcode&logoColor=F8F0F3" alt="LeetCode"></a>
+</p>
 
-</div>
+<a href="https://hemashreevi.github.io"><img src="./assets/readme/cards/footer.svg" width="100%" alt="Hemashree. Built by hand in Chennai. よろしくお願いします"></a>
