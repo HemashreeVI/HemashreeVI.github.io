@@ -25,50 +25,19 @@
 
 ## ✨ What's inside
 
-<table>
-<tr>
-<td width="50%" valign="top">
+The home page is a **streaming-service-style portfolio**:
 
-### 🛰️ 3D LIDAR hero
-A live **Three.js point-cloud** of my rover scanning a disaster zone. Move your mouse to turn the camera. Amber points are hazards flagged by the sweep.
+| | Feature | What it does |
+|:-:|---|---|
+| 🎬 | **Intro** | The name zooms in before the site opens. Click or press any key to skip. |
+| 👤 | **"Who's watching?"** | Pick *Recruiter, Engineer, Explorer* or *Gamer*. The billboard copy and the order of every row change for you. Share `?profile=recruiter` to skip the picker. |
+| 🖼️ | **Billboard** | A full-width hero with a spotlight that follows your mouse. |
+| 🎞️ | **Rows** | Top picks, a Top 10 of projects, *Continue watching* (what I'm building now), experience, skills, certifications, Singapore 2025 photos and fun facts. |
+| 🔎 | **Hover previews** | On desktop, cards expand with match %, genres and quick actions. |
+| 📺 | **Detail view** | Every project opens with a synopsis, cast (tech stack), *episodes* (highlights) and *More like this*. |
+| 🎮 | **Play Something** | The four mini-games, which open in the classic site. |
 
-</td>
-<td width="50%" valign="top">
-
-### 🎯 "Hiring for…" role switch
-Pick **Computer vision, Embedded, Robotics, Backend or Security**. The intro rewrites itself, and the projects reorder so the best match comes first.
-
-</td>
-</tr>
-<tr>
-<td valign="top">
-
-### 🔲 Detection mode
-Press <kbd>D</kbd> and the whole page gets **YOLO-style bounding boxes** with labels and confidence scores, the way my models see the world.
-
-</td>
-<td valign="top">
-
-### 📐 Interactive patent blueprint
-A blueprint-style schematic of my **smart walker**. Tap each numbered part to learn what the IMUs, load cells and ultrasonics do.
-
-</td>
-</tr>
-<tr>
-<td valign="top">
-
-### 🌗 Dark / light theme
-Press <kbd>T</kbd> to switch. Your choice is remembered, and even the 3D scene changes colour.
-
-</td>
-<td valign="top">
-
-### ♿ Built with care
-Keyboard-friendly, works on mobile, and respects *reduced motion* settings. If 3D isn't supported, it falls back gracefully.
-
-</td>
-</tr>
-</table>
+The **[classic portfolio](https://hemashreevi.github.io/classic/)** is still there, with the 3D LIDAR hero, the "Hiring for…" switch, Detection mode (<kbd>D</kbd>), the patent blueprint and the games.
 
 ## 🎮 Mini-games for visitors
 
@@ -121,11 +90,14 @@ Keyboard-friendly, works on mobile, and respects *reduced motion* settings. If 3
 
 ```
 HemashreeVI.github.io/
-├── index.html             # the whole site: HTML + CSS + JS in one file
-├── banner.svg             # animated banner for this README
-├── me.jpg                 # profile photo
-├── nus-certificate.jpg    # NUS Industry 4.0 certificate
-├── ibm-certificate.jpg    # IBM Generative AI certificate
+├── index.html             # streaming-style home page
+├── assets/
+│   ├── css/site.css       # styles
+│   ├── js/data.js         # ALL the content: projects, experience, skills, photos, links
+│   ├── js/app.js          # intro, profiles, rows, previews, modals
+│   └── img/               # photos and certificates
+├── classic/index.html     # the original portfolio, with the mini-games
+├── resume.pdf
 └── README.md
 ```
 
@@ -138,9 +110,9 @@ python -m http.server 8000
 ```
 Then open **http://localhost:8000** in your browser.
 
-> 🛠️ **Editing content:** links, résumé, demo videos and the photo all live in one `SITE = { ... }` block near the bottom of `index.html`. Leave a value as `""` and that button hides itself.
+> 🛠️ **Editing content:** everything on the home page comes from `assets/js/data.js`. Add a project, change a photo or reorder a profile's rows there; no build step needed.
 
-## ⌨️ Shortcuts
+## ⌨️ Shortcuts (classic site)
 
 | Key | Action |
 |:-:|---|
@@ -158,8 +130,6 @@ Then open **http://localhost:8000** in your browser.
 <a href="https://github.com/HemashreeVI"><img src="https://img.shields.io/badge/GitHub-HemashreeVI-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/></a>
 
 <br/><br/>
-
-<img src="https://komarev.com/ghpvc/?username=HemashreeVI-portfolio&label=README+views&color=8B5CF6&style=flat-square" alt="views"/>
 
 <sub>よろしくお願いします · Made with 💜 by Hemashree V I</sub>
 
