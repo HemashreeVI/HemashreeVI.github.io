@@ -235,7 +235,7 @@
     }).join("") + '<div class="sep"></div><button type="button" data-switch="__gate">Manage profiles</button>';
 
     // billboard
-    $("#bbPhoto").style.backgroundImage = "url('" + S.heroImage + "')";
+    $("#bbPhoto").src = S.heroImage;
     $("#bbTitle").textContent = S.name;
     $("#bbRole").textContent = S.title.toUpperCase();
     $("#bbMeta").innerHTML = '<span class="match">98% Match</span><span>' + esc(S.since) + '–</span><span class="box">B.TECH CSE</span><span>' + esc(S.college) + '</span><span class="box">HD</span>';
@@ -522,7 +522,7 @@
   function openBuilding(b) {
     openModal(
       '<div class="m-hero">' + poster({ color: b.color, art: "", title: "" }, { noTitle: true }).replace('class="art"', 'class="m-art"') +
-      '<div class="m-hero-c"><h2 id="modalTitle">' + esc(b.title) + '</h2><div class="bb-actions"><a class="btn btn-play" href="' + esc(b.repo) + '" target="_blank" rel="noopener">' + ICON.code + 'Follow along</a></div></div></div>' +
+      '<div class="m-hero-c"><h2 id="modalTitle">' + esc(b.title) + '</h2><div class="bb-actions">' + (b.repo ? '<a class="btn btn-play" href="' + esc(b.repo) + '" target="_blank" rel="noopener">' + ICON.code + 'Follow along</a>' : '<span class="btn btn-info" style="cursor:default">Repository coming soon</span>') + '</div></div></div>' +
       '<div class="m-body"><div class="m-meta"><span class="match">In production</span><span class="box">' + esc(b.status) + '</span></div>' +
       '<div class="progress" style="position:relative;left:0;right:0;bottom:0;height:5px;max-width:420px;margin:6px 0 18px"><i style="width:' + Math.round(b.progress * 100) + '%"></i></div>' +
       '<p class="m-log">' + esc(b.note) + '</p></div>'
@@ -542,9 +542,9 @@
 
   function openAbout() {
     openModal(
-      '<div class="m-hero" style="aspect-ratio:16/6"><div class="m-art" style="background:url(\'' + esc(S.heroImage) + '\') 50% 28%/cover"></div>' +
+      '<div class="m-hero" style="aspect-ratio:16/6">' + poster({ color: ["#3a0a12", "#E50914"], art: "", title: "" }, { noTitle: true }).replace('class="art"', 'class="m-art"') +
       '<div class="m-hero-c"><h2 id="modalTitle">' + esc(S.name) + '</h2></div></div>' +
-      '<div class="m-body"><div class="about-grid"><img src="./assets/img/saree.jpg" alt="Hemashree">' +
+      '<div class="m-body"><div class="about-grid"><img src="./assets/img/blazer.jpg" alt="Hemashree">' +
       '<div><div class="m-meta"><span class="match">' + esc(S.title) + '</span><span class="box">' + esc(S.degree) + '</span><span>' + esc(S.college) + '</span></div>' +
       '<p class="m-log">' + esc(S.tagline) + '</p>' +
       '<p class="m-syn">I\'m ' + esc(S.fullName) + ', a software engineer studying Computer Science Engineering (Cyber Physical Systems) at VIT Chennai. I build things that sense the world, decide, and keep people safe: a patent-pending smart walker that predicts falls, a disaster-response rover, dental X-ray models, and backend platforms that diagnose their own failures. I went to Singapore in 2025 for the NUS Industry 4.0 programme and SuperAI, and I speak Tamil, English, Hindi and a little 日本語.</p>' +

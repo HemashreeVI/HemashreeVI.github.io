@@ -202,10 +202,10 @@ window.SITE = {
 
   /* "Continue watching": progress 0–1 */
   building: [
-    { title: "Pulse", note: "A free status page that runs entirely on GitHub Actions + Pages", status: "Step 1 of 5", progress: 0.2, color: ["#0b2a1f", "#27AE60"], repo: "https://github.com/HemashreeVI/pulse" },
+    { title: "Pulse", note: "A free status page that runs entirely on GitHub Actions + Pages", status: "Step 1 of 5", progress: 0.2, color: ["#0b2a1f", "#27AE60"], repo: "" },
     { title: "PortPilot", note: "Find what's using a port (even Docker containers) and free it with one key", status: "Planned", progress: 0.06, color: ["#0d1b3a", "#2F80ED"], repo: "https://github.com/HemashreeVI/portpilot" },
     { title: "BST Playground", note: "Watch binary search tree operations animate, step by step", status: "Planned", progress: 0.06, color: ["#3a2205", "#F2C94C"], repo: "https://github.com/HemashreeVI/bst-playground" },
-    { title: "Pit Wall", note: "Replay real F1 races with a GPS track map and live leaderboard", status: "Planned", progress: 0.04, color: ["#3a0a12", "#E50914"], repo: "https://github.com/HemashreeVI/pit-wall" },
+    { title: "Pit Wall", note: "Replay real F1 races with a GPS track map and live leaderboard", status: "Planned", progress: 0.04, color: ["#3a0a12", "#E50914"], repo: "" },
     { title: "LeetCode Solutions", note: "Clean, commented Java solutions, intuition first", status: "Daily", progress: 0.55, color: ["#2a1a05", "#FFA116"], repo: "https://github.com/HemashreeVI/leetcode-solutions" }
   ],
 
