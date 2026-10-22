@@ -122,17 +122,25 @@ window.SITE = {
     {
       id: "rootlens", title: "RootLens", genre: "Reliability · AIOps", year: "2026",
       badge: "TRENDING", match: 96, color: ["#2a1240", "#9B51E0"], art: "graph",
-      logline: "When a microservice breaks, it tells you why.",
-      synopsis: "An AI-assisted reliability platform that detects failures across FastAPI microservices, gathers evidence, ranks likely root causes and records every incident, backed by chaos testing, CI and versioned deploys.",
+      logline: "When a microservice breaks, it finds out why and fixes it.",
+      synopsis: "A reliability control room for FastAPI microservices. It watches live order traffic, and when something breaks it runs five steps on its own: detect, investigate and rank likely causes, decide within safety rules, act by rolling back or restarting, then verify customers are OK again.",
       cast: ["Python", "FastAPI", "Docker", "Prometheus", "Grafana", "SQLite", "GitHub Actions"],
       episodes: [
-        ["Detect", "Spots failures across services from metrics and health checks."],
-        ["Gather evidence", "Collects logs, metrics and recent changes around the incident."],
-        ["Rank root causes", "Scores candidate causes so you start with the likeliest one."],
-        ["Remember", "Records every incident for the next on-call."],
-        ["Break it on purpose", "Chaos tests prove the diagnosis works."]
+        ["Detect", "Notices the moment customer orders start failing."],
+        ["Investigate", "Collects evidence and ranks the likely causes."],
+        ["Decide", "Checks the safety rules and picks a fix."],
+        ["Act", "Rolls back or restarts, but only if the rules allow it (robot mode: enforce)."],
+        ["Verify", "Confirms customers are OK again before closing the incident."],
+        ["Control room", "Live success rate, orders per second, p95 response time and open incidents, plus a map of how an order moves through the services."],
+        ["Release history", "Every release and rollback recorded, including the ones RootLens did on its own."]
       ],
-      repo: "https://github.com/HemashreeVI/rootlens", game: "incident"
+      repo: "https://github.com/HemashreeVI/rootlens", game: "incident",
+      image: "./assets/img/rootlens-deploys.jpg",
+      imageTall: "./assets/img/rootlens-tall.jpg",
+      gallery: [
+        ["./assets/img/rootlens-overview.jpg", "Overview: live health, the five-step loop, and how an order flows through the services", "contain"],
+        ["./assets/img/rootlens-deploys.jpg", "Deployments: 20 releases recorded, 10 rollbacks, 3 done automatically by RootLens", "contain"]
+      ]
     },
     {
       id: "triage", title: "TriageIQ", genre: "LLM · Streaming", year: "2026",
