@@ -79,7 +79,14 @@ window.SITE = {
         ["Learning to sweep", "RL navigation adapts the sweep around new hazards; a simulated version compares tabular Q-learning + CNN across a 4-way reward ablation."],
         ["Mission control", "Live position, sensors and detections stream to a Flask telemetry dashboard."]
       ],
-      repo: "https://github.com/HemashreeVI/Rover"
+      repo: "https://github.com/HemashreeVI/Rover",
+      image: "./assets/img/rover-side.jpg",
+      imageTall: "./assets/img/rover-field.jpg",
+      gallery: [
+        ["./assets/img/rover-side.jpg", "Six wheels, suspension on every corner, LIDAR up front"],
+        ["./assets/img/rover-top.jpg", "Top view: Raspberry Pi 5, motor driver, MQ-2 gas sensor and LIDAR"],
+        ["./assets/img/rover-field.jpg", "Field test: watching the live camera feed while the rover drives"]
+      ]
     },
     {
       id: "dental", title: "Dental X-Ray AI", genre: "Computer Vision · Healthcare", year: "2025",
@@ -186,6 +193,7 @@ window.SITE = {
     { kicker: "CERTIFIED", title: "IBM Generative AI", when: "Jun 2025", text: "Gen AI Using IBM watsonx, IBM Career Education Program via IBM Developer Skills Network.", color: ["#0d1b3a", "#56CCF2"] },
     { kicker: "LEADERSHIP", title: "Team Leader, CodeYGen Club", when: "VIT Chennai", text: "Led a student team through coding and design-based projects, coordinating development and presentations.", color: ["#0b2a1f", "#27AE60"] },
     { kicker: "DESIGN", title: "Design Lead, Fitness Club", when: "VIT Chennai", text: "Posters, creatives and digital content for fitness events and member engagement.", color: ["#3a2205", "#F2C94C"] },
+    { kicker: "日本語", title: "Japanese", when: "VIT Chennai", text: "Studied Japanese as a subject at VIT Chennai. I can read hiragana, and the Hiragana Sprint game is built from it.", color: ["#2a1a05", "#F2C94C"] },
     { kicker: "EDUCATION", title: "B.Tech CSE, VIT Chennai", when: "2023 – present", text: "Computer Science Engineering with a specialisation in Cyber Physical Systems.", color: ["#2b0a0a", "#EB5757"] }
   ],
 
@@ -203,8 +211,7 @@ window.SITE = {
   certs: [
     { title: "Industry 4.0 Immersion", issuer: "President Education × NUS · June 2025 cohort", image: "./assets/img/nus-cert-completion.jpg" },
     { title: "Introduction to Industry 4.0", issuer: "NUS SCALE · 24 June 2025", image: "./assets/img/nus-letter.jpg" },
-    { title: "Gen AI Using IBM watsonx", issuer: "IBM Career Education Program · 19 June 2025", image: "./assets/img/ibm-cert.jpg" },
-    { title: "Japanese Language Course", issuer: "Completed", image: "" }
+    { title: "Gen AI Using IBM watsonx", issuer: "IBM Career Education Program · 19 June 2025", image: "./assets/img/ibm-cert.jpg" }
   ],
 
   singapore: [

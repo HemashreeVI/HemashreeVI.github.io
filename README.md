@@ -46,7 +46,7 @@ The **[classic portfolio](https://hemashreevi.github.io/classic/)** is still the
 | 🦯 | **Keep them standing** | Smart walker patent | Change tilt, weight shift and obstacles, and watch the fall-risk score react |
 | 🥭 | **Freshness check** | Smart Grocer | Age a mango and see whether the shop should keep, discount or remove it |
 | 🔍 | **Incident hunt** | RootLens | One service broke. Find which one before the errors spread |
-| あ | **Hiragana sprint** | My Japanese course | 3D flip cards. Pick the right reading and build a streak |
+| あ | **Hiragana sprint** | Japanese, studied at VIT Chennai | 3D flip cards. Pick the right reading and build a streak |
 
 ## 🚀 Projects featured
 

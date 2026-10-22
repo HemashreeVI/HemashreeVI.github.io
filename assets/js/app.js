@@ -98,9 +98,12 @@
     var c0 = (o.color && o.color[0]) || "#2a2a2a", c1 = (o.color && o.color[1]) || "#E50914";
     var title = opts.noTitle ? "" : (o.title || "");
     var fs = opts.tall ? (title.length > 12 ? 30 : 40) : (title.length > 16 ? 30 : title.length > 11 ? 36 : 44);
-    var art = opts.tall
-      ? '<g transform="translate(' + (-w * 0.6) + ' ' + (-20) + ') scale(1.05)">' + motif(o.art, c1, 320, 180) + '</g>'
-      : motif(o.art, c1, w, h);
+    var photo = opts.photo || (opts.tall ? (o.imageTall || o.image) : o.image);
+    var art = photo
+      ? '<image href="' + esc(photo) + '" width="' + w + '" height="' + h + '" preserveAspectRatio="xMidYMid slice"/>'
+      : opts.tall
+        ? '<g transform="translate(' + (-w * 0.6) + ' ' + (-20) + ') scale(1.05)">' + motif(o.art, c1, 320, 180) + '</g>'
+        : motif(o.art, c1, w, h);
     var lines = opts.tall ? wrapWords(title, 11) : [title];
     var tY = h - 18 - (lines.length - 1) * fs * 0.92;
     var text = lines.map(function (ln, i) {
@@ -446,6 +449,8 @@
   }
   $("#modal").addEventListener("click", function (e) {
     if (e.target.closest("[data-close]")) closeModal();
+    var lb = e.target.closest("[data-lb]");
+    if (lb) { lightbox(lb.getAttribute("data-lb"), lb.getAttribute("data-cap")); return; }
     var m = e.target.closest("[data-more]");
     if (m) openProject(byId(m.getAttribute("data-more")));
   });
@@ -466,7 +471,7 @@
   function openProject(p) {
     var idx = S.projects.indexOf(p) + 1;
     var eps = p.episodes.map(function (ep, i) {
-      return '<li class="ep"><span class="n">' + (i + 1) + '</span><span class="thumb">' + poster({ color: p.color, art: p.art, title: "" }, { noTitle: true }) + '</span>' +
+      return '<li class="ep"><span class="n">' + (i + 1) + '</span><span class="thumb">' + poster({ color: p.color, art: p.art, title: "" }, { noTitle: true, photo: p.gallery ? p.gallery[i % p.gallery.length][0] : "" }) + '</span>' +
         '<div><h4>' + esc(ep[0]) + '<span>S1:E' + (i + 1) + '</span></h4><p>' + esc(ep[1]) + '</p></div></li>';
     }).join("");
     var more = S.projects.filter(function (q) { return q !== p; }).slice(0, 6).map(function (q) {
@@ -482,6 +487,9 @@
       '<p class="m-log">' + esc(p.logline) + '</p><p class="m-syn">' + esc(p.synopsis) + '</p></div>' +
       '<div class="m-side"><p><b>Cast: </b>' + p.cast.map(esc).join(", ") + '</p><p><b>Genres: </b>' + p.genre.split(" · ").map(esc).join(", ") + '</p>' +
       '<p><b>Created by: </b>Hemashree</p></div></div>' +
+      (p.gallery ? '<h3 class="m-h3">Behind the Scenes</h3><div class="bts">' + p.gallery.map(function (g) {
+        return '<button type="button" class="bts-item" data-lb="' + esc(g[0]) + '" data-cap="' + esc(g[1]) + '"><img src="' + esc(g[0]) + '" alt="' + esc(g[1]) + '" loading="lazy"><span>' + esc(g[1]) + '</span></button>';
+      }).join("") + '</div>' : "") +
       '<h3 class="m-h3">Episodes <small>Season 1</small></h3><ol class="eps">' + eps + '</ol>' +
       '<h3 class="m-h3">More Like This</h3><div class="more-grid">' + more + '</div></div>'
     );
