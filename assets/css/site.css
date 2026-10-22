@@ -161,9 +161,15 @@ body.locked{overflow:hidden}
 .card.text .t{font-weight:700;font-size:clamp(13px,1.05vw,17px);line-height:1.2}
 .card.text .w{font-size:11px;color:#bbb}
 .card.text .glyph{position:absolute;right:10px;top:8px;font-size:26px;opacity:.9}
-.card.skill{aspect-ratio:16/10}
-.card.skill .chips{display:flex;flex-wrap:wrap;gap:4px}
-.card.skill .chips span{font-size:10.5px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:2px 6px;border-radius:3px;color:#ddd}
+.card.skill{aspect-ratio:auto;width:calc((100vw - 2*var(--pad) - 3*.4vw)/4);justify-content:flex-start;gap:14px;padding:18px 18px 20px}
+.card.skill .sk-head{display:flex;flex-direction:column;gap:6px}
+.card.skill .t{font-size:clamp(16px,1.3vw,20px)}
+.card.skill .chips{display:flex;flex-wrap:wrap;gap:7px}
+.card.skill .chips > span{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:500;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);
+  padding:5px 10px 5px 7px;border-radius:6px;color:#eee;transition:background .2s,border-color .2s,transform .2s}
+.card.skill .chips > span:hover{background:rgba(229,9,20,.16);border-color:rgba(229,9,20,.55);transform:translateY(-2px)}
+.card.skill .chips img,.card.skill .chips svg{width:18px;height:18px;flex:none;display:block}
+.glyph-txt{width:18px;height:18px;flex:none;display:grid;place-items:center;border-radius:4px;background:#E50914;color:#fff;font-size:10px;font-weight:800;line-height:1}
 
 /* ------------------------------------------------------------- hover preview */
 .preview{position:fixed;z-index:30;background:var(--bg2);border-radius:6px;overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,.75);
@@ -267,6 +273,7 @@ body.locked{overflow:hidden}
   .card{width:calc((100vw - 2*var(--pad) - 4*.4vw)/4.3)}
   .card.t10card{width:calc((100vw - 2*var(--pad))/3.3)}
   .card.tall{width:calc((100vw - 2*var(--pad))/5.2)}
+  .card.skill{width:calc((100vw - 2*var(--pad))/2.8)}
 }
 @media (max-width:800px){
   :root{--pad:16px}
@@ -289,6 +296,7 @@ body.locked{overflow:hidden}
   .card{width:42vw}
   .card.t10card{width:62vw}
   .card.tall{width:34vw}
+  .card.skill{width:78vw}
   .track{gap:6px}
   .arrow{display:none}
   .m-hero-c{left:20px;right:20px;bottom:18px}

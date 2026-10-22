@@ -155,6 +155,44 @@
     return '<svg viewBox="0 0 120 180" preserveAspectRatio="xMaxYMid meet" aria-hidden="true"><text x="118" y="168" text-anchor="end" font-family="Bebas Neue,Impact,sans-serif" font-size="' + (n === 10 ? 170 : 210) + '" fill="#141414" stroke="#595959" stroke-width="4" letter-spacing="' + (n === 10 ? -18 : 0) + '">' + n + '</text></svg>';
   }
 
+  /* ================================================================ skill logos */
+  // Brand logos are self-hosted in assets/img/logos (Devicon, MIT; Simple Icons, CC0).
+  var LOGO = {
+    "Python": "python", "Java": "java", "C++": "cplusplus", "JavaScript": "javascript", "HTML": "html5", "CSS": "css3",
+    "PyTorch": "pytorch", "TensorFlow": "tensorflow", "OpenCV": "opencv", "Ollama": "ollama",
+    "Arduino": "arduino", "Raspberry Pi": "raspberrypi", "ESP32": "espressif",
+    "FastAPI": "fastapi", "Flask": "flask", "Docker": "docker", "Kafka": "apachekafka", "Prometheus": "prometheus",
+    "Grafana": "grafana", "GitHub Actions": "githubactions", "MySQL": "mysql", "SQLite": "sqlite", "Firebase": "firebase",
+    "Git": "git", "GitHub": "github", "VS Code": "vscode", "Linux": "linux", "Jupyter": "jupyter", "Colab": "googlecolab",
+    "Kaggle": "kaggle", "Roboflow": "roboflow"
+  };
+  // Drawn icons for tools without a public logo and for concepts.
+  var GLYPH = {
+    "YOLOv8/v9": ['#00E5FF', '<path d="M3 8V3h5M16 3h5v5M21 16v5h-5M8 21H3v-5"/><rect x="7" y="7" width="10" height="10" rx="1"/>'],
+    "Grad-CAM": ['#FF6B35', '<circle cx="12" cy="12" r="9" opacity=".35"/><circle cx="12" cy="12" r="5.5" opacity=".7"/><circle cx="12" cy="12" r="2" fill="currentColor"/>'],
+    "MMPose": ['#7FDBFF', '<circle cx="12" cy="4.5" r="2"/><path d="M12 7v7M6 10l6-1 6 1M8 21l4-7 4 7"/>'],
+    "Q-learning": ['#46D369', '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/><path d="M5.5 18.5l5-5m0 0h-3m3 0v3" stroke-width="2"/>'],
+    "RAG": ['#F2C94C', '<path d="M6 3h8l4 4v8"/><path d="M6 3v18h6"/><circle cx="16.5" cy="17.5" r="3"/><path d="M18.7 19.7L21 22"/>'],
+    "IBM watsonx": ['#4589FF', '<path d="M3 6h18M3 10h18M3 14h18M3 18h18" stroke-dasharray="4 2"/>'],
+    "Sensor fusion": ['#F2994A', '<path d="M3 5l7 7M3 19l7-7M3 12h7"/><circle cx="15" cy="12" r="4"/><path d="M19 12h2"/>'],
+    "LIDAR SLAM": ['#56CCF2', '<path d="M12 12L4 6"/><path d="M4 12a8 8 0 0 1 16 0"/><path d="M7.5 12a4.5 4.5 0 0 1 9 0"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><path d="M3 18h18"/>'],
+    "A*": ['#BB6BD9', '<circle cx="5" cy="19" r="2"/><path d="M7 17l4-4 3 2 4-6"/><path d="M18 3.5l1.2 2.4 2.6.4-1.9 1.8.5 2.6-2.4-1.3-2.4 1.3.5-2.6-1.9-1.8 2.6-.4z" fill="currentColor"/>'],
+    "Qdrant": ['#DC244C', '<path d="M12 2.5l8.5 4.9v9.2L12 21.5l-8.5-4.9V7.4z"/><path d="M12 12l8.5-4.6M12 12v9.5M12 12L3.5 7.4"/>'],
+    "Gradio": ['#FF7C00', '<path d="M4 7l8-4 8 4-8 4z"/><path d="M4 12l8 4 8-4"/><path d="M4 17l8 4 8-4"/>'],
+    "Intrusion detection": ['#EB5757', '<path d="M12 2.5l8 3v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10v-6z"/><path d="M12 8v5M12 16v.5" stroke-width="2.2"/>'],
+    "Threat modeling": ['#EB5757', '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4"/>'],
+    "Risk analysis": ['#F2C94C', '<path d="M3.5 17a8.5 8.5 0 1 1 17 0"/><path d="M12 17l4.5-6" stroke-width="2"/><circle cx="12" cy="17" r="1.6" fill="currentColor"/>']
+  };
+  var SPOKEN = { "Tamil": "த", "English": "En", "Hindi": "हि", "日本語": "日" };
+
+  function skillIcon(name) {
+    var base = name.split(" · ")[0];
+    if (LOGO[base]) return '<img src="./assets/img/logos/' + LOGO[base] + '.svg" alt="" width="18" height="18" loading="lazy">';
+    if (GLYPH[base]) return '<svg viewBox="0 0 24 24" aria-hidden="true" style="color:' + GLYPH[base][0] + '" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">' + GLYPH[base][1] + '</svg>';
+    if (SPOKEN[base]) return '<span class="glyph-txt" aria-hidden="true">' + SPOKEN[base] + '</span>';
+    return "";
+  }
+
   function avatar(p) {
     if (p.photo) return '<div class="av-art"><img src="' + esc(p.photo) + '" alt=""></div>';
     return '<div class="av-art" style="background:' + p.color + '"><svg viewBox="0 0 100 100" aria-hidden="true">' +
@@ -314,8 +352,10 @@
       }).join("");
     } else if (key === "skills") {
       cards = S.skills.map(function (sk, i) {
-        return '<div class="card text skill" style="--c0:#2b1013;--c1:#E50914;cursor:default"><span class="k">' + String(i + 1).padStart(2, "0") + '</span>' +
-          '<span class="t">' + esc(sk.title) + '</span><span class="chips">' + sk.items.map(function (it) { return '<span>' + esc(it) + '</span>'; }).join("") + '</span></div>';
+        return '<div class="card text skill" style="--c0:#2b1013;--c1:#E50914;cursor:default"><span class="sk-head"><span class="k">' + String(i + 1).padStart(2, "0") + '</span>' +
+          '<span class="t">' + esc(sk.title) + '</span></span><span class="chips">' + sk.items.map(function (it) {
+            return '<span>' + skillIcon(it) + esc(it) + '</span>';
+          }).join("") + '</span></div>';
       }).join("");
     } else if (key === "certs") {
       cards = S.certs.map(function (c, i) {

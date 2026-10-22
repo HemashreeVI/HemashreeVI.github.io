@@ -228,7 +228,7 @@ window.SITE = {
     { title: "Backend & DevOps", items: ["FastAPI", "Flask", "Docker", "Kafka", "Prometheus", "Grafana", "GitHub Actions"] },
     { title: "Data", items: ["MySQL", "SQLite", "Firebase", "Qdrant"] },
     { title: "Security", items: ["Intrusion detection", "Threat modeling", "Risk analysis"] },
-    { title: "Tools", items: ["Git", "VS Code", "Linux", "Jupyter", "Colab", "Kaggle", "Roboflow", "Gradio"] },
+    { title: "Tools", items: ["Git", "GitHub", "VS Code", "Linux", "Jupyter", "Colab", "Kaggle", "Roboflow", "Gradio"] },
     { title: "Spoken", items: ["Tamil · native", "English · fluent", "Hindi · intermediate", "日本語 · basic"] }
   ],
 
