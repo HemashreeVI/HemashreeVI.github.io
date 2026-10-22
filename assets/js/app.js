@@ -79,6 +79,29 @@
         s += '<path d="M' + cx + ' ' + (cy - 60) + 'l55 20v35c0 35-25 58-55 70c-30-12-55-35-55-70v-35z" fill="' + c + '" fill-opacity=".15" stroke="' + c + '" stroke-width="3"/>';
         s += '<rect x="' + (cx - 16) + '" y="' + (cy - 4) + '" width="32" height="26" rx="4" fill="' + c + '"/><path d="M' + (cx - 10) + ' ' + (cy - 4) + 'v-10a10 10 0 0 1 20 0v10" fill="none" stroke="' + c + '" stroke-width="4"/>';
         break;
+      case "jarvis":
+        // Original HUD-style art: gold rings, a glowing core and a voice waveform.
+        var G = "#F2C94C", R = "#E5383B", jx = cx + 10, jy = cy + 6, gid = "jv" + (++uid);
+        s += '<defs><radialGradient id="' + gid + '"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#BFF3FF"/><stop offset=".7" stop-color="#3FC6FF" stop-opacity=".55"/><stop offset="1" stop-color="#3FC6FF" stop-opacity="0"/></radialGradient></defs>';
+        s += '<circle cx="' + jx + '" cy="' + jy + '" r="62" fill="none" stroke="' + G + '" stroke-opacity=".35" stroke-width="1"/>';
+        s += '<g><circle cx="' + jx + '" cy="' + jy + '" r="54" fill="none" stroke="' + G + '" stroke-width="3" stroke-dasharray="26 10 6 10"/>' +
+          '<animateTransform attributeName="transform" type="rotate" from="0 ' + jx + ' ' + jy + '" to="360 ' + jx + ' ' + jy + '" dur="18s" repeatCount="indefinite"/></g>';
+        s += '<g><circle cx="' + jx + '" cy="' + jy + '" r="42" fill="none" stroke="' + R + '" stroke-width="5" stroke-dasharray="44 22"/>' +
+          '<animateTransform attributeName="transform" type="rotate" from="360 ' + jx + ' ' + jy + '" to="0 ' + jx + ' ' + jy + '" dur="10s" repeatCount="indefinite"/></g>';
+        for (var tk = 0; tk < 36; tk++) {
+          var ang = tk * Math.PI / 18, r1 = 30, r2 = tk % 3 ? 33 : 36;
+          s += '<line x1="' + (jx + r1 * Math.cos(ang)).toFixed(1) + '" y1="' + (jy + r1 * Math.sin(ang)).toFixed(1) + '" x2="' + (jx + r2 * Math.cos(ang)).toFixed(1) + '" y2="' + (jy + r2 * Math.sin(ang)).toFixed(1) + '" stroke="' + G + '" stroke-opacity=".8"/>';
+        }
+        s += '<circle cx="' + jx + '" cy="' + jy + '" r="34" fill="url(#' + gid + ')"><animate attributeName="r" values="30;36;30" dur="2.4s" repeatCount="indefinite"/></circle>';
+        s += '<circle cx="' + jx + '" cy="' + jy + '" r="11" fill="#fff"/>';
+        for (var wv = 0; wv < 9; wv++) {
+          var wh = 6 + Math.abs(Math.sin(wv * 1.7)) * 26;
+          s += '<rect x="' + (jx - 150 + wv * 9) + '" y="' + (jy - wh / 2) + '" width="5" height="' + wh.toFixed(0) + '" rx="2.5" fill="' + G + '" opacity=".85"><animate attributeName="height" values="' + wh.toFixed(0) + ';' + (wh * 0.35).toFixed(0) + ';' + wh.toFixed(0) + '" dur="' + (0.7 + (wv % 3) * 0.25) + 's" repeatCount="indefinite"/></rect>';
+        }
+        s += '<path d="M' + (jx - 66) + ' ' + jy + 'H' + (jx - 72) + 'M' + (jx - 150) + ' ' + (jy - 26) + 'H' + (jx - 80) + 'l8 8" fill="none" stroke="' + G + '" stroke-opacity=".7"/>';
+        s += '<text x="' + (jx - 150) + '" y="' + (jy - 31) + '" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="' + G + '" letter-spacing="1.5">VOICE ONLINE</text>';
+        s += '<text x="' + (jx - 150) + '" y="' + (jy + 30) + '" font-family="Inter,sans-serif" font-size="7" fill="#fff" fill-opacity=".6" letter-spacing="1">OFFLINE · LOCAL</text>';
+        break;
       case "voice":
         for (var b = 0; b < 15; b++) {
           var bh = 12 + Math.abs(Math.sin(b * 1.3)) * 70;

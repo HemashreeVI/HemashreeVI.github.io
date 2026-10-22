@@ -187,7 +187,7 @@ window.SITE = {
     },
     {
       id: "jarvis", title: "Jarvis", genre: "Voice Assistant", year: "2024",
-      badge: "", match: 92, color: ["#062a33", "#2D9CDB"], art: "voice",
+      badge: "AT YOUR SERVICE", match: 92, color: ["#4a0b0e", "#F2C94C"], art: "jarvis",
       logline: "A voice assistant that never phones home.",
       synopsis: "An offline, privacy-friendly voice assistant: it opens apps, controls the system, reads battery/status and sends stock notifications.",
       cast: ["Python", "SpeechRecognition"],
