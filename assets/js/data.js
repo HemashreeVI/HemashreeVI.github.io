@@ -18,6 +18,7 @@ window.SITE = {
     resume: "./resume.pdf"
   },
   heroImage: "./assets/img/hero.jpg",
+  trailer: { src: "./assets/video/portfolio.mp4", poster: "./assets/video/portfolio.jpg" },
   tagline: "Building systems that see, decide and keep people safe.",
 
   /* "Who's watching?" profiles. Each one reorders the rows and changes the billboard copy. */
@@ -135,6 +136,7 @@ window.SITE = {
         ["Release history", "Every release and rollback recorded, including the ones RootLens did on its own."]
       ],
       repo: "https://github.com/HemashreeVI/rootlens", game: "incident",
+      video: "./assets/video/rootlens.mp4", videoPoster: "./assets/video/rootlens.jpg",
       image: "./assets/img/rootlens-deploys.jpg",
       imageTall: "./assets/img/rootlens-tall.jpg",
       gallery: [
@@ -154,7 +156,8 @@ window.SITE = {
         ["The memory", "RAG over past tickets in Qdrant drafts a grounded reply."],
         ["The board", "A live dashboard shows the queue as it moves."]
       ],
-      repo: "https://github.com/HemashreeVI/TriageIQ"
+      repo: "https://github.com/HemashreeVI/TriageIQ",
+      video: "./assets/video/triageiq.mp4", videoPoster: "./assets/video/triageiq.jpg"
     },
     {
       id: "grocer", title: "Smart Grocer", genre: "Multimodal AI · Retail", year: "In development",

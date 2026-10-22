@@ -458,3 +458,8 @@ body.locked{overflow:hidden}
 .nav-browse{white-space:nowrap}
 .pl-label{-webkit-text-stroke:2px rgba(225,6,0,.85);text-shadow:0 0 40px rgba(225,6,0,.35)}
 @media (max-width:800px){.bb-content{max-width:none}.bb-title{font-size:clamp(48px,15vw,96px)}}
+
+/* launch videos */
+.m-video{width:100%;aspect-ratio:16/9;border-radius:8px;background:#000;display:block}
+.m-trailer{background:#000}
+.m-trailer video{width:100%;aspect-ratio:16/9;display:block}

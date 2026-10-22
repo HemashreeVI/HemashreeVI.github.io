@@ -197,6 +197,12 @@
     return "";
   }
 
+  // MP4 (H.264) first; WebM fallback for browsers without H.264.
+  function videoTag(src, poster, extra) {
+    return '<video ' + extra + ' playsinline poster="' + esc(poster || "") + '">' +
+      '<source src="' + esc(src) + '" type="video/mp4"><source src="' + esc(src.replace(/\.mp4$/, ".webm")) + '" type="video/webm"></video>';
+  }
+
   function avatar(p) {
     if (p.photo) return '<div class="av-art"><img src="' + esc(p.photo) + '" alt=""></div>';
     return '<div class="av-art" style="background:' + p.color + '"><svg viewBox="0 0 100 100" aria-hidden="true">' +
@@ -569,6 +575,11 @@
 
   $("#bbPlay").addEventListener("click", function () { raceTo(function () { jumpTo("#row-top10"); }, "PROJECTS"); });
   $("#bbInfo").addEventListener("click", openAbout);
+  $("#bbTrailer").addEventListener("click", function () {
+    openModal('<div class="m-trailer">' + videoTag(S.trailer.src, S.trailer.poster, 'controls autoplay') + '</div>' +
+      '<div class="m-body" style="padding-top:18px"><h2 id="modalTitle" class="m-h3" style="margin:0 0 6px">The Trailer <small>20 seconds</small></h2>' +
+      '<p class="m-syn">Start lights, the grid, the car and the projects, in twenty seconds.</p></div>');
+  });
 
   $("#ctaForm").addEventListener("submit", function (e) {
     e.preventDefault();
@@ -644,6 +655,7 @@
     box.focus({ preventScroll: true });
   }
   function closeModal() {
+    Array.prototype.forEach.call(document.querySelectorAll("#modal video"), function (v) { v.pause(); });
     $("#modal").hidden = true;
     document.body.classList.remove("locked");
     if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
@@ -687,6 +699,7 @@
       '<div class="m-meta"><span class="gridpos">P' + idx + '</span><span>' + esc(p.year) + '</span>' + (p.badge ? '<span class="badge">' + esc(p.badge) + '</span>' : "") + '</div>' +
       '<p class="m-log">' + esc(p.logline) + '</p><p class="m-syn">' + esc(p.synopsis) + '</p></div>' +
       '<div class="m-side"><p><b>Built with: </b>' + p.cast.map(esc).join(", ") + '</p><p><b>Area: </b>' + p.genre.split(" · ").map(esc).join(", ") + '</p></div></div>' +
+      (p.video ? '<h3 class="m-h3">Launch Video <small>20 seconds</small></h3>' + videoTag(p.video, p.videoPoster, 'class="m-video" controls preload="none"') : "") +
       (p.gallery ? '<h3 class="m-h3">Behind the Scenes</h3><div class="bts">' + p.gallery.map(function (g) {
         return '<button type="button" class="bts-item" data-lb="' + esc(g[0]) + '" data-cap="' + esc(g[1]) + '"><img src="' + esc(g[0]) + '" alt="' + esc(g[1]) + '" loading="lazy"' + (g[2] === "contain" ? ' style="object-fit:contain"' : "") + '><span>' + esc(g[1]) + '</span></button>';
       }).join("") + '</div>' : "") +

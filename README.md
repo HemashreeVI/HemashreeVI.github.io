@@ -9,6 +9,12 @@
   <a href="./resume.pdf"><img src="https://img.shields.io/badge/Résumé-PDF-701A3D?style=for-the-badge&labelColor=190B12&logo=adobeacrobatreader&logoColor=F8F0F3" alt="Résumé"></a>
 </p>
 
+<p align="center">
+  <a href="https://hemashreevi.github.io/assets/video/portfolio.mp4"><img src="./assets/readme/trailer.jpg" width="82%" alt="Watch the 20-second portfolio trailer"></a>
+  <br>
+  <sub>▶ <a href="https://hemashreevi.github.io/assets/video/portfolio.mp4"><b>Watch the 20-second trailer</b></a> · or press <b>Watch Trailer</b> on the site</sub>
+</p>
+
 <img src="./assets/readme/cards/title-preview.svg" width="100%" alt="01 Preview: Take a look.">
 
 <a href="https://hemashreevi.github.io/?profile=recruiter"><img src="./assets/readme/framed-hero.webp" width="100%" alt="The home page: name, role, live stats and photo, with featured projects underneath"></a>
