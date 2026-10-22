@@ -283,7 +283,7 @@
     $("#bbRole").textContent = S.title.toUpperCase();
     $("#bbMeta").innerHTML = '<span class="live"><i></i>Open to opportunities</span><span class="box">' + esc(S.since) + ' →</span><span>' + esc(S.college) + '</span><span>' + esc(S.location) + '</span>';
     $("#bbPitch").textContent = profile.pitch;
-    $("#bbStats").innerHTML = [[S.projects.length, "projects built"], ["1", "patent (filing)"], ["~97%", "best model accuracy"], ["4", "languages spoken"]]
+    $("#bbStats").innerHTML = [[S.projects.length, "projects built"], ["1", "patent (filing)"], ["97.1%", "best model mAP@50"], ["4", "languages spoken"]]
       .map(function (x) { return '<div><b>' + esc(x[0]) + '</b><span>' + esc(x[1]) + '</span></div>'; }).join("");
 
     // rows

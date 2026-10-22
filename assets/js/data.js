@@ -13,7 +13,7 @@ window.SITE = {
   email: "shreejith2005@gmail.com",
   links: {
     github: "https://github.com/HemashreeVI",
-    linkedin: "https://www.linkedin.com/in/hema-shree-373622289",
+    linkedin: "https://www.linkedin.com/in/hema-shree272005",
     leetcode: "https://leetcode.com/u/hemashree_272005/",
     resume: "./resume.pdf"
   },
@@ -23,7 +23,7 @@ window.SITE = {
   /* "Who's watching?" profiles. Each one reorders the rows and changes the billboard copy. */
   profiles: [
     { id: "recruiter", label: "Recruiter", color: "#E10600", photo: "./assets/img/avatar.jpg",
-      pitch: "A software engineer who ships end to end: vision models at ~97% accuracy, a patent-pending smart walker, and backend platforms that diagnose their own failures. Open to opportunities.",
+      pitch: "A software engineer who ships end to end: vision models at 97.1% mAP@50, a patent-pending smart walker, and backend platforms that diagnose their own failures. Open to opportunities.",
       rows: ["picks", "experience", "top10", "skills", "certs", "building", "singapore", "play", "facts"] },
     { id: "engineer", label: "Engineer", color: "#2F80ED", glyph: "</>",
       pitch: "YOLOv9 pipelines with Grad-CAM, LIDAR SLAM on a Raspberry Pi 5, Kafka + local-LLM triage, and FastAPI microservices that rank their own root causes. Pull up a chair.",
@@ -96,13 +96,13 @@ window.SITE = {
     },
     {
       id: "dental", title: "Dental X-Ray AI", genre: "Computer Vision · Healthcare", year: "2025",
-      badge: "~97% ACCURACY", match: 97, color: ["#0d1b3a", "#56CCF2"], art: "xray",
+      badge: "97.1% mAP@50", match: 97, color: ["#0d1b3a", "#56CCF2"], art: "xray",
       logline: "Reads dental X-rays and explains what it sees.",
-      synopsis: "A YOLOv9 pipeline that detects 31 dental conditions and analyses teeth alignment from X-rays, reaching ~97% accuracy on a 13,000+ image dataset. Grad-CAM shows which regions drove each prediction, supporting clinical interpretability.",
+      synopsis: "A YOLOv9 pipeline that detects 31 dental conditions and analyses teeth alignment from X-rays, reaching 97.1% mAP@50 (96.8% precision, 95.9% recall) on a held-out test set. Grad-CAM shows which regions drove each prediction, supporting clinical interpretability.",
       cast: ["Python", "YOLOv9", "PyTorch", "OpenCV", "Grad-CAM", "Gradio", "Jupyter"],
       episodes: [
         ["31 conditions", "Detection across 31 dental conditions plus teeth-alignment analysis."],
-        ["13,000+ X-rays", "Trained and evaluated on a 13,000+ image dataset at ~97% accuracy."],
+        ["97.1% mAP@50", "96.8% precision and 95.9% recall on a held-out test set."],
         ["Show your work", "Grad-CAM heatmaps highlight what the model looked at."],
         ["FDI mapping", "Findings mapped to standard FDI tooth numbers."],
         ["Triage by colour", "Every finding is graded Critical, Orthodontic, Restorative, Existing work or Normal, and mapped onto an FDI tooth chart by severity."],

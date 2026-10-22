@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://hemashreevi.github.io"><img src="https://img.shields.io/badge/Live_site-hemashreevi.github.io-701A3D?style=for-the-badge&labelColor=190B12&logo=githubpages&logoColor=F8F0F3" alt="Live site"></a>
   <a href="https://github.com/HemashreeVI"><img src="https://img.shields.io/badge/GitHub-HemashreeVI-701A3D?style=for-the-badge&labelColor=190B12&logo=github&logoColor=F8F0F3" alt="GitHub profile"></a>
-  <a href="https://www.linkedin.com/in/hema-shree-373622289"><img src="https://img.shields.io/badge/LinkedIn-Connect-701A3D?style=for-the-badge&labelColor=190B12&logo=linkedin&logoColor=F8F0F3" alt="LinkedIn"></a>
+  <a href="https://www.linkedin.com/in/hema-shree272005"><img src="https://img.shields.io/badge/LinkedIn-Connect-701A3D?style=for-the-badge&labelColor=190B12&logo=linkedin&logoColor=F8F0F3" alt="LinkedIn"></a>
   <a href="./resume.pdf"><img src="https://img.shields.io/badge/Résumé-PDF-701A3D?style=for-the-badge&labelColor=190B12&logo=adobeacrobatreader&logoColor=F8F0F3" alt="Résumé"></a>
 </p>
 
@@ -93,7 +93,7 @@ Tech logos come from [Devicon](https://github.com/devicons/devicon) (MIT) and [S
 
 <p align="center">
   <a href="mailto:shreejith2005@gmail.com"><img src="https://img.shields.io/badge/Email-shreejith2005@gmail.com-701A3D?style=for-the-badge&labelColor=190B12&logo=gmail&logoColor=F8F0F3" alt="Email"></a>
-  <a href="https://www.linkedin.com/in/hema-shree-373622289"><img src="https://img.shields.io/badge/LinkedIn-hema--shree-701A3D?style=for-the-badge&labelColor=190B12&logo=linkedin&logoColor=F8F0F3" alt="LinkedIn"></a>
+  <a href="https://www.linkedin.com/in/hema-shree272005"><img src="https://img.shields.io/badge/LinkedIn-hema--shree272005-701A3D?style=for-the-badge&labelColor=190B12&logo=linkedin&logoColor=F8F0F3" alt="LinkedIn"></a>
   <a href="https://leetcode.com/u/hemashree_272005/"><img src="https://img.shields.io/badge/LeetCode-hemashree__272005-701A3D?style=for-the-badge&labelColor=190B12&logo=leetcode&logoColor=F8F0F3" alt="LeetCode"></a>
 </p>
 
