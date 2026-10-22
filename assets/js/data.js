@@ -55,7 +55,7 @@ window.SITE = {
       badge: "PATENT PENDING", match: 99, color: ["#3a0a12", "#E50914"], art: "walker",
       logline: "A walker that predicts a fall before it happens.",
       synopsis: "Co-invented an Arduino Uno smart walker that fuses dual MPU6050 IMUs, dual HX711 load cells and dual HC-SR04 ultrasonic sensors for real-time bilateral fall detection, weight-asymmetry monitoring and obstacle avoidance. It runs fully standalone with no cloud dependency, for under USD 30 in hardware.",
-      cast: ["Arduino Uno", "MPU6050 ×2", "HX711 ×2", "HC-SR04 ×2", "C++"],
+      cast: ["Arduino Uno", "MPU6050 ×2", "HX711 ×2", "HC-SR04 ×2", "16×2 I2C LCD", "Buzzer", "C++"],
       episodes: [
         ["Sensor fusion", "Tilt, weight imbalance and obstacle proximity combined into one Fall Risk Prediction engine."],
         ["Dynamic Stability Reserve", "A metric that flags deteriorating stability before a fall occurs."],
@@ -63,7 +63,13 @@ window.SITE = {
         ["Gait Symmetry Index", "Tracks rehabilitation progress over time."],
         ["The patent", "Inventive disclosure filed with IIPRD (Khurana & Khurana). Filing in progress."]
       ],
-      repo: "", game: "walker"
+      repo: "", game: "walker",
+      image: "./assets/img/walker.jpg",
+      imageTall: "./assets/img/walker.jpg",
+      gallery: [
+        ["./assets/img/walker.jpg", "The prototype: ultrasonic sensors on the front bar, IMUs and load cells on the frame"],
+        ["./assets/img/walker-circuit.jpg", "Circuit: Arduino Uno, dual MPU6050, dual HX711 load cells, dual HC-SR04, buzzer and a 16×2 I2C LCD", "contain"]
+      ]
     },
     {
       id: "rover", title: "Hazard Rover", genre: "Robotics · Reinforcement Learning", year: "2026",
