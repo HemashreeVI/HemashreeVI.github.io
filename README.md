@@ -110,7 +110,7 @@ python -m http.server 8000
 ```
 Then open **http://localhost:8000** in your browser.
 
-> 🛠️ **Editing content:** everything on the home page comes from `assets/js/data.js`. Add a project, change a photo or reorder a profile's rows there; no build step needed.
+> 🛠️ **Editing content:** everything on the home page comes from `assets/js/data.js`. Add a project, change a photo or reorder a profile's rows there; no build step needed. After editing CSS or JS, bump the `?v=` number on the three links in `index.html` so visitors get the new files instead of a cached copy.
 
 ## ⌨️ Shortcuts (classic site)
 
