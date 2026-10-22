@@ -25,17 +25,18 @@
 
 ## ✨ What's inside
 
-The home page is a **streaming-service-style portfolio**:
+The home page is a **motorsport-themed portfolio**:
 
 | | Feature | What it does |
 |:-:|---|---|
-| 🎬 | **Intro** | The name zooms in before the site opens. Click or press any key to skip. |
-| 👤 | **"Who's watching?"** | Pick *Recruiter, Engineer, Explorer* or *Gamer*. The billboard copy and the order of every row change for you. Share `?profile=recruiter` to skip the picker. |
-| 🖼️ | **Billboard** | A full-width hero with a spotlight that follows your mouse. |
-| 🎞️ | **Rows** | Top picks, a Top 10 of projects, *Continue watching* (what I'm building now), experience, skills, certifications, Singapore 2025 photos and fun facts. |
-| 🔎 | **Hover previews** | On desktop, cards expand with match %, genres and quick actions. |
-| 📺 | **Detail view** | Every project opens with a synopsis, cast (tech stack), *episodes* (highlights) and *More like this*. |
-| 🎮 | **Play Something** | The four mini-games, which open in the classic site. |
+| 🚦 | **Start lights** | Five red lights, lights out, and the name launches in. Click or press any key to skip. |
+| 👤 | **"Who's on the grid today?"** | Pick *Recruiter, Engineer, Explorer* or *Gamer*. The intro and the order of every row change for you. Share `?profile=recruiter` to skip the picker. |
+| 🏁 | **Hero** | Photo, driver-style tag, live stats and a spotlight that follows your mouse. |
+| 🎞️ | **Rows that slide in** | Featured projects, the starting grid (P1–P8), what's in the garage, experience, certifications, Singapore 2025 photos and fun facts. |
+| 🃏 | **Skills arc** | Skill cards swing along an arc as you scroll, each with real tech logos. |
+| 🏎️ | **F1 car transitions** | Moving between sections, an original top-down F1 car drives up the screen and wipes to the next one. |
+| 📺 | **Project detail** | Synopsis, tech stack, highlights (laps), behind-the-scenes photos and more builds. |
+| 🎮 | **Mini-games** | The four games open in the classic site. |
 
 The **[classic portfolio](https://hemashreevi.github.io/classic/)** is still there, with the 3D LIDAR hero, the "Hiring for…" switch, Detection mode (<kbd>D</kbd>), the patent blueprint and the games.
 
