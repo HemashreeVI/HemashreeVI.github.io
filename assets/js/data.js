@@ -99,9 +99,19 @@ window.SITE = {
         ["13,000+ X-rays", "Trained and evaluated on a 13,000+ image dataset at ~97% accuracy."],
         ["Show your work", "Grad-CAM heatmaps highlight what the model looked at."],
         ["FDI mapping", "Findings mapped to standard FDI tooth numbers."],
-        ["In the clinic", "A Gradio app for upload, prediction and PDF reports."]
+        ["Triage by colour", "Every finding is graded Critical, Orthodontic, Restorative, Existing work or Normal, and mapped onto an FDI tooth chart by severity."],
+        ["In the clinic", "A Gradio app: upload a panoramic X-ray, get annotations, a Grad-CAM heatmap and a PDF report."],
+        ["Beyond detection", "A cost estimator, an Ask-AI chat about your results, and a guide to reading them."]
       ],
-      repo: "https://github.com/HemashreeVI/AI_Malocclusion_Detection"
+      repo: "https://github.com/HemashreeVI/AI_Malocclusion_Detection",
+      image: "./assets/img/dental-results.jpg",
+      imageTall: "./assets/img/dental-annotated.jpg",
+      gallery: [
+        ["./assets/img/dental-results.jpg", "Results: annotated X-ray with FDI tooth numbers, next to the Grad-CAM heatmap of where the model looks"],
+        ["./assets/img/dental-fdi.jpg", "FDI tooth chart: detected issues highlighted by severity", "contain"],
+        ["./assets/img/dental-app.jpg", "The app: upload a panoramic X-ray, then explore the cost estimator and Ask-AI tabs"],
+        ["./assets/img/dental-confusion.jpg", "Confusion matrix: most classes reach 0.91–1.00 recall", "contain"]
+      ]
     },
     {
       id: "rootlens", title: "RootLens", genre: "Reliability · AIOps", year: "2026",

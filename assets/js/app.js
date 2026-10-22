@@ -470,8 +470,9 @@
 
   function openProject(p) {
     var idx = S.projects.indexOf(p) + 1;
+    var thumbs = (p.gallery || []).filter(function (g) { return g[2] !== "contain"; });
     var eps = p.episodes.map(function (ep, i) {
-      return '<li class="ep"><span class="n">' + (i + 1) + '</span><span class="thumb">' + poster({ color: p.color, art: p.art, title: "" }, { noTitle: true, photo: p.gallery ? p.gallery[i % p.gallery.length][0] : "" }) + '</span>' +
+      return '<li class="ep"><span class="n">' + (i + 1) + '</span><span class="thumb">' + poster({ color: p.color, art: p.art, title: "" }, { noTitle: true, photo: thumbs.length ? thumbs[i % thumbs.length][0] : "" }) + '</span>' +
         '<div><h4>' + esc(ep[0]) + '<span>S1:E' + (i + 1) + '</span></h4><p>' + esc(ep[1]) + '</p></div></li>';
     }).join("");
     var more = S.projects.filter(function (q) { return q !== p; }).slice(0, 6).map(function (q) {
@@ -488,7 +489,7 @@
       '<div class="m-side"><p><b>Cast: </b>' + p.cast.map(esc).join(", ") + '</p><p><b>Genres: </b>' + p.genre.split(" · ").map(esc).join(", ") + '</p>' +
       '<p><b>Created by: </b>Hemashree</p></div></div>' +
       (p.gallery ? '<h3 class="m-h3">Behind the Scenes</h3><div class="bts">' + p.gallery.map(function (g) {
-        return '<button type="button" class="bts-item" data-lb="' + esc(g[0]) + '" data-cap="' + esc(g[1]) + '"><img src="' + esc(g[0]) + '" alt="' + esc(g[1]) + '" loading="lazy"><span>' + esc(g[1]) + '</span></button>';
+        return '<button type="button" class="bts-item" data-lb="' + esc(g[0]) + '" data-cap="' + esc(g[1]) + '"><img src="' + esc(g[0]) + '" alt="' + esc(g[1]) + '" loading="lazy"' + (g[2] === "contain" ? ' style="object-fit:contain"' : "") + '><span>' + esc(g[1]) + '</span></button>';
       }).join("") + '</div>' : "") +
       '<h3 class="m-h3">Episodes <small>Season 1</small></h3><ol class="eps">' + eps + '</ol>' +
       '<h3 class="m-h3">More Like This</h3><div class="more-grid">' + more + '</div></div>'
