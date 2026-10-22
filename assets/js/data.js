@@ -213,7 +213,7 @@ window.SITE = {
     { kicker: "PATENT", title: "Smart Walker Co-Inventor", when: "2025–26", text: "IoT-Enabled Smart Walker with Sensor-Fusion Fall Risk Prediction and Adaptive Mobility Assistance. Inventive disclosure filed with IIPRD; filing in progress.", color: ["#3a0a12", "#E50914"] },
     { kicker: "INTERNSHIP", title: "Research Intern, VIT Chennai", when: "May–Jul 2025", text: "Human pose estimation using heatmaps with MMPose, validated against Kinovea ground truth under Prof. Pavithra.", color: ["#0d1b3a", "#2F80ED"] },
     { kicker: "SINGAPORE", title: "NUS Industry 4.0 Programme", when: "Jun 2025", text: "National University of Singapore, via SCALE and the College of Design and Engineering. Team final project on digital transformation using the Business Model Canvas.", color: ["#2a1a05", "#F2994A"], image: "./assets/img/nus-sign.jpg" },
-    { kicker: "CONFERENCE", title: "SuperAI 2025", when: "Jun 2025", text: "Marina Bay Sands, Singapore. Asia's largest AI conference: 7,000+ innovators and 1,000+ AI companies.", color: ["#2a1240", "#9B51E0"] },
+    { kicker: "CONFERENCE", title: "SuperAI 2025", when: "18–19 Jun 2025", text: "Marina Bay Sands, Singapore. Asia's largest AI conference: 7,000+ innovators and 1,000+ AI companies.", color: ["#2a1240", "#9B51E0"], image: "./assets/img/sg-mbs.jpg" },
     { kicker: "CERTIFIED", title: "IBM Generative AI", when: "Jun 2025", text: "Gen AI Using IBM watsonx, IBM Career Education Program via IBM Developer Skills Network.", color: ["#0d1b3a", "#56CCF2"] },
     { kicker: "LEADERSHIP", title: "Team Leader, CodeYGen Club", when: "VIT Chennai", text: "Led a student team through coding and design-based projects, coordinating development and presentations.", color: ["#0b2a1f", "#27AE60"] },
     { kicker: "DESIGN", title: "Design Lead, Fitness Club", when: "VIT Chennai", text: "Posters, creatives and digital content for fitness events and member engagement.", color: ["#3a2205", "#F2C94C"] },
@@ -241,8 +241,12 @@ window.SITE = {
   singapore: [
     { title: "#NUS", caption: "National University of Singapore, Industry 4.0 Programme", image: "./assets/img/nus-sign.jpg" },
     { title: "NTU Singapore", caption: "Visiting Nanyang Business School, Nanyang Technological University", image: "./assets/img/ntu.jpg" },
-    { title: "Certificate of Completion", caption: "Industry 4.0 immersion programme with NUS, June 2025 cohort", image: "./assets/img/nus-cert-completion.jpg" },
-    { title: "SuperAI 2025", caption: "Marina Bay Sands: 7,000+ innovators, 1,000+ AI companies", image: "" }
+    { title: "Marina Bay", caption: "Taking in the Singapore skyline", image: "./assets/img/sg-marina-bay.jpg" },
+    { title: "SuperAI 2025", caption: "Asia's largest AI conference, 18–19 June 2025", image: "./assets/img/sg-superai-bag.jpg" },
+    { title: "Marina Bay Sands", caption: "Home of SuperAI 2025: 7,000+ innovators, 1,000+ AI companies", image: "./assets/img/sg-mbs.jpg" },
+    { title: "On the Floor", caption: "A chess-playing robot arm at SuperAI", image: "./assets/img/sg-chess-robot.jpg" },
+    { title: "The Haul", caption: "Conference swag from AMD, Cisco, IEEE, SuperAI and more", image: "./assets/img/sg-swag.jpg" },
+    { title: "Certificate of Completion", caption: "Industry 4.0 immersion programme with NUS, June 2025 cohort", image: "./assets/img/nus-cert-completion.jpg" }
   ],
 
   games: [
