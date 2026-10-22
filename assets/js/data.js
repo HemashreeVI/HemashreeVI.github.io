@@ -22,7 +22,7 @@ window.SITE = {
 
   /* "Who's watching?" profiles. Each one reorders the rows and changes the billboard copy. */
   profiles: [
-    { id: "recruiter", label: "Recruiter", color: "#E50914", photo: "./assets/img/avatar.jpg",
+    { id: "recruiter", label: "Recruiter", color: "#E10600", photo: "./assets/img/avatar.jpg",
       pitch: "A software engineer who ships end to end: vision models at ~97% accuracy, a patent-pending smart walker, and backend platforms that diagnose their own failures. Open to opportunities.",
       rows: ["picks", "experience", "top10", "skills", "certs", "building", "singapore", "play", "facts"] },
     { id: "engineer", label: "Engineer", color: "#2F80ED", glyph: "</>",
@@ -37,22 +37,22 @@ window.SITE = {
   ],
 
   rowTitles: {
-    picks: "Top Picks for {profile}",
-    top10: "Top 10 Projects in Chennai Today",
-    building: "Continue Watching for {profile}",
+    picks: "Featured for {profile}s",
+    top10: "The Starting Grid · Top Projects",
+    building: "In the Garage · What I'm Building",
     experience: "Experience & Milestones",
-    skills: "Skills: The Full Cast",
+    skills: "Skills",
     certs: "Certifications",
-    singapore: "Singapore 2025: Behind the Scenes",
-    play: "Play Something",
-    facts: "Things You Won't Find on My Résumé"
+    singapore: "Singapore 2025",
+    play: "Take It for a Spin · Mini-Games",
+    facts: "Off the Track"
   },
 
   /* ------------------------------------------------------------------ projects */
   projects: [
     {
       id: "walker", title: "Smart Walker", genre: "IoT · Healthcare · Patent", year: "2025–26",
-      badge: "PATENT PENDING", match: 99, color: ["#3a0a12", "#E50914"], art: "walker",
+      badge: "PATENT PENDING", match: 99, color: ["#3a0a12", "#E10600"], art: "walker",
       logline: "A walker that predicts a fall before it happens.",
       synopsis: "Co-invented an Arduino Uno smart walker that fuses dual MPU6050 IMUs, dual HX711 load cells and dual HC-SR04 ultrasonic sensors for real-time bilateral fall detection, weight-asymmetry monitoring and obstacle avoidance. It runs fully standalone with no cloud dependency, for under USD 30 in hardware.",
       cast: ["Arduino Uno", "MPU6050 ×2", "HX711 ×2", "HC-SR04 ×2", "16×2 I2C LCD", "Buzzer", "C++"],
@@ -205,12 +205,12 @@ window.SITE = {
     { title: "Pulse", note: "A free status page that runs entirely on GitHub Actions + Pages", status: "Step 1 of 5", progress: 0.2, color: ["#0b2a1f", "#27AE60"], repo: "" },
     { title: "PortPilot", note: "Find what's using a port (even Docker containers) and free it with one key", status: "Planned", progress: 0.06, color: ["#0d1b3a", "#2F80ED"], repo: "https://github.com/HemashreeVI/portpilot" },
     { title: "BST Playground", note: "Watch binary search tree operations animate, step by step", status: "Planned", progress: 0.06, color: ["#3a2205", "#F2C94C"], repo: "https://github.com/HemashreeVI/bst-playground" },
-    { title: "Pit Wall", note: "Replay real F1 races with a GPS track map and live leaderboard", status: "Planned", progress: 0.04, color: ["#3a0a12", "#E50914"], repo: "" },
+    { title: "Pit Wall", note: "Replay real F1 races with a GPS track map and live leaderboard", status: "Planned", progress: 0.04, color: ["#3a0a12", "#E10600"], repo: "" },
     { title: "LeetCode Solutions", note: "Clean, commented Java solutions, intuition first", status: "Daily", progress: 0.55, color: ["#2a1a05", "#FFA116"], repo: "https://github.com/HemashreeVI/leetcode-solutions" }
   ],
 
   experience: [
-    { kicker: "PATENT", title: "Smart Walker Co-Inventor", when: "2025–26", text: "IoT-Enabled Smart Walker with Sensor-Fusion Fall Risk Prediction and Adaptive Mobility Assistance. Inventive disclosure filed with IIPRD; filing in progress.", color: ["#3a0a12", "#E50914"] },
+    { kicker: "PATENT", title: "Smart Walker Co-Inventor", when: "2025–26", text: "IoT-Enabled Smart Walker with Sensor-Fusion Fall Risk Prediction and Adaptive Mobility Assistance. Inventive disclosure filed with IIPRD; filing in progress.", color: ["#3a0a12", "#E10600"] },
     { kicker: "INTERNSHIP", title: "Research Intern, VIT Chennai", when: "May–Jul 2025", text: "Human pose estimation using heatmaps with MMPose, validated against Kinovea ground truth under Prof. Pavithra.", color: ["#0d1b3a", "#2F80ED"] },
     { kicker: "SINGAPORE", title: "NUS Industry 4.0 Programme", when: "Jun 2025", text: "National University of Singapore, via SCALE and the College of Design and Engineering. Team final project on digital transformation using the Business Model Canvas.", color: ["#2a1a05", "#F2994A"], image: "./assets/img/nus-sign.jpg" },
     { kicker: "CONFERENCE", title: "SuperAI 2025", when: "18–19 Jun 2025", text: "Marina Bay Sands, Singapore. Asia's largest AI conference: 7,000+ innovators and 1,000+ AI companies.", color: ["#2a1240", "#9B51E0"], image: "./assets/img/sg-mbs.jpg" },
@@ -222,14 +222,14 @@ window.SITE = {
   ],
 
   skills: [
-    { title: "Languages", items: ["Python", "Java", "C++", "JavaScript", "HTML", "CSS"] },
-    { title: "AI & Vision", items: ["PyTorch", "TensorFlow", "OpenCV", "YOLOv8/v9", "Grad-CAM", "MMPose", "RAG", "Ollama", "IBM watsonx"] },
-    { title: "Robotics & IoT", items: ["Arduino", "Raspberry Pi", "ESP32", "Sensor fusion", "LIDAR SLAM", "A*", "Q-learning"] },
-    { title: "Backend & DevOps", items: ["FastAPI", "Flask", "Docker", "Kafka", "Prometheus", "Grafana", "GitHub Actions"] },
-    { title: "Data", items: ["MySQL", "SQLite", "Firebase", "Qdrant"] },
-    { title: "Security", items: ["Intrusion detection", "Threat modeling", "Risk analysis"] },
-    { title: "Tools", items: ["Git", "GitHub", "VS Code", "Linux", "Jupyter", "Colab", "Kaggle", "Roboflow", "Gradio"] },
-    { title: "Spoken", items: ["Tamil · native", "English · fluent", "Hindi · intermediate", "日本語 · basic"] }
+    { title: "Languages", tag: "FOUNDATIONS", desc: "The languages I think in: Python for ML and backends, Java for problem solving, C++ on microcontrollers, and the web trio for interfaces.", items: ["Python", "Java", "C++", "JavaScript", "HTML", "CSS"] },
+    { title: "AI & Vision", tag: "INTELLIGENCE", desc: "Training and explaining vision models, from YOLO detectors and pose estimation to Grad-CAM heatmaps, local LLMs and retrieval.", items: ["PyTorch", "TensorFlow", "OpenCV", "YOLOv8/v9", "Grad-CAM", "MMPose", "RAG", "Ollama", "IBM watsonx"] },
+    { title: "Robotics & IoT", tag: "HARDWARE", desc: "Sensors, microcontrollers and robots that act on the real world: fusion, SLAM mapping, path planning and learning to navigate.", items: ["Arduino", "Raspberry Pi", "ESP32", "Sensor fusion", "LIDAR SLAM", "A*", "Q-learning"] },
+    { title: "Backend & DevOps", tag: "INFRASTRUCTURE", desc: "Services that stay up: FastAPI and Flask APIs, Kafka streams, Docker deploys, and metrics that tell you when something breaks.", items: ["FastAPI", "Flask", "Docker", "Kafka", "Prometheus", "Grafana", "GitHub Actions"] },
+    { title: "Data", tag: "STORAGE", desc: "Relational, realtime and vector stores, picked for the job: MySQL and SQLite, Firebase for apps, Qdrant for RAG.", items: ["MySQL", "SQLite", "Firebase", "Qdrant"] },
+    { title: "Security", tag: "DEFENCE", desc: "Thinking like an attacker to protect users: behavioural intrusion detection, threat models and risk scoring.", items: ["Intrusion detection", "Threat modeling", "Risk analysis"] },
+    { title: "Tools", tag: "WORKFLOW", desc: "The everyday kit for shipping and experimenting, from Git and Linux to notebooks, datasets and quick ML demos.", items: ["Git", "GitHub", "VS Code", "Linux", "Jupyter", "Colab", "Kaggle", "Roboflow", "Gradio"] },
+    { title: "Spoken", tag: "LANGUAGES", desc: "Four languages, one of them written in three scripts.", items: ["Tamil · native", "English · fluent", "Hindi · intermediate", "日本語 · basic"] }
   ],
 
   certs: [
@@ -250,7 +250,7 @@ window.SITE = {
   ],
 
   games: [
-    { id: "walker", title: "Keep Them Standing", note: "Stop a fall before it happens", color: ["#3a0a12", "#E50914"] },
+    { id: "walker", title: "Keep Them Standing", note: "Stop a fall before it happens", color: ["#3a0a12", "#E10600"] },
     { id: "grocer", title: "Freshness Check", note: "Save a mango from spoiling", color: ["#14300a", "#6FCF97"] },
     { id: "incident", title: "Incident Hunt", note: "Find the broken microservice", color: ["#2a1240", "#9B51E0"] },
     { id: "kana", title: "Hiragana Sprint", note: "Test your Japanese", color: ["#2a1a05", "#F2C94C"] }

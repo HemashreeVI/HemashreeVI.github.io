@@ -33,7 +33,7 @@
       case "rover":
         for (var gx = 0; gx < 7; gx++) for (var gy = 0; gy < 4; gy++) {
           var hz = (gx === 2 && gy === 1) || (gx === 5 && gy === 2) || (gx === 4 && gy === 0);
-          s += '<rect x="' + (cx - 100 + gx * 30) + '" y="' + (cy - 50 + gy * 28) + '" width="26" height="24" rx="3" fill="' + (hz ? "#E50914" : c) + '" opacity="' + (hz ? .75 : .12) + '"/>';
+          s += '<rect x="' + (cx - 100 + gx * 30) + '" y="' + (cy - 50 + gy * 28) + '" width="26" height="24" rx="3" fill="' + (hz ? "#E10600" : c) + '" opacity="' + (hz ? .75 : .12) + '"/>';
         }
         s += '<g fill="none" stroke="' + c + '" stroke-opacity=".7"><path d="M' + (cx - 30) + ' ' + (cy + 40) + 'a70 70 0 0 1 140 0"/><path d="M' + (cx) + ' ' + (cy + 40) + 'a40 40 0 0 1 80 0"/></g>';
         s += '<circle cx="' + (cx + 40) + '" cy="' + (cy + 40) + '" r="9" fill="#fff"/>';
@@ -43,7 +43,7 @@
           s += '<rect x="' + (cx - 105 + t * 30) + '" y="' + (cy - 46) + '" width="24" height="42" rx="9" fill="#fff" fill-opacity=".16" stroke="#fff" stroke-opacity=".35"/>';
           s += '<rect x="' + (cx - 105 + t * 30) + '" y="' + (cy + 6) + '" width="24" height="42" rx="9" fill="#fff" fill-opacity=".12" stroke="#fff" stroke-opacity=".3"/>';
         }
-        s += '<rect x="' + (cx - 48) + '" y="' + (cy - 52) + '" width="62" height="54" fill="none" stroke="#E50914" stroke-width="2.5"/>';
+        s += '<rect x="' + (cx - 48) + '" y="' + (cy - 52) + '" width="62" height="54" fill="none" stroke="#E10600" stroke-width="2.5"/>';
         s += '<rect x="' + (cx + 40) + '" y="' + (cy + 2) + '" width="32" height="54" fill="none" stroke="' + c + '" stroke-width="2.5"/>';
         s += '<rect x="' + (cx - 112) + '" y="' + (cy - 60) + '" width="224" height="3" fill="' + c + '" opacity=".8"><animate attributeName="y" values="' + (cy - 60) + ';' + (cy + 56) + ';' + (cy - 60) + '" dur="3.5s" repeatCount="indefinite"/></rect>';
         break;
@@ -54,21 +54,21 @@
         });
         n.forEach(function (p, i) {
           var bad = i === 4;
-          s += '<circle cx="' + (cx + p[0]) + '" cy="' + (cy + p[1]) + '" r="' + (bad ? 11 : 8) + '" fill="#141414" stroke="' + (bad ? "#E50914" : c) + '" stroke-width="3"/>';
-          if (bad) s += '<circle cx="' + (cx + p[0]) + '" cy="' + (cy + p[1]) + '" r="11" fill="none" stroke="#E50914"><animate attributeName="r" values="11;30" dur="1.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0" dur="1.6s" repeatCount="indefinite"/></circle>';
+          s += '<circle cx="' + (cx + p[0]) + '" cy="' + (cy + p[1]) + '" r="' + (bad ? 11 : 8) + '" fill="#0F0F13" stroke="' + (bad ? "#E10600" : c) + '" stroke-width="3"/>';
+          if (bad) s += '<circle cx="' + (cx + p[0]) + '" cy="' + (cy + p[1]) + '" r="11" fill="none" stroke="#E10600"><animate attributeName="r" values="11;30" dur="1.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0" dur="1.6s" repeatCount="indefinite"/></circle>';
         });
         break;
       case "stream":
-        s += '<rect x="' + (cx - 10) + '" y="' + (cy - 30) + '" width="60" height="60" rx="10" fill="#141414" stroke="' + c + '" stroke-width="3"/>';
+        s += '<rect x="' + (cx - 10) + '" y="' + (cy - 30) + '" width="60" height="60" rx="10" fill="#0F0F13" stroke="' + c + '" stroke-width="3"/>';
         s += '<text x="' + (cx + 20) + '" y="' + (cy + 6) + '" font-family="Inter,sans-serif" font-weight="800" font-size="16" fill="#fff" text-anchor="middle">LLM</text>';
         for (var k = 0; k < 3; k++) {
           s += '<rect width="34" height="18" rx="4" fill="' + c + '" opacity=".85"><animateMotion dur="2.4s" begin="' + (k * 0.8) + 's" repeatCount="indefinite" path="M' + (cx - 120) + ' ' + (cy - 9) + 'H' + (cx - 30) + '"/></rect>';
           s += '<path d="M' + (cx + 50) + ' ' + cy + 'L' + (cx + 80) + ' ' + (cy - 40 + k * 40) + '" stroke="' + c + '" stroke-opacity=".6" stroke-width="2"/>';
-          s += '<rect x="' + (cx + 80) + '" y="' + (cy - 49 + k * 40) + '" width="40" height="18" rx="9" fill="none" stroke="' + ["#E50914", c, "#46D369"][k] + '" stroke-width="2"/>';
+          s += '<rect x="' + (cx + 80) + '" y="' + (cy - 49 + k * 40) + '" width="40" height="18" rx="9" fill="none" stroke="' + ["#E10600", c, "#46D369"][k] + '" stroke-width="2"/>';
         }
         break;
       case "fresh":
-        [["#46D369", .85], [c, .55], ["#E50914", .2]].forEach(function (f, i) {
+        [["#46D369", .85], [c, .55], ["#E10600", .2]].forEach(function (f, i) {
           var y = cy - 44 + i * 38;
           s += '<circle cx="' + (cx - 70) + '" cy="' + y + '" r="14" fill="' + f[0] + '" fill-opacity=".35" stroke="' + f[0] + '" stroke-width="2"/>';
           s += '<rect x="' + (cx - 46) + '" y="' + (y - 4) + '" width="150" height="8" rx="4" fill="#fff" fill-opacity=".12"/>';
@@ -118,7 +118,7 @@
   function poster(o, opts) {
     opts = opts || {};
     var w = opts.tall ? 200 : 320, h = opts.tall ? 300 : 180, id = "p" + (++uid);
-    var c0 = (o.color && o.color[0]) || "#2a2a2a", c1 = (o.color && o.color[1]) || "#E50914";
+    var c0 = (o.color && o.color[0]) || "#2a2a2a", c1 = (o.color && o.color[1]) || "#E10600";
     var title = opts.noTitle ? "" : (o.title || "");
     var fs = opts.tall ? (title.length > 12 ? 30 : 40) : (title.length > 16 ? 30 : title.length > 11 ? 36 : 44);
     var photo = opts.photo || (opts.tall ? (o.imageTall || o.image) : o.image);
@@ -130,7 +130,7 @@
     var lines = opts.tall ? wrapWords(title, 11) : [title];
     var tY = h - 18 - (lines.length - 1) * fs * 0.92;
     var text = lines.map(function (ln, i) {
-      return '<text x="16" y="' + (tY + i * fs * 0.92).toFixed(0) + '" font-family="Bebas Neue,Impact,sans-serif" font-size="' + fs + '" fill="#fff" letter-spacing="1">' + esc(ln) + '</text>';
+      return '<text x="16" y="' + (tY + i * fs * 0.92).toFixed(0) + '" font-family="Titillium Web,Arial Black,sans-serif" font-weight="900" font-style="italic" font-size="' + (fs * 0.82).toFixed(0) + '" fill="#fff" letter-spacing="-.5">' + esc(ln.toUpperCase()) + '</text>';
     }).join("");
     return '<svg class="art" viewBox="0 0 ' + w + ' ' + h + '" preserveAspectRatio="xMidYMid slice" aria-hidden="true">' +
       '<defs><linearGradient id="' + id + 'g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="' + c0 + '"/><stop offset="1" stop-color="#0b0b0b"/></linearGradient>' +
@@ -138,7 +138,7 @@
       '<linearGradient id="' + id + 'b" x1="0" y1="0" x2="0" y2="1"><stop offset=".45" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".85"/></linearGradient></defs>' +
       '<rect width="' + w + '" height="' + h + '" fill="url(#' + id + 'g)"/><rect width="' + w + '" height="' + h + '" fill="url(#' + id + 'r)"/>' +
       art + '<rect width="' + w + '" height="' + h + '" fill="url(#' + id + 'b)"/>' +
-      '<text x="12" y="28" font-family="Bebas Neue,Impact,sans-serif" font-size="26" fill="#E50914">H</text>' +
+      '<path d="M12 12h22l-4 6H8z" fill="#E10600"/><path d="M36 12h8l-4 6h-8z" fill="#fff" fill-opacity=".85"/>' +
       text + '</svg>';
   }
 
@@ -152,7 +152,11 @@
   }
 
   function bigNumber(n) {
-    return '<svg viewBox="0 0 120 180" preserveAspectRatio="xMaxYMid meet" aria-hidden="true"><text x="118" y="168" text-anchor="end" font-family="Bebas Neue,Impact,sans-serif" font-size="' + (n === 10 ? 170 : 210) + '" fill="#141414" stroke="#595959" stroke-width="4" letter-spacing="' + (n === 10 ? -18 : 0) + '">' + n + '</text></svg>';
+    // Grid slot, like a starting position: "P" plus the number in italic outline.
+    return '<svg viewBox="0 0 120 180" preserveAspectRatio="xMaxYMid meet" aria-hidden="true">' +
+      '<text x="112" y="70" text-anchor="end" font-family="Titillium Web,Arial Black,sans-serif" font-weight="900" font-style="italic" font-size="34" fill="#E10600">P</text>' +
+      '<text x="114" y="168" text-anchor="end" font-family="Titillium Web,Arial Black,sans-serif" font-weight="900" font-style="italic" font-size="' + (n === 10 ? 104 : 140) + '" fill="#0F0F13" stroke="#6b6b75" stroke-width="3" letter-spacing="-6">' + n + '</text>' +
+      '<path d="M20 176h92" stroke="#E10600" stroke-width="3"/></svg>';
   }
 
   /* ================================================================ skill logos */
@@ -221,7 +225,7 @@
     if (seen || reduce) { intro.hidden = true; if (pick) choose(pick, false); else showGate(); return; }
     var done = false;
     var finish = function () { if (!done) { done = true; afterIntro(); } };
-    setTimeout(finish, 2500);
+    setTimeout(finish, 4300);
     intro.addEventListener("click", finish);
     document.addEventListener("keydown", finish, { once: true });
   }
@@ -242,7 +246,8 @@
   $("#gateList").addEventListener("click", function (e) {
     var b = e.target.closest("[data-p]");
     if (!b) return;
-    choose(S.profiles.filter(function (p) { return p.id === b.getAttribute("data-p"); })[0], true);
+    var picked = S.profiles.filter(function (p) { return p.id === b.getAttribute("data-p"); })[0];
+    raceTo(function () { choose(picked, true); }, picked.label.toUpperCase());
   });
 
   function choose(p, fromUser) {
@@ -269,21 +274,24 @@
     $("#navResume").href = S.links.resume;
     $("#avatarBtn").innerHTML = avatar(profile);
     $("#profileDrop").innerHTML = S.profiles.map(function (p) {
-      return '<button type="button" data-switch="' + p.id + '"><span class="mini">' + avatar(p) + '</span><span' + (p.id === profile.id ? ' class="cur"' : "") + '>' + esc(p.label) + (p.id === profile.id ? " · watching" : "") + '</span></button>';
-    }).join("") + '<div class="sep"></div><button type="button" data-switch="__gate">Manage profiles</button>';
+      return '<button type="button" data-switch="' + p.id + '"><span class="mini">' + avatar(p) + '</span><span' + (p.id === profile.id ? ' class="cur"' : "") + '>' + esc(p.label) + (p.id === profile.id ? " · current" : "") + '</span></button>';
+    }).join("") + '<div class="sep"></div><button type="button" data-switch="__gate">Change seat</button>';
 
     // billboard
     $("#bbPhoto").src = S.heroImage;
     $("#bbTitle").textContent = S.name;
     $("#bbRole").textContent = S.title.toUpperCase();
-    $("#bbMeta").innerHTML = '<span class="match">98% Match</span><span>' + esc(S.since) + '–</span><span class="box">B.TECH CSE</span><span>' + esc(S.college) + '</span><span class="box">HD</span>';
+    $("#bbMeta").innerHTML = '<span class="live"><i></i>Open to opportunities</span><span class="box">' + esc(S.since) + ' →</span><span>' + esc(S.college) + '</span><span>' + esc(S.location) + '</span>';
     $("#bbPitch").textContent = profile.pitch;
-    $("#bbRank").textContent = "#1 in Portfolios for " + profile.label + "s Today";
+    $("#bbStats").innerHTML = [[S.projects.length, "projects built"], ["1", "patent (filing)"], ["~97%", "best model accuracy"], ["4", "languages spoken"]]
+      .map(function (x) { return '<div><b>' + esc(x[0]) + '</b><span>' + esc(x[1]) + '</span></div>'; }).join("");
 
     // rows
     var html = profile.rows.map(renderRow).join("");
     $("#rows").innerHTML = html;
     wireArrows();
+    wireReveal();
+    initArc();
 
     // contact
     $("#ctaLinks").innerHTML = linkButtons();
@@ -317,8 +325,8 @@
 
   function rowShell(key, cards) {
     var title = S.rowTitles[key].replace("{profile}", profile.label);
-    return '<section class="row" id="row-' + key + '" aria-label="' + esc(title) + '"><h2>' + esc(title) +
-      '<span class="explore">Explore all ›</span></h2><div class="row-wrap">' +
+    return '<section class="row" id="row-' + key + '" aria-label="' + esc(title) + '"><h2><span class="bar" aria-hidden="true"></span>' + esc(title) +
+      '</h2><div class="row-wrap">' +
       '<button class="arrow l" type="button" aria-label="Scroll left">‹</button>' +
       '<div class="track">' + cards + '</div>' +
       '<button class="arrow r" type="button" aria-label="Scroll right">›</button></div></section>';
@@ -351,12 +359,7 @@
           '<span class="k">' + esc(x.kicker) + '</span><span class="t">' + esc(x.title) + '</span><span class="w">' + esc(x.when) + '</span></button>';
       }).join("");
     } else if (key === "skills") {
-      cards = S.skills.map(function (sk, i) {
-        return '<div class="card text skill" style="--c0:#2b1013;--c1:#E50914;cursor:default"><span class="sk-head"><span class="k">' + String(i + 1).padStart(2, "0") + '</span>' +
-          '<span class="t">' + esc(sk.title) + '</span></span><span class="chips">' + sk.items.map(function (it) {
-            return '<span>' + skillIcon(it) + esc(it) + '</span>';
-          }).join("") + '</span></div>';
-      }).join("");
+      return skillArc();
     } else if (key === "certs") {
       cards = S.certs.map(function (c, i) {
         var inner = c.image ? '<img class="ph" src="' + esc(c.image) + '" alt="" loading="lazy">' : poster({ color: ["#2a1a05", "#F2C94C"], art: "", title: "" }, { noTitle: true });
@@ -373,11 +376,11 @@
       cards = S.games.map(function (g) {
         var art = { walker: "walker", grocer: "fresh", incident: "graph", kana: "" }[g.id];
         return '<a class="card" href="./classic/#play-' + g.id + '" aria-label="Play ' + esc(g.title) + '">' +
-          poster({ color: g.color, art: art, title: g.title }) + '<span class="ribbon">▶ PLAY NOW</span></a>';
+          poster({ color: g.color, art: art, title: g.title }) + '<span class="ribbon">▶ PLAY</span></a>';
       }).join("");
     } else if (key === "facts") {
       cards = S.facts.map(function (f) {
-        return '<div class="card text" style="--c0:#1f1f1f;--c1:#E50914;cursor:default"><span class="glyph" aria-hidden="true">' + f.glyph + '</span><span class="k">BONUS FEATURE</span>' +
+        return '<div class="card text" style="--c0:#1f1f1f;--c1:#E10600;cursor:default"><span class="glyph" aria-hidden="true">' + f.glyph + '</span><span class="k">OFF TRACK</span>' +
           '<span class="t">' + esc(f.title) + '</span><span class="w">' + esc(f.text) + '</span></div>';
       }).join("");
     }
@@ -385,6 +388,143 @@
   }
 
   function byId(id) { return S.projects.filter(function (p) { return p.id === id; })[0]; }
+
+  /* ================================================================ skills arc */
+  // Cards sit on a wide arc; scrolling through the pinned section swings them past the centre.
+  function skillArc() {
+    var n = S.skills.length;
+    var cards = S.skills.map(function (sk, i) {
+      return '<article class="sa-card" data-i="' + i + '">' +
+        '<header><span class="sa-tag">' + esc(sk.tag || "") + '</span><span class="sa-idx">[ ' + String(i + 1).padStart(2, "0") + ' / ' + String(n).padStart(2, "0") + ' ]</span></header>' +
+        '<div class="sa-mid"><h3>' + esc(sk.title) + '</h3><p>' + esc(sk.desc || "") + '</p></div>' +
+        '<div class="sa-chips">' + sk.items.map(function (it) { return '<span>' + skillIcon(it) + esc(it) + '</span>'; }).join("") + '</div>' +
+        '<i class="sa-dot" aria-hidden="true"></i></article>';
+    }).join("");
+    return '<section class="skill-arc" id="row-skills" aria-label="Skills" style="--n:' + n + '">' +
+      '<div class="sa-sticky"><h2 class="sa-title"><span class="bar" aria-hidden="true"></span>Skills</h2>' +
+      '<div class="sa-word" aria-hidden="true">SKILLS</div><div class="sa-core" aria-hidden="true"></div>' +
+      '<div class="sa-stage">' + cards + '</div>' +
+      '<div class="sa-hint" aria-hidden="true"><span id="saCount">01</span> / ' + String(n).padStart(2, "0") + ' · scroll to shuffle</div></div></section>';
+  }
+
+  var arcQueued = false, arcBound = false;
+  function initArc() {
+    var mobile = window.matchMedia("(max-width:800px)");
+    function update() {
+      arcQueued = false;
+      var sec = $("#row-skills.skill-arc");
+      if (!sec) return;
+      var cards = sec.querySelectorAll(".sa-card"), count = $("#saCount");
+      if (mobile.matches) {
+        Array.prototype.forEach.call(cards, function (c) { c.style.transform = ""; c.style.opacity = ""; c.style.zIndex = ""; });
+        return;
+      }
+      var r = sec.getBoundingClientRect();
+      var total = sec.offsetHeight - window.innerHeight;
+      var prog = Math.min(1, Math.max(0, -r.top / Math.max(1, total)));
+      var p = prog * (cards.length - 1);
+      var R = Math.max(1400, window.innerWidth * 1.3);
+      Array.prototype.forEach.call(cards, function (c, i) {
+        var off = i - p, ang = off * 17, rad = ang * Math.PI / 180;
+        var x = Math.sin(rad) * R, y = R - Math.cos(rad) * R;
+        var sc = Math.max(0.5, 1 - Math.abs(off) * 0.13);
+        c.style.transform = "translate(-50%,-50%) translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) rotate(" + ang.toFixed(2) + "deg) scale(" + sc.toFixed(3) + ")";
+        c.style.opacity = Math.max(0, 1 - Math.abs(off) * 0.32).toFixed(3);
+        c.style.zIndex = String(100 - Math.round(Math.abs(off) * 10));
+        c.classList.toggle("active", Math.abs(off) < 0.5);
+      });
+      if (count) count.textContent = String(Math.round(p) + 1).padStart(2, "0");
+    }
+    function queue() { if (!arcQueued) { arcQueued = true; requestAnimationFrame(update); } }
+    if (!arcBound) {
+      arcBound = true;
+      window.addEventListener("scroll", queue, { passive: true });
+      window.addEventListener("resize", queue);
+    }
+    update();
+  }
+
+  /* ================================================================ cards slide in */
+  var revealObs = null;
+  function wireReveal() {
+    if (revealObs) revealObs.disconnect();
+    var rows = document.querySelectorAll("#rows .row");
+    Array.prototype.forEach.call(rows, function (row) {
+      Array.prototype.forEach.call(row.querySelectorAll(".track > .card"), function (c, i) { c.style.setProperty("--d", Math.min(i, 8) * 70 + "ms"); });
+    });
+    if (!("IntersectionObserver" in window)) { Array.prototype.forEach.call(rows, function (r) { r.classList.add("in"); }); return; }
+    revealObs = new IntersectionObserver(function (ents) {
+      ents.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); revealObs.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    Array.prototype.forEach.call(rows, function (r) { revealObs.observe(r); });
+  }
+
+  /* ================================================================ F1 car transition */
+  // Original top-down car drawing (nose up). The curtain behind it covers the screen while the page changes.
+  var CAR_SVG = '<svg viewBox="0 0 200 440" aria-hidden="true"><defs>' +
+    '<linearGradient id="carBody" x1="0" x2="1"><stop offset="0" stop-color="#9c0400"/><stop offset=".5" stop-color="#E10600"/><stop offset="1" stop-color="#9c0400"/></linearGradient>' +
+    '<radialGradient id="carGlow"><stop offset="0" stop-color="#ffb347" stop-opacity=".95"/><stop offset="1" stop-color="#ff5a00" stop-opacity="0"/></radialGradient>' +
+    '<filter id="carShadow" x="-30%" y="-10%" width="160%" height="120%"><feGaussianBlur stdDeviation="8"/></filter></defs>' +
+    '<ellipse cx="100" cy="230" rx="92" ry="205" fill="#000" opacity=".55" filter="url(#carShadow)"/>' +
+    '<path d="M6 30h188v14H6z" fill="#111"/><path d="M10 22h180l-6 8H16z" fill="#E10600"/>' +
+    '<rect x="2" y="16" width="10" height="32" rx="2" fill="#1b1b1b"/><rect x="188" y="16" width="10" height="32" rx="2" fill="#1b1b1b"/>' +
+    '<path d="M40 92L86 112M40 112L86 124M160 92L114 112M160 112L114 124" stroke="#2a2a2a" stroke-width="3"/>' +
+    '<rect x="8" y="64" width="36" height="72" rx="11" fill="#141414"/><rect x="156" y="64" width="36" height="72" rx="11" fill="#141414"/>' +
+    '<path d="M12 80h28M12 96h28M12 112h28M160 80h28M160 96h28M160 112h28" stroke="#2c2c2c" stroke-width="2"/>' +
+    '<path d="M90 44C92 20 108 20 110 44L120 160H80z" fill="url(#carBody)"/><path d="M97 40h6l5 118h-16z" fill="#fff"/>' +
+    '<path d="M74 150C58 190 36 214 36 262L40 352C56 378 144 378 160 352L164 262C164 214 142 190 126 150z" fill="url(#carBody)"/>' +
+    '<path d="M50 236c6-18 16-26 26-30v26c-10 2-18 6-26 12zM150 236c-6-18-16-26-26-30v26c10 2 18 6 26 12z" fill="#0b0b0b"/>' +
+    '<path d="M44 300c10 10 26 16 40 18v26c-16-2-30-8-38-16zM156 300c-10 10-26 16-40 18v26c16-2 30-8 38-16z" fill="#fff" fill-opacity=".9"/>' +
+    '<ellipse cx="100" cy="212" rx="18" ry="30" fill="#0b0b0b"/><circle cx="100" cy="206" r="11" fill="#fff"/><path d="M89 204h22v5H89z" fill="#E10600"/>' +
+    '<path d="M100 172c-24 0-26 20-24 54M100 172c24 0 26 20 24 54M100 172v-10" stroke="#1d1d1d" stroke-width="6" fill="none" stroke-linecap="round"/>' +
+    '<path d="M92 244h16l-2 110h-12z" fill="#0b0b0b"/>' +
+    '<text x="100" y="299" text-anchor="middle" font-family="Titillium Web,Arial Black,sans-serif" font-weight="900" font-style="italic" font-size="18" fill="#fff" transform="rotate(-90 100 299)">HVI</text>' +
+    '<rect x="2" y="296" width="44" height="86" rx="13" fill="#141414"/><rect x="154" y="296" width="44" height="86" rx="13" fill="#141414"/>' +
+    '<path d="M6 314h36M6 334h36M6 354h36M158 314h36M158 334h36M158 354h36" stroke="#2c2c2c" stroke-width="2"/>' +
+    '<ellipse cx="100" cy="404" rx="14" ry="10" fill="url(#carGlow)"/>' +
+    '<rect x="22" y="388" width="156" height="24" rx="3" fill="#111"/><rect x="26" y="392" width="148" height="7" fill="#E10600"/>' +
+    '<rect x="18" y="380" width="10" height="38" rx="2" fill="#1b1b1b"/><rect x="172" y="380" width="10" height="38" rx="2" fill="#1b1b1b"/>' +
+    '<text x="100" y="410" text-anchor="middle" font-family="Titillium Web,Arial Black,sans-serif" font-weight="900" font-style="italic" font-size="9" fill="#fff" letter-spacing="2">HEMASHREE</text>' +
+    '</svg>';
+  $("#plCar").innerHTML = CAR_SVG;
+
+  var racing = false;
+  function raceTo(action, label) {
+    var reduce = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+    if (racing) return;
+    if (reduce || !document.body.animate) { action(); return; }
+    racing = true;
+    hidePreview();
+    var lane = $("#pitlane"), track = $("#plTrack");
+    $("#plLabel").textContent = label || "";
+    lane.classList.add("go");
+    var anim = track.animate([{ transform: "translateY(0)" }, { transform: "translateY(-340vh)" }],
+      { duration: 1400, easing: "cubic-bezier(.45,0,.55,1)", fill: "forwards" });
+    setTimeout(function () { try { action(); } catch (err) {} }, 760);
+    anim.onfinish = function () { lane.classList.remove("go"); anim.cancel(); racing = false; };
+  }
+
+  function jumpTo(hash) {
+    if (hash === "#top") { window.scrollTo({ top: 0, behavior: "instant" }); return; }
+    var el = document.querySelector(hash);
+    if (!el) return;
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 70, behavior: "instant" });
+  }
+
+  // Section links and links to the classic site both get the car.
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest("a[href]");
+    if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || a.target === "_blank") return;
+    var href = a.getAttribute("href");
+    if (/^#/.test(href) && href.length > 1 && (href === "#top" || document.querySelector(href))) {
+      e.preventDefault();
+      raceTo(function () { jumpTo(href); }, (a.textContent || "").trim().toUpperCase().slice(0, 24) || "HOME");
+    } else if (/^\.\/classic\//.test(href)) {
+      e.preventDefault();
+      raceTo(function () { location.href = href; }, /#play-/.test(href) ? "GAME ON" : "CLASSIC");
+    }
+  });
+
 
   function wireArrows() {
     Array.prototype.forEach.call(document.querySelectorAll(".row-wrap"), function (w) {
@@ -416,7 +556,8 @@
     var b = e.target.closest("[data-switch]"); if (!b) return;
     var id = b.getAttribute("data-switch");
     if (id === "__gate") { try { history.replaceState(null, "", location.pathname); } catch (err) {} showGate(); return; }
-    choose(S.profiles.filter(function (p) { return p.id === id; })[0], true);
+    var np = S.profiles.filter(function (p) { return p.id === id; })[0];
+    raceTo(function () { choose(np, true); }, np.label.toUpperCase());
   });
 
   // billboard spotlight (desktop)
@@ -426,7 +567,7 @@
     spot.style.transform = "translate3d(" + (e.clientX - r.left - 320) + "px," + (e.clientY - r.top - 320) + "px,0)";
   });
 
-  $("#bbPlay").addEventListener("click", function () { openProject(byId(profile.id === "gamer" ? "walker" : profile.id === "engineer" ? "rover" : "walker")); });
+  $("#bbPlay").addEventListener("click", function () { raceTo(function () { jumpTo("#row-top10"); }, "PROJECTS"); });
   $("#bbInfo").addEventListener("click", openAbout);
 
   $("#ctaForm").addEventListener("submit", function (e) {
@@ -479,17 +620,14 @@
     pv.style.width = w + "px"; pv.style.left = left + "px"; pv.style.top = top + "px";
     pv.innerHTML = '<div class="pv-art">' + poster(p) + '</div><div class="pv-body">' +
       '<div class="pv-btns"><button class="circ white" type="button" data-open aria-label="Open ' + esc(p.title) + '">' + ICON.play + '</button>' +
-      '<button class="circ" type="button" data-like aria-label="Add to my list">' + ICON.plus + '</button>' +
-      '<button class="circ" type="button" data-thumb aria-label="Like">' + ICON.thumb + '</button>' +
+      (p.repo ? '<a class="circ" href="' + esc(p.repo) + '" target="_blank" rel="noopener" aria-label="View code">' + ICON.code + '</a>' : "") +
       '<button class="circ more" type="button" data-open aria-label="More info">' + ICON.down + '</button></div>' +
-      '<div class="pv-meta"><span class="match">' + p.match + '% Match</span><span class="box">' + esc(p.year) + '</span><span class="box">HD</span></div>' +
+      '<div class="pv-meta"><span class="box">' + esc(p.year) + '</span>' + (p.badge ? '<span class="badge">' + esc(p.badge) + '</span>' : "") + '</div>' +
       '<div class="pv-genre">' + p.genre.split(" · ").map(esc).join("<b>•</b>") + '</div>' +
       '<p class="pv-line">' + esc(p.logline) + '</p></div>';
     pv.hidden = false;
     pv.onclick = function (e) {
       if (e.target.closest("[data-open]")) { hidePreview(true); openProject(p); }
-      var t = e.target.closest("[data-like],[data-thumb]");
-      if (t) { t.classList.toggle("white"); if (t.hasAttribute("data-like")) t.innerHTML = t.classList.contains("white") ? ICON.check : ICON.plus; }
     };
   }
   function hidePreview() { clearTimeout(hoverTimer); pv.hidden = true; pvCard = null; }
@@ -536,26 +674,24 @@
     var thumbs = (p.gallery || []).filter(function (g) { return g[2] !== "contain"; });
     var eps = p.episodes.map(function (ep, i) {
       return '<li class="ep"><span class="n">' + (i + 1) + '</span><span class="thumb">' + poster({ color: p.color, art: p.art, title: "" }, { noTitle: true, photo: thumbs.length ? thumbs[i % thumbs.length][0] : "" }) + '</span>' +
-        '<div><h4>' + esc(ep[0]) + '<span>S1:E' + (i + 1) + '</span></h4><p>' + esc(ep[1]) + '</p></div></li>';
+        '<div><h4>' + esc(ep[0]) + '<span>LAP ' + (i + 1) + '</span></h4><p>' + esc(ep[1]) + '</p></div></li>';
     }).join("");
     var more = S.projects.filter(function (q) { return q !== p; }).slice(0, 6).map(function (q) {
       return '<button class="more-card" type="button" data-more="' + q.id + '"><div class="ma">' + poster(q) + '</div><div class="mb">' +
-        '<div class="m-meta"><span class="match">' + q.match + '% Match</span><span class="box">' + esc(q.year) + '</span></div><p>' + esc(q.logline) + '</p></div></button>';
+        '<div class="m-meta"><b class="mc-t">' + esc(q.title) + '</b><span class="box">' + esc(q.year) + '</span></div><p>' + esc(q.logline) + '</p></div></button>';
     }).join("");
     openModal(
       '<div class="m-hero">' + poster(p, { noTitle: true }).replace('class="art"', 'class="m-art"') +
       '<div class="m-hero-c"><h2 id="modalTitle">' + esc(p.title) + '</h2><div class="bb-actions">' + heroActions(p) + '</div></div></div>' +
       '<div class="m-body"><div class="m-cols"><div>' +
-      '<div class="m-meta"><span class="match">' + p.match + '% Match</span><span>' + esc(p.year) + '</span><span class="box">HD</span>' + (p.badge ? '<span class="box">' + esc(p.badge) + '</span>' : "") + '</div>' +
-      '<div class="bb-top10" style="font-size:16px"><span class="t10">TOP<br>10</span>#' + idx + ' in Projects Today</div>' +
+      '<div class="m-meta"><span class="gridpos">P' + idx + '</span><span>' + esc(p.year) + '</span>' + (p.badge ? '<span class="badge">' + esc(p.badge) + '</span>' : "") + '</div>' +
       '<p class="m-log">' + esc(p.logline) + '</p><p class="m-syn">' + esc(p.synopsis) + '</p></div>' +
-      '<div class="m-side"><p><b>Cast: </b>' + p.cast.map(esc).join(", ") + '</p><p><b>Genres: </b>' + p.genre.split(" · ").map(esc).join(", ") + '</p>' +
-      '<p><b>Created by: </b>Hemashree</p></div></div>' +
+      '<div class="m-side"><p><b>Built with: </b>' + p.cast.map(esc).join(", ") + '</p><p><b>Area: </b>' + p.genre.split(" · ").map(esc).join(", ") + '</p></div></div>' +
       (p.gallery ? '<h3 class="m-h3">Behind the Scenes</h3><div class="bts">' + p.gallery.map(function (g) {
         return '<button type="button" class="bts-item" data-lb="' + esc(g[0]) + '" data-cap="' + esc(g[1]) + '"><img src="' + esc(g[0]) + '" alt="' + esc(g[1]) + '" loading="lazy"' + (g[2] === "contain" ? ' style="object-fit:contain"' : "") + '><span>' + esc(g[1]) + '</span></button>';
       }).join("") + '</div>' : "") +
-      '<h3 class="m-h3">Episodes <small>Season 1</small></h3><ol class="eps">' + eps + '</ol>' +
-      '<h3 class="m-h3">More Like This</h3><div class="more-grid">' + more + '</div></div>'
+      '<h3 class="m-h3">Highlights <small>' + p.episodes.length + ' laps</small></h3><ol class="eps">' + eps + '</ol>' +
+      '<h3 class="m-h3">More Builds</h3><div class="more-grid">' + more + '</div></div>'
     );
   }
 
@@ -563,7 +699,7 @@
     openModal(
       '<div class="m-hero">' + poster({ color: b.color, art: "", title: "" }, { noTitle: true }).replace('class="art"', 'class="m-art"') +
       '<div class="m-hero-c"><h2 id="modalTitle">' + esc(b.title) + '</h2><div class="bb-actions">' + (b.repo ? '<a class="btn btn-play" href="' + esc(b.repo) + '" target="_blank" rel="noopener">' + ICON.code + 'Follow along</a>' : '<span class="btn btn-info" style="cursor:default">Repository coming soon</span>') + '</div></div></div>' +
-      '<div class="m-body"><div class="m-meta"><span class="match">In production</span><span class="box">' + esc(b.status) + '</span></div>' +
+      '<div class="m-body"><div class="m-meta"><span class="match">In the garage</span><span class="box">' + esc(b.status) + '</span></div>' +
       '<div class="progress" style="position:relative;left:0;right:0;bottom:0;height:5px;max-width:420px;margin:6px 0 18px"><i style="width:' + Math.round(b.progress * 100) + '%"></i></div>' +
       '<p class="m-log">' + esc(b.note) + '</p></div>'
     );
@@ -582,7 +718,7 @@
 
   function openAbout() {
     openModal(
-      '<div class="m-hero" style="aspect-ratio:16/6">' + poster({ color: ["#3a0a12", "#E50914"], art: "", title: "" }, { noTitle: true }).replace('class="art"', 'class="m-art"') +
+      '<div class="m-hero" style="aspect-ratio:16/6">' + poster({ color: ["#3a0a12", "#E10600"], art: "", title: "" }, { noTitle: true }).replace('class="art"', 'class="m-art"') +
       '<div class="m-hero-c"><h2 id="modalTitle">' + esc(S.name) + '</h2></div></div>' +
       '<div class="m-body"><div class="about-grid"><img src="./assets/img/blazer.jpg" alt="Hemashree">' +
       '<div><div class="m-meta"><span class="match">' + esc(S.title) + '</span><span class="box">' + esc(S.degree) + '</span><span>' + esc(S.college) + '</span></div>' +
