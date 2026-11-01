@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Pit Lane Chess · Hemashree</title>
+<meta name="description" content="Play chess against Stockfish on Hemashree's portfolio. Drag or click the pieces; pick your difficulty and your colour.">
+<meta name="theme-color" content="#0F0F13">
+<meta property="og:title" content="Pit Lane Chess · Hemashree">
+<meta property="og:description" content="Drag the pieces, beat the bot. A chess board on Hemashree's portfolio.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230F0F13'/%3E%3Ctext x='32' y='48' font-size='40' text-anchor='middle' fill='%23E10600'%3E%E2%99%9E%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;0,900;1,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0F0F13;--bg2:#17171D;--card:#1E1E26;--line:#2A2A34;
+  --red:#E10600;--red2:#B20710;--text:#FFFFFF;--muted:#B3B3B3;--dim:#808080;--green:#46D369;
+  --light:#EBD3AE;--dark:#A8744C;--lastL:#E6CF7A;--lastD:#C2A04A;
+  --display:'Titillium Web','Arial Black',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+  --sans:'Inter',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 30% 0%,#22141a 0%,var(--bg) 55%);color:var(--text);font-family:var(--sans);overflow-x:hidden}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px max(16px,4vw)}
+.logo{font-family:var(--display);font-weight:900;font-size:28px;color:var(--red);text-decoration:none;letter-spacing:.02em}
+.back{font-size:14px;color:var(--muted);text-decoration:none;border:1px solid var(--line);padding:8px 14px;border-radius:999px}
+.back:hover{color:#fff;border-color:#555}
+
+.head{padding:6px max(16px,4vw) 18px}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.25em;color:var(--red);margin:0 0 6px}
+h1{font-family:var(--display);font-weight:900;font-style:italic;font-size:clamp(34px,6vw,64px);line-height:1;margin:0;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:10px 0 0;max-width:640px;line-height:1.5}
+
+.wrap{display:grid;grid-template-columns:minmax(0,640px) minmax(260px,380px);gap:28px;padding:8px max(16px,4vw) 48px;justify-content:center;align-items:start}
+@media (max-width:900px){.wrap{grid-template-columns:minmax(0,1fr)}}
+
+/* ------------------------------------------------ board */
+.frame{position:relative;padding:clamp(14px,3vw,26px);border-radius:14px;background:linear-gradient(145deg,#3a2414,#1c0f07);
+  box-shadow:0 30px 60px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08);touch-action:none;user-select:none;-webkit-user-select:none}
+.board{position:relative;display:grid;grid-template-columns:repeat(8,1fr);aspect-ratio:1;border-radius:4px;overflow:hidden;
+  box-shadow:0 0 0 2px #120a05,0 2px 0 3px rgba(255,255,255,.05)}
+.board::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,0) 45%,rgba(0,0,0,.16))}
+.sq{position:relative;border:0;padding:0;margin:0;background:var(--light);cursor:pointer;aspect-ratio:1}
+.sq.d{background:var(--dark)}
+.sq.last{background:var(--lastL)}.sq.d.last{background:var(--lastD)}
+.sq.sel{box-shadow:inset 0 0 0 4px rgba(225,6,0,.85)}
+.sq.check{background:radial-gradient(circle,#ff3b30 0%,rgba(225,6,0,.75) 45%,transparent 75%),var(--light)}
+.sq.d.check{background:radial-gradient(circle,#ff3b30 0%,rgba(225,6,0,.75) 45%,transparent 75%),var(--dark)}
+.sq.hint::before{content:"";position:absolute;left:50%;top:50%;width:26%;height:26%;transform:translate(-50%,-50%);border-radius:50%;background:rgba(20,10,5,.35)}
+.sq.hint.cap::before{width:86%;height:86%;background:none;border:5px solid rgba(20,10,5,.35)}
+.sq.over{box-shadow:inset 0 0 0 4px rgba(255,255,255,.75)}
+.sq .c{position:absolute;font-family:var(--mono);font-size:clamp(8px,1.4vw,11px);font-weight:700;pointer-events:none;opacity:.85}
+.sq .r{left:4px;top:3px}.sq .f{right:4px;bottom:2px}
+.sq .c{color:var(--dark)}.sq.d .c{color:var(--light)}
+.pc{position:absolute;inset:4%;width:92%;height:92%;pointer-events:none;filter:drop-shadow(1px 3px 2px rgba(0,0,0,.55));transition:transform .18s ease}
+.ghost{position:fixed;pointer-events:none;z-index:50;filter:drop-shadow(4px 10px 6px rgba(0,0,0,.6));transform:translate(-50%,-50%) scale(1.12)}
+.sq.lift .pc{opacity:.25}
+
+/* ------------------------------------------------ panel */
+.panel{display:flex;flex-direction:column;gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--dim);margin:0 0 10px}
+.status{font-family:var(--display);font-weight:700;font-size:24px;line-height:1.2;margin:0}
+.status.win{color:var(--green)}.status.lose{color:#ff6b6b}
+.think{display:none;align-items:center;gap:8px;color:var(--muted);font-size:13px;margin-top:8px}
+.think.on{display:flex}
+.think i{width:7px;height:7px;border-radius:50%;background:var(--red);animation:bl 1s infinite}
+.think i:nth-child(2){animation-delay:.15s}.think i:nth-child(3){animation-delay:.3s}
+@keyframes bl{0%,100%{opacity:.2}50%{opacity:1}}
+.seg{display:flex;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:3px;gap:3px}
+.seg button{flex:1;border:0;background:none;padding:9px 6px;border-radius:8px;cursor:pointer;font-weight:600;font-size:14px;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--red);color:#fff}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.btn{flex:1;min-width:90px;border:1px solid var(--line);background:var(--bg2);border-radius:10px;padding:11px 12px;cursor:pointer;font-weight:600;font-size:14px}
+.btn:hover{border-color:#555}
+.btn.red{background:var(--red);border-color:var(--red)}
+.btn.red:hover{background:var(--red2)}
+.moves{font-family:var(--mono);font-size:14px;max-height:220px;overflow:auto;display:grid;grid-template-columns:36px 1fr 1fr;gap:4px 8px;color:var(--muted)}
+.moves .n{color:var(--dim)}.moves .w,.moves .b{color:#fff}
+.moves .empty{grid-column:1/-1;color:var(--dim)}
+.caps{display:flex;flex-wrap:wrap;gap:2px;min-height:26px;align-items:center}
+.caps img{width:24px;height:24px}
+.caps .adv{font-family:var(--mono);font-size:12px;color:var(--muted);margin-left:6px}
+.note{color:var(--dim);font-size:12px;line-height:1.5;margin:0}
+
+/* ------------------------------------------------ overlays */
+.promo,.over-banner{position:absolute;inset:0;display:grid;place-items:center;background:rgba(10,8,8,.55);border-radius:14px;z-index:20}
+.promo[hidden],.over-banner[hidden]{display:none}
+.promo .box,.over-banner .box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.6)}
+.promo .opts{display:flex;gap:8px;margin-top:10px}
+.promo .opts button{width:64px;height:64px;border:1px solid var(--line);background:var(--light);border-radius:10px;cursor:pointer;padding:6px}
+.promo .opts button:hover{background:var(--lastL)}
+.over-banner h2{font-family:var(--display);font-style:italic;font-weight:900;font-size:clamp(28px,5vw,44px);margin:0 0 6px}
+.over-banner p{color:var(--muted);margin:0 0 14px}
+.checker{height:10px;background:repeating-linear-gradient(90deg,#fff 0 10px,#000 10px 20px);opacity:.12;margin-top:8px}
+footer{color:var(--dim);font-size:12px;text-align:center;padding:0 16px 32px;line-height:1.6}
+</style>
+</head>
+<body>
+<header class="nav">
+  <a class="logo" href="../">HEMASHREE</a>
+  <a class="back" href="../">← Back to portfolio</a>
+</header>
+
+<section class="head">
+  <p class="kicker">PIT LANE CHESS</p>
+  <h1>Your move.</h1>
+  <p class="sub">Drag a piece, or click it and then click where it should go. Stockfish answers. Pick how hard it plays.</p>
+</section>
+
+<main class="wrap">
+  <div class="frame" id="frame">
+    <div class="board" id="board" role="grid" aria-label="Chess board"></div>
+    <div class="promo" id="promo" hidden>
+      <div class="box"><strong>Promote to</strong><div class="opts" id="promoOpts"></div></div>
+    </div>
+    <div class="over-banner" id="overBanner" hidden>
+      <div class="box"><h2 id="overTitle"></h2><p id="overText"></p><button class="btn red" id="overNew" type="button">Play again</button></div>
+    </div>
+  </div>
+
+  <aside class="panel">
+    <div class="card">
+      <p class="label">STATUS</p>
+      <p class="status" id="status" aria-live="polite">Your move</p>
+      <div class="think" id="think"><i></i><i></i><i></i><span>The bot is thinking…</span></div>
+    </div>
+    <div class="card">
+      <p class="label">DIFFICULTY</p>
+      <div class="seg" id="level">
+        <button type="button" data-level="0" aria-pressed="true">Rookie</button>
+        <button type="button" data-level="1" aria-pressed="false">Pro</button>
+        <button type="button" data-level="2" aria-pressed="false">Champion</button>
+      </div>
+      <p class="label" style="margin-top:16px">YOU PLAY</p>
+      <div class="seg" id="side">
+        <button type="button" data-side="w" aria-pressed="true">White</button>
+        <button type="button" data-side="b" aria-pressed="false">Black</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="row">
+        <button class="btn red" id="newBtn" type="button">New game</button>
+        <button class="btn" id="undoBtn" type="button">Undo</button>
+        <button class="btn" id="flipBtn" type="button">Flip</button>
+      </div>
+    </div>
+    <div class="card">
+      <p class="label">CAPTURED</p>
+      <div class="caps" id="capsYou"></div>
+      <div class="caps" id="capsBot"></div>
+    </div>
+    <div class="card">
+      <p class="label">MOVES</p>
+      <div class="moves" id="moves"></div>
+    </div>
+    <p class="note">Rules by chess.js. Bot: the Stockfish engine, running in your browser. Pieces after Colin M.L. Burnett. Your game is saved in this browser, so you can come back to it.</p>
+  </aside>
+</main>
+<div class="checker" aria-hidden="true"></div>
+<footer>Built by Hemashree · <a href="https://github.com/HemashreeVI">github.com/HemashreeVI</a></footer>
+
+<script src="./vendor/chess.js"></script>
+<script>
+(() => {
+  const LEVELS = [
+    { name: "Rookie", skill: 0, time: 150, depth: 2 },
+    { name: "Pro", skill: 8, time: 500, depth: 8 },
+    { name: "Champion", skill: 20, time: 1200, depth: 18 },
+  ];
+  const VALUE = { p: 1, n: 3, b: 3, r: 5, q: 9, k: 0 };
+  const FILES = "abcdefgh";
+  const KEY = "pitlane-chess-v1";
+
+  const game = new Chess();
+  let you = "w", level = 0, flipped = false;
+  let selected = null, legal = [], busy = false, pendingPromo = null;
+  let engine = null, engineReady = false, engineCb = null, engineTimer = null;
+
+  const $ = (id) => document.getElementById(id);
+  const boardEl = $("board");
+
+  // ------------------------------------------------ storage (per-browser convenience only)
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify({ pgn: game.pgn(), you, level, flipped })); } catch (e) {}
+  }
+  function restore() {
+    try {
+      const s = JSON.parse(localStorage.getItem(KEY) || "null");
+      if (!s) return;
+      if (s.pgn) game.load_pgn(s.pgn);
+      you = s.you === "b" ? "b" : "w";
+      level = [0, 1, 2].includes(s.level) ? s.level : 0;
+      flipped = !!s.flipped;
+    } catch (e) {}
+  }
+
+  // ------------------------------------------------ engine
+  function startEngine() {
+    try {
+      const wasm = typeof WebAssembly === "object" && WebAssembly.validate &&
+        WebAssembly.validate(Uint8Array.of(0x0, 0x61, 0x73, 0x6d, 0x01, 0x00, 0x00, 0x00));
+      engine = new Worker(wasm ? "./vendor/stockfish.wasm.js" : "./vendor/stockfish.js");
+      engine.onmessage = (e) => {
+        const line = typeof e.data === "string" ? e.data : "";
+        if (line === "uciok" || line === "readyok") engineReady = true;
+        if (line.startsWith("bestmove") && engineCb) {
+          const cb = engineCb; engineCb = null; clearTimeout(engineTimer);
+          cb(line.split(" ")[1]);
+        }
+      };
+      engine.onerror = () => { engine = null; };
+      engine.postMessage("uci");
+      engine.postMessage("isready");
+    } catch (e) { engine = null; }
+  }
+
+  function fallbackMove() {
+    // Prefer the most valuable capture, else a random move.
+    const ms = game.moves({ verbose: true });
+    let best = [], bestV = -1;
+    for (const m of ms) {
+      const v = (m.captured ? VALUE[m.captured] * 10 : 0) + (m.promotion ? 80 : 0) + (m.san.includes("+") ? 2 : 0);
+      if (v > bestV) { bestV = v; best = [m]; } else if (v === bestV) best.push(m);
+    }
+    const m = best[Math.floor(Math.random() * best.length)];
+    return m.from + m.to + (m.promotion || "");
+  }
+
+  function askEngine(cb) {
+    const L = LEVELS[level];
+    if (!engine) return setTimeout(() => cb(fallbackMove()), 350);
+    engineCb = cb;
+    engineTimer = setTimeout(() => { if (engineCb) { engineCb = null; cb(fallbackMove()); } }, L.time + 6000);
+    engine.postMessage("ucinewgame");
+    engine.postMessage(`setoption name Skill Level value ${L.skill}`);
+    engine.postMessage(`position fen ${game.fen()}`);
+    engine.postMessage(`go movetime ${L.time} depth ${L.depth}`);
+  }
+
+  function botTurn() {
+    if (game.game_over() || game.turn() === you) return;
+    busy = true; render();
+    const started = Date.now();
+    askEngine((uci) => {
+      const wait = Math.max(0, 450 - (Date.now() - started));   // let the player see it think
+      setTimeout(() => {
+        if (uci && uci !== "(none)") {
+          game.move({ from: uci.slice(0, 2), to: uci.slice(2, 4), promotion: uci[4] || "q" });
+        }
+        busy = false; save(); render();
+      }, wait);
+    });
+  }
+
+  // ------------------------------------------------ moves
+  function canTouch(sq) {
+    const p = game.get(sq);
+    return !busy && !game.game_over() && game.turn() === you && p && p.color === you;
+  }
+
+  function select(sq) {
+    selected = sq;
+    legal = sq ? game.moves({ square: sq, verbose: true }) : [];
+    render();
+  }
+
+  function tryMove(from, to) {
+    const options = game.moves({ square: from, verbose: true }).filter((m) => m.to === to);
+    if (!options.length) return false;
+    if (options.some((m) => m.promotion)) {
+      pendingPromo = { from, to };
+      showPromo();
+      return true;
+    }
+    finishMove(from, to);
+    return true;
+  }
+
+  function finishMove(from, to, promotion) {
+    game.move({ from, to, promotion });
+    selected = null; legal = [];
+    save(); render();
+    setTimeout(botTurn, 120);
+  }
+
+  function showPromo() {
+    const box = $("promoOpts");
+    box.innerHTML = "";
+    for (const p of ["q", "r", "b", "n"]) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("aria-label", { q: "Queen", r: "Rook", b: "Bishop", n: "Knight" }[p]);
+      b.innerHTML = `<img src="./pieces/${you}${p.toUpperCase()}.svg" alt="">`;
+      b.onclick = () => { $("promo").hidden = true; const m = pendingPromo; pendingPromo = null; finishMove(m.from, m.to, p); };
+      box.appendChild(b);
+    }
+    $("promo").hidden = false;
+  }
+
+  // ------------------------------------------------ render
+  function squareAt(r, c) {
+    const file = flipped ? 7 - c : c, rank = flipped ? r + 1 : 8 - r;
+    return FILES[file] + rank;
+  }
+
+  function buildBoard() {
+    boardEl.innerHTML = "";
+    for (let r = 0; r < 8; r++) for (let c = 0; c < 8; c++) {
+      const sq = squareAt(r, c);
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "sq" + ((FILES.indexOf(sq[0]) + +sq[1]) % 2 === 1 ? " d" : "");
+      b.dataset.sq = sq;
+      let coords = "";
+      if (c === 0) coords += `<span class="c r">${sq[1]}</span>`;
+      if (r === 7) coords += `<span class="c f">${sq[0]}</span>`;
+      b.innerHTML = coords;
+      boardEl.appendChild(b);
+    }
+  }
+
+  function render() {
+    const hist = game.history({ verbose: true });
+    const last = hist[hist.length - 1];
+    let kingSq = null;
+    if (game.in_check()) {
+      for (const sq of boardEl.children) {
+        const p = game.get(sq.dataset.sq);
+        if (p && p.type === "k" && p.color === game.turn()) kingSq = sq.dataset.sq;
+      }
+    }
+    const targets = new Map(legal.map((m) => [m.to, m]));
+    for (const el of boardEl.children) {
+      const sq = el.dataset.sq, p = game.get(sq);
+      el.classList.toggle("last", !!last && (last.from === sq || last.to === sq));
+      el.classList.toggle("sel", sq === selected);
+      el.classList.toggle("check", sq === kingSq);
+      el.classList.toggle("hint", targets.has(sq));
+      el.classList.toggle("cap", targets.has(sq) && !!(targets.get(sq).captured));
+      let img = el.querySelector(".pc");
+      if (p) {
+        const src = `./pieces/${p.color}${p.type.toUpperCase()}.svg`;
+        if (!img) { img = document.createElement("img"); img.className = "pc"; img.alt = ""; el.appendChild(img); }
+        if (img.getAttribute("src") !== src) img.setAttribute("src", src);
+      } else if (img) img.remove();
+      const name = p ? `${p.color === "w" ? "white" : "black"} ${{ p: "pawn", n: "knight", b: "bishop", r: "rook", q: "queen", k: "king" }[p.type]}` : "empty";
+      el.setAttribute("aria-label", `${sq}, ${name}`);
+    }
+    renderStatus(); renderMoves(hist); renderCaps(hist);
+    document.querySelectorAll("#level button").forEach((b) => b.setAttribute("aria-pressed", String(+b.dataset.level === level)));
+    document.querySelectorAll("#side button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.side === you)));
+    $("think").classList.toggle("on", busy);
+    $("undoBtn").disabled = busy || hist.length === 0;
+  }
+
+  function renderStatus() {
+    const st = $("status");
+    st.className = "status";
+    let over = null;
+    if (game.in_checkmate()) {
+      const youWon = game.turn() !== you;
+      over = youWon ? ["Checkmate. You win!", `You beat the ${LEVELS[level].name} bot.`] : ["Checkmate.", "The bot got you this time."];
+      st.textContent = over[0]; st.classList.add(youWon ? "win" : "lose");
+    } else if (game.in_draw() || game.in_stalemate() || game.in_threefold_repetition()) {
+      const why = game.in_stalemate() ? "stalemate" : game.in_threefold_repetition() ? "threefold repetition" : game.insufficient_material() ? "insufficient material" : "50-move rule";
+      over = ["Draw.", `By ${why}.`];
+      st.textContent = `Draw (${why})`;
+    } else if (busy || game.turn() !== you) {
+      st.textContent = game.in_check() ? "Check! The bot must respond" : "Bot to move";
+    } else {
+      st.textContent = game.in_check() ? "Check! Your move" : "Your move";
+    }
+    $("overBanner").hidden = !over;
+    if (over) { $("overTitle").textContent = over[0]; $("overText").textContent = over[1]; }
+  }
+
+  function renderMoves(hist) {
+    const el = $("moves");
+    if (!hist.length) { el.innerHTML = `<span class="empty">No moves yet.</span>`; return; }
+    let h = "";
+    for (let i = 0; i < hist.length; i += 2) {
+      h += `<span class="n">${i / 2 + 1}.</span><span class="w">${hist[i].san}</span><span class="b">${hist[i + 1] ? hist[i + 1].san : ""}</span>`;
+    }
+    el.innerHTML = h;
+    el.scrollTop = el.scrollHeight;
+  }
+
+  function renderCaps(hist) {
+    const took = { w: [], b: [] };
+    for (const m of hist) if (m.captured) took[m.color].push(m.captured);
+    const order = "qrbnp";
+    const draw = (list, colorOfPieces) => list.sort((a, b) => order.indexOf(a) - order.indexOf(b))
+      .map((t) => `<img src="./pieces/${colorOfPieces}${t.toUpperCase()}.svg" alt="${t}">`).join("");
+    const bot = you === "w" ? "b" : "w";
+    const sum = (l) => l.reduce((s, t) => s + VALUE[t], 0);
+    const diff = sum(took[you]) - sum(took[bot]);
+    $("capsYou").innerHTML = `<span class="note" style="margin-right:6px">You:</span>` + draw(took[you], bot) + (diff > 0 ? `<span class="adv">+${diff}</span>` : "");
+    $("capsBot").innerHTML = `<span class="note" style="margin-right:6px">Bot:</span>` + draw(took[bot], you) + (diff < 0 ? `<span class="adv">+${-diff}</span>` : "");
+  }
+
+  // ------------------------------------------------ input: click and drag
+  let drag = null;
+  boardEl.addEventListener("pointerdown", (e) => {
+    const el = e.target.closest(".sq");
+    if (!el || e.button > 0) return;
+    const sq = el.dataset.sq;
+    if (selected && sq !== selected && legal.some((m) => m.to === sq)) { tryMove(selected, sq); return; }
+    if (!canTouch(sq)) { select(null); return; }
+    select(sq);
+    const img = el.querySelector(".pc");
+    if (!img) return;
+    const size = el.getBoundingClientRect().width;
+    const ghost = img.cloneNode();
+    ghost.className = "ghost";
+    ghost.style.width = ghost.style.height = size + "px";
+    ghost.style.left = e.clientX + "px"; ghost.style.top = e.clientY + "px";
+    drag = { from: sq, ghost, el, moved: false, x: e.clientX, y: e.clientY };
+    boardEl.setPointerCapture(e.pointerId);
+    e.preventDefault();
+  });
+  boardEl.addEventListener("pointermove", (e) => {
+    if (!drag) return;
+    if (!drag.moved && Math.hypot(e.clientX - drag.x, e.clientY - drag.y) > 4) {
+      drag.moved = true; document.body.appendChild(drag.ghost); drag.el.classList.add("lift");
+    }
+    if (!drag.moved) return;
+    drag.ghost.style.left = e.clientX + "px"; drag.ghost.style.top = e.clientY + "px";
+    const under = document.elementFromPoint(e.clientX, e.clientY);
+    const over = under && under.closest && under.closest(".sq");
+    for (const s of boardEl.children) s.classList.toggle("over", s === over && legal.some((m) => m.to === s.dataset.sq));
+  });
+  const endDrag = (e) => {
+    if (!drag) return;
+    const d = drag; drag = null;
+    d.ghost.remove(); d.el.classList.remove("lift");
+    for (const s of boardEl.children) s.classList.remove("over");
+    if (!d.moved) return;   // a plain click keeps the piece selected
+    const under = document.elementFromPoint(e.clientX, e.clientY);
+    const el = under && under.closest && under.closest(".sq");
+    if (!el || !tryMove(d.from, el.dataset.sq)) select(d.from);
+  };
+  boardEl.addEventListener("pointerup", endDrag);
+  boardEl.addEventListener("pointercancel", endDrag);
+  // Keyboard: Enter/Space on a square acts like a click.
+  boardEl.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    const el = e.target.closest(".sq"); if (!el) return;
+    e.preventDefault();
+    const sq = el.dataset.sq;
+    if (selected && legal.some((m) => m.to === sq)) tryMove(selected, sq);
+    else select(canTouch(sq) ? sq : null);
+  });
+
+  // ------------------------------------------------ controls
+  function newGame() {
+    if (engineCb) { engineCb = null; clearTimeout(engineTimer); if (engine) engine.postMessage("stop"); }
+    game.reset(); selected = null; legal = []; busy = false;
+    flipped = you === "b";
+    buildBoard(); save(); render();
+    setTimeout(botTurn, 300);
+  }
+  $("newBtn").onclick = newGame;
+  $("overNew").onclick = newGame;
+  $("flipBtn").onclick = () => { flipped = !flipped; buildBoard(); save(); render(); };
+  $("undoBtn").onclick = () => {
+    if (busy) return;
+    game.undo();
+    if (game.turn() !== you) game.undo();   // take back the bot's reply too
+    selected = null; legal = []; save(); render();
+    setTimeout(botTurn, 200);
+  };
+  document.querySelectorAll("#level button").forEach((b) => b.onclick = () => { level = +b.dataset.level; save(); render(); });
+  document.querySelectorAll("#side button").forEach((b) => b.onclick = () => {
+    if (b.dataset.side === you) return;
+    you = b.dataset.side; newGame();
+  });
+
+  restore();
+  startEngine();
+  buildBoard();
+  render();
+  setTimeout(botTurn, 500);
+})();
+</script>
+</body>
+</html>
