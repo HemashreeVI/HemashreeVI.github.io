@@ -33,7 +33,7 @@ window.SITE = {
       pitch: "From Chennai to Singapore: NUS Industry 4.0, a visit to NTU, SuperAI at Marina Bay Sands, four spoken languages and an F1 habit. The story behind the code.",
       rows: ["singapore", "facts", "experience", "picks", "certs", "top10", "skills", "building", "play"] },
     { id: "gamer", label: "Gamer", color: "#F2C94C", glyph: "▶",
-      pitch: "Four mini-games built from real projects: stop a fall, save a mango, hunt a broken microservice, sprint through hiragana. Press play.",
+      pitch: "A chess board against Stockfish, plus four mini-games built from real projects: stop a fall, save a mango, hunt a broken microservice, sprint through hiragana. Press play.",
       rows: ["play", "top10", "picks", "building", "facts", "singapore", "skills", "experience", "certs"] }
   ],
 
@@ -253,6 +253,7 @@ window.SITE = {
   ],
 
   games: [
+    { id: "chess", title: "Pit Lane Chess", note: "Drag real pieces, beat Stockfish", color: ["#2a1a10", "#E10600"], href: "./chess/" },
     { id: "walker", title: "Keep Them Standing", note: "Stop a fall before it happens", color: ["#3a0a12", "#E10600"] },
     { id: "grocer", title: "Freshness Check", note: "Save a mango from spoiling", color: ["#14300a", "#6FCF97"] },
     { id: "incident", title: "Incident Hunt", note: "Find the broken microservice", color: ["#2a1240", "#9B51E0"] },

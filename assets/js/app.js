@@ -21,6 +21,13 @@
   function motif(kind, c, w, h) {
     var cx = w * 0.68, cy = h * 0.46, s = "";
     switch (kind) {
+      case "chess":
+        // A tilted mini board with a knight standing on it.
+        s += '<g transform="translate(' + (cx - 70) + ' ' + (cy - 30) + ') skewX(-18)" opacity=".95">';
+        for (var r = 0; r < 4; r++) for (var f = 0; f < 6; f++)
+          s += '<rect x="' + (f * 24) + '" y="' + (r * 16) + '" width="24" height="16" fill="' + ((r + f) % 2 ? c : "#EBD3AE") + '" fill-opacity="' + ((r + f) % 2 ? ".75" : ".35") + '"/>';
+        s += '</g><image href="./chess/pieces/wN.svg" x="' + (cx - 44) + '" y="' + (cy - 62) + '" width="62" height="62"/>';
+        break;
       case "walker":
         s += '<g stroke="' + c + '" stroke-width="4" fill="none" stroke-linecap="round" opacity=".9">' +
           '<path d="M' + (cx - 40) + ' ' + (cy + 55) + 'V' + (cy - 40) + 'H' + (cx + 40) + 'V' + (cy + 55) + '"/>' +
@@ -304,7 +311,7 @@
     var mail = $("#footMail"); mail.href = "mailto:" + S.email; mail.textContent = S.email;
     $("#footGrid").innerHTML = [
       ["GitHub", S.links.github], ["LinkedIn", S.links.linkedin], ["LeetCode", S.links.leetcode], ["Résumé", S.links.resume],
-      ["Projects", "#row-top10"], ["Singapore 2025", "#row-singapore"], ["Mini-games", "#row-play"], ["Classic portfolio", "./classic/"]
+      ["Projects", "#row-top10"], ["Singapore 2025", "#row-singapore"], ["Mini-games", "#row-play"], ["Chess", "./chess/"], ["Classic portfolio", "./classic/"]
     ].map(function (l) { return '<li><a href="' + esc(l[1]) + '"' + (/^http/.test(l[1]) ? ' target="_blank" rel="noopener"' : "") + '>' + esc(l[0]) + '</a></li>'; }).join("");
   }
 
@@ -380,8 +387,9 @@
       }).join("");
     } else if (key === "play") {
       cards = S.games.map(function (g) {
-        var art = { walker: "walker", grocer: "fresh", incident: "graph", kana: "" }[g.id];
-        return '<a class="card" href="./classic/#play-' + g.id + '" aria-label="Play ' + esc(g.title) + '">' +
+        var art = { chess: "chess", walker: "walker", grocer: "fresh", incident: "graph", kana: "" }[g.id];
+        var href = g.href || "./classic/#play-" + g.id;
+        return '<a class="card" href="' + esc(href) + '" aria-label="Play ' + esc(g.title) + '">' +
           poster({ color: g.color, art: art, title: g.title }) + '<span class="ribbon">▶ PLAY</span></a>';
       }).join("");
     } else if (key === "facts") {
@@ -525,9 +533,9 @@
     if (/^#/.test(href) && href.length > 1 && (href === "#top" || document.querySelector(href))) {
       e.preventDefault();
       raceTo(function () { jumpTo(href); }, (a.textContent || "").trim().toUpperCase().slice(0, 24) || "HOME");
-    } else if (/^\.\/classic\//.test(href)) {
+    } else if (/^\.\/(classic|chess)\//.test(href)) {
       e.preventDefault();
-      raceTo(function () { location.href = href; }, /#play-/.test(href) ? "GAME ON" : "CLASSIC");
+      raceTo(function () { location.href = href; }, /#play-|^\.\/chess\//.test(href) ? "GAME ON" : "CLASSIC");
     }
   });
 
