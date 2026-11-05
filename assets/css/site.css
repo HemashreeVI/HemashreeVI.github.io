@@ -461,5 +461,6 @@ body.locked{overflow:hidden}
 
 /* launch videos */
 .m-video{width:100%;aspect-ratio:16/9;border-radius:8px;background:#000;display:block}
+.m-yt{margin:12px 0 0}
 .m-trailer{background:#000}
 .m-trailer video{width:100%;aspect-ratio:16/9;display:block}

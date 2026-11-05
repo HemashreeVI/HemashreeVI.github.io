@@ -288,6 +288,9 @@ section.block{padding:110px 0;}
 .sc-root text{font-family:'JetBrains Mono',monospace; font-size:10px; fill:var(--ink); text-anchor:middle;}
 .sc-root .pkt{fill:var(--teal);}
 .sc-root .pkt.r{fill:var(--rose);}
+.sc-seats .seat{fill:var(--raise); stroke:var(--line); stroke-width:1.5;}
+.sc-seats .seat.taken{fill:color-mix(in srgb,var(--rose) 35%,var(--raise));}
+.sc-seats .seat.win{fill:var(--teal); stroke:var(--teal);}
 /* triage */
 .sc-triage .pipe{position:absolute; left:8%; top:48%; width:36%; height:4px; background:var(--line); border-radius:2px;}
 .sc-triage .brain{position:absolute; left:44%; top:calc(48% - 26px); width:56px; height:56px; border-radius:16px; background:var(--violet); display:grid; place-items:center; color:#fff;
@@ -735,6 +738,63 @@ footer .sub{margin-top:22px; color:var(--muted); max-width:52ch; font-size:17px;
         </div>
       </article>
 
+      <!-- SeatLock -->
+      <article class="proj reveal" id="p-seatlock" data-key="seatlock">
+        <div class="proj-vis"><div class="tilt3d">
+          <div class="vis"><div class="sc sc-root sc-seats">
+            <svg viewBox="0 0 300 220" aria-hidden="true">
+              <rect class="seat" x="38" y="40" width="26" height="22" rx="5"/>
+              <rect class="seat" x="72" y="40" width="26" height="22" rx="5"/>
+              <rect class="seat taken" x="106" y="40" width="26" height="22" rx="5"/>
+              <rect class="seat" x="140" y="40" width="26" height="22" rx="5"/>
+              <rect class="seat" x="174" y="40" width="26" height="22" rx="5"/>
+              <rect class="seat" x="208" y="40" width="26" height="22" rx="5"/>
+              <rect class="seat" x="242" y="40" width="26" height="22" rx="5"/>
+              <rect class="seat taken" x="38" y="70" width="26" height="22" rx="5"/>
+              <rect class="seat" x="72" y="70" width="26" height="22" rx="5"/>
+              <rect class="seat" x="106" y="70" width="26" height="22" rx="5"/>
+              <rect class="seat win" x="140" y="70" width="26" height="22" rx="5"/>
+              <rect class="seat" x="174" y="70" width="26" height="22" rx="5"/>
+              <rect class="seat taken" x="208" y="70" width="26" height="22" rx="5"/>
+              <rect class="seat" x="242" y="70" width="26" height="22" rx="5"/>
+              <rect class="seat" x="38" y="100" width="26" height="22" rx="5"/>
+              <rect class="seat" x="72" y="100" width="26" height="22" rx="5"/>
+              <rect class="seat" x="106" y="100" width="26" height="22" rx="5"/>
+              <rect class="seat taken" x="140" y="100" width="26" height="22" rx="5"/>
+              <rect class="seat" x="174" y="100" width="26" height="22" rx="5"/>
+              <rect class="seat" x="208" y="100" width="26" height="22" rx="5"/>
+              <rect class="seat" x="242" y="100" width="26" height="22" rx="5"/>
+              <rect class="seat" x="38" y="130" width="26" height="22" rx="5"/>
+              <rect class="seat taken" x="72" y="130" width="26" height="22" rx="5"/>
+              <rect class="seat" x="106" y="130" width="26" height="22" rx="5"/>
+              <rect class="seat" x="140" y="130" width="26" height="22" rx="5"/>
+              <rect class="seat" x="174" y="130" width="26" height="22" rx="5"/>
+              <rect class="seat" x="208" y="130" width="26" height="22" rx="5"/>
+              <rect class="seat taken" x="242" y="130" width="26" height="22" rx="5"/>
+              <circle class="pkt" r="4"><animateMotion dur="2s" repeatCount="indefinite" path="M20 200 L153 81"/></circle>
+              <circle class="pkt r" r="4"><animateMotion dur="2s" begin=".3s" repeatCount="indefinite" path="M150 210 L153 81"/></circle>
+              <circle class="pkt r" r="4"><animateMotion dur="2s" begin=".6s" repeatCount="indefinite" path="M285 200 L153 81"/></circle>
+            </svg>
+          </div></div>
+          <div class="vis-chip">200 buyers, 1 seat · <b>1 winner</b></div>
+        </div></div>
+        <div class="proj-body">
+          <div class="proj-meta"><span>2026</span><span>Backend · Concurrency</span></div>
+          <h3>SeatLock: thousands of buyers, one seat, zero double-bookings</h3>
+          <p>A ticket-booking backend for the moment a big show goes on sale. When 200 requests race for the same seat, exactly one wins and the other 199 get 409 Conflict.</p>
+          <ul>
+            <li>Three layers: a configurable lock (pessimistic, optimistic or Redis), a @Version fencing check on every write, and a partial unique index in PostgreSQL.</li>
+            <li>Proved with 200 simultaneous threads in Testcontainers and a k6 load test that fails if any seat is ever double-booked.</li>
+            <li>Payments as a Kafka saga with a transactional outbox, plus a Redis waiting room, Lua rate limiting and a live seat map over SSE.</li>
+          </ul>
+          <div class="stack" data-stack="java,spring,postgresql,redis,kafka,docker"></div>
+          <div class="links-row">
+            <a class="tlink" href="../assets/video/seatlock-deep-dive.mp4" target="_blank" rel="noopener">Watch the deep dive (6 min)</a>
+            <a class="tlink" data-repo="seatlock" href="#" target="_blank" rel="noopener" hidden>View code</a>
+          </div>
+        </div>
+      </article>
+
       <!-- RootLens -->
       <article class="proj reveal" id="p-rootlens" data-key="rootlens">
         <div class="proj-vis"><div class="tilt3d">
@@ -753,16 +813,17 @@ footer .sub{margin-top:22px; color:var(--muted); max-width:52ch; font-size:17px;
           <div class="vis-chip">likely root cause · <b>payment v2</b></div>
         </div></div>
         <div class="proj-body">
-          <div class="proj-meta"><span class="status">In development</span><span>Reliability engineering</span></div>
-          <h3>RootLens: finds why production broke</h3>
-          <p>An AI-assisted reliability platform for a small microservice app. It detects a failure, gathers evidence, ranks the likely root causes and records every incident.</p>
+          <div class="proj-meta"><span>2026</span><span>Reliability engineering</span></div>
+          <h3>RootLens: finds why production broke, then fixes it</h3>
+          <p>An incident-response lab of eight containers. When a bad release starts failing orders, it detects, investigates, decides, acts and verifies, but only within strict limits.</p>
           <ul>
-            <li>FastAPI user, order and payment services with chaos switches, a detector and multi-service root-cause ranking.</li>
-            <li>Prometheus and Grafana for metrics, SQLite incident records, unit tests and CI.</li>
-            <li>Versioned services with scripted deploys and deployment records, working towards automatic release rollback.</li>
+            <li>Detects with hysteresis (open at 30% failures, close below 10%) and scores every cause from the evidence; high confidence needs 0.75+ and a 0.3 lead.</li>
+            <li>A pure-function rulebook allows only rollback or restart, on allowed services, at most twice per incident, with an audit log of every decision.</li>
+            <li>Real run: payment v2 shipped, incident opened 62 s later, rolled back to v1, resolved in under 2 minutes. 118 unit tests in CI.</li>
           </ul>
           <div class="stack" data-stack="python,fastapi,docker,prometheus,grafana,sqlite,github"></div>
           <div class="links-row">
+            <a class="tlink" href="../assets/video/rootlens-deep-dive.mp4" target="_blank" rel="noopener">Watch the deep dive (6 min)</a>
             <a class="tlink" data-repo="rootlens" href="#" target="_blank" rel="noopener" hidden>View code</a>
             <a class="tlink" href="#play" data-open-tab="tab-incident">Play the incident hunt</a>
           </div>
@@ -781,16 +842,19 @@ footer .sub{margin-top:22px; color:var(--muted); max-width:52ch; font-size:17px;
           <div class="vis-chip">ticket routed in · <b>real time</b></div>
         </div></div>
         <div class="proj-body">
-          <div class="proj-meta"><span class="status">In development</span><span>LLM systems</span></div>
-          <h3>TriageIQ: real-time support ticket triage</h3>
-          <p>Support tickets stream in, and each one is classified, prioritised, routed and given a drafted reply within seconds.</p>
+          <div class="proj-meta"><span>2026</span><span>LLM systems</span></div>
+          <h3>TriageIQ: an AI support inbox, fully on-device</h3>
+          <p>Reads every support email, sorts it by category, priority and mood, and drafts a reply from tickets already solved. Nothing is sent until a human approves.</p>
           <ul>
-            <li>Tickets flow through Kafka to a classifier running a local LLM (qwen2.5 on Ollama), so nothing leaves the machine.</li>
-            <li>RAG over past resolved tickets with Qdrant and nomic embeddings drafts a reply for an agent to approve.</li>
-            <li>Live FastAPI dashboard streams the whole pipeline with server-sent events.</li>
+            <li>Emails become tickets on Kafka; a local Qwen 2.5 3B model classifies them at temperature 0 with a JSON schema, and falls back to a human with High priority if anything goes wrong.</li>
+            <li>RAG over solved tickets in Qdrant (top 3, ignored below 0.55 similarity) drafts a grounded reply that may only use facts from past answers.</li>
+            <li>A FastAPI console streams tickets over server-sent events; replies go out over SMTP in the same thread, with de-duplication, loop protection and rate limits.</li>
           </ul>
           <div class="stack" data-stack="python,kafka,ollama,qdrant,fastapi,docker"></div>
-          <div class="links-row"><a class="tlink" data-repo="triage" href="#" target="_blank" rel="noopener" hidden>View code</a></div>
+          <div class="links-row">
+            <a class="tlink" href="../assets/video/triageiq-deep-dive.mp4" target="_blank" rel="noopener">Watch the deep dive (5 min)</a>
+            <a class="tlink" data-repo="triage" href="#" target="_blank" rel="noopener" hidden>View code</a>
+          </div>
         </div>
       </article>
 
@@ -1084,7 +1148,7 @@ footer .sub{margin-top:22px; color:var(--muted); max-width:52ch; font-size:17px;
           <li><div class="when">Jun 2025</div><div class="what">IBM Generative AI certification</div><div class="det">Gen AI Using IBM Watsonx, IBM Career Education Program via IBM Developer Skills Network.</div><a class="cert" href="../ibm-certificate.jpg" target="_blank" rel="noopener">View certificate</a></li>
           <li><div class="when">Jul – Sep 2025</div><div class="what">Dental malocclusion detection</div><div class="det">YOLOv9 with Grad-CAM, 38.7% mAP@50 across 31 conditions.</div></li>
           <li><div class="when">2025 – 2026</div><div class="what">Smart walker patent</div><div class="det">Inventive disclosure filed with IIPRD; filing in progress.</div></li>
-          <li><div class="when">2026</div><div class="what">Disaster-response rover and backend platforms</div><div class="det">Rover perception layer, then RootLens and TriageIQ.</div></li>
+          <li><div class="when">2026</div><div class="what">Disaster-response rover and backend platforms</div><div class="det">Rover perception layer, then SeatLock, RootLens and TriageIQ.</div></li>
         </ol>
       </div>
       <div class="reveal">
@@ -1142,6 +1206,7 @@ var SITE = {
     rover:    "",
     dental:   "https://github.com/HemashreeVI/AI_Malocclusion_Detection",
     grocer:   "https://github.com/HemashreeVI/smart-grocer",
+    seatlock: "https://github.com/HemashreeVI/SeatLock",
     rootlens: "https://github.com/HemashreeVI/rootlens",
     triage:   "https://github.com/HemashreeVI/TriageIQ",
     ids:      "",
@@ -1150,7 +1215,7 @@ var SITE = {
 
   // Optional demo video / GIF / image per project. It replaces that project's animated scene.
   // e.g. rover: "./rover-demo.mp4"
-  media: { walker:"", rover:"", dental:"", grocer:"", rootlens:"", triage:"", ids:"", jarvis:"" }
+  media: { walker:"", rover:"", dental:"", grocer:"", seatlock:"", rootlens:"", triage:"", ids:"", jarvis:"" }
 };
 </script>
 
@@ -1247,7 +1312,7 @@ var LOGOS = {
   arduino:['Arduino','arduino/arduino-original'], rpi:['Raspberry Pi','raspberrypi/raspberrypi-original'], esp32:['ESP32',null,'ESP'], fusion:['Sensor fusion',null,'SF'], slam:['LIDAR SLAM',null,'SLAM'],
   fastapi:['FastAPI','fastapi/fastapi-original'], flask:['Flask','flask/flask-original',null,1], docker:['Docker','docker/docker-original'], kafka:['Apache Kafka','apachekafka/apachekafka-original',null,1],
   prometheus:['Prometheus','prometheus/prometheus-original'], grafana:['Grafana','grafana/grafana-original'], sqlite:['SQLite','sqlite/sqlite-original'],
-  firebase:['Firebase','firebase/firebase-original'], flutter:['Flutter','flutter/flutter-original'],
+  firebase:['Firebase','firebase/firebase-original'], spring:['Spring Boot','spring/spring-original'], postgresql:['PostgreSQL','postgresql/postgresql-original'], redis:['Redis','redis/redis-original'], flutter:['Flutter','flutter/flutter-original'],
   ollama:['Ollama',null,'Ol'], qdrant:['Qdrant',null,'Qd'], watsonx:['IBM watsonx',null,'wx'], rag:['RAG',null,'RAG'],
   ids:['Intrusion detection',null,'IDS'], threat:['Threat modeling',null,'TM'], risk:['Risk analysis',null,'RA'],
   git:['Git','git/git-original'], github:['GitHub','github/github-original',null,1], vscode:['VS Code','vscode/vscode-original'], jupyter:['Jupyter','jupyter/jupyter-original'],

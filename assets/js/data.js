@@ -24,10 +24,10 @@ window.SITE = {
   /* "Who's watching?" profiles. Each one reorders the rows and changes the billboard copy. */
   profiles: [
     { id: "recruiter", label: "Recruiter", color: "#E10600", photo: "./assets/img/avatar.jpg",
-      pitch: "A software engineer who ships end to end: explainable vision models, a patent-pending smart walker, and backend platforms that diagnose their own failures. Open to opportunities.",
+      pitch: "A software engineer who ships end to end: explainable vision models, a patent-pending smart walker, a booking backend that never double-books, and platforms that diagnose and fix their own failures. Open to opportunities.",
       rows: ["picks", "experience", "top10", "skills", "certs", "building", "singapore", "play", "facts"] },
     { id: "engineer", label: "Engineer", color: "#2F80ED", glyph: "</>",
-      pitch: "YOLOv9 pipelines with Grad-CAM, LIDAR SLAM on a Raspberry Pi 5, Kafka + local-LLM triage, and FastAPI microservices that rank their own root causes. Pull up a chair.",
+      pitch: "Race-proof seat locking in Spring Boot, microservices that roll back their own bad releases, Kafka + local-LLM triage, YOLOv9 with Grad-CAM and LIDAR SLAM on a Raspberry Pi 5. Each backend project has a deep-dive video. Pull up a chair.",
       rows: ["top10", "building", "skills", "picks", "experience", "certs", "play", "singapore", "facts"] },
     { id: "explorer", label: "Explorer", color: "#27AE60", glyph: "✈",
       pitch: "From Chennai to Singapore: NUS Industry 4.0, a visit to NTU, SuperAI at Marina Bay Sands, four spoken languages and an F1 habit. The story behind the code.",
@@ -73,8 +73,85 @@ window.SITE = {
       ]
     },
     {
+      id: "seatlock", title: "SeatLock", genre: "Backend · Concurrency", year: "2026",
+      badge: "0 DOUBLE-BOOKINGS", match: 98, color: ["#1a1035", "#B794F4"], art: "seats",
+      logline: "Thousands of buyers. One seat. Zero double-bookings.",
+      synopsis: "A ticket-booking backend built for the moment a big show goes on sale. When 200 requests race for the same seat at the same instant, exactly one wins and the other 199 get 409 Conflict. Three independent layers guarantee it, payments run as a Kafka saga with a transactional outbox, and a Redis waiting room and rate limiter keep the rush under control.",
+      cast: ["Java 21", "Spring Boot", "PostgreSQL", "Redis", "Kafka", "k6", "Testcontainers", "Docker"],
+      episodes: [
+        ["The race", "Two buyers read seat A1 as available and both write BOOKED: an if-check can't stop it, because the check and the write are separate steps."],
+        ["Three locks", "Pessimistic (SELECT … FOR UPDATE), optimistic (version check) or a Redis lock, switchable by config. Seat ids are always locked in sorted order, so deadlocks can't form."],
+        ["Belt and braces", "Every seat write also checks @Version (a fencing token for expired Redis locks), and a partial unique index lets PostgreSQL itself refuse a second active booking."],
+        ["Proof", "200 threads released at once in Testcontainers: exactly 1 winner, 199 × 409. A k6 load test with 500 users fails the run if a single seat is ever double-booked."],
+        ["Payments", "A Kafka saga with a transactional outbox: the state change and the message commit together, every consumer is idempotent, and a failed payment releases the seats."],
+        ["The rush", "A Redis waiting room, token-bucket rate limiting in one Lua script, a fast-reject cache (897 → 2,171 req/s) and a live seat map over Server-Sent Events."]
+      ],
+      repo: "https://github.com/HemashreeVI/SeatLock",
+      deepDive: "./assets/video/seatlock-deep-dive.mp4", deepDivePoster: "./assets/video/seatlock-deep-dive.jpg", deepDiveLength: "6 min", youtube: "",
+      image: "./assets/img/seatlock-race.jpg",
+      imageTall: "./assets/img/seatlock-tall.jpg",
+      gallery: [
+        ["./assets/img/seatlock-seatmap.jpg", "Live seat map, updated over Server-Sent Events"],
+        ["./assets/img/seatlock-race.jpg", "The race demo: 50 buyers, 1 seat. One winner, 49 × 409 Conflict, 0 double-bookings"],
+        ["./assets/img/seatlock-layers.jpg", "Version check and partial unique index: the layers behind the lock", "contain"],
+        ["./assets/img/seatlock-saga.jpg", "Payments as a Kafka saga with a transactional outbox", "contain"]
+      ]
+    },
+    {
+      id: "rootlens", title: "RootLens", genre: "Reliability · Incident Response", year: "2026",
+      badge: "SELF-HEALING", match: 97, color: ["#2a1240", "#9B51E0"], art: "graph",
+      logline: "When a microservice breaks, it finds out why, then fixes it within strict limits.",
+      synopsis: "An incident-response lab of eight containers. When a bad release starts failing customer orders, RootLens detects it, scores every possible cause from the evidence, checks what changed, and, only when the rulebook allows, rolls the release back and verifies customers are OK again. In a real run, payment-service v2 went from release to resolved incident in under two minutes.",
+      cast: ["Python", "FastAPI", "Docker", "Prometheus", "Grafana", "OpenTelemetry", "Jaeger", "SQLite", "GitHub Actions"],
+      episodes: [
+        ["Detect", "Every 10 s it asks Prometheus what share of orders failed. 3 checks at or above 30% open an incident; 3 checks below 10% close it, so it never flickers."],
+        ["Investigate", "Scores three causes per dependency (down, errors, too slow). Confidence is high only when the top cause scores 0.75+ and beats the runner-up by 0.3."],
+        ["What changed?", "A release within 5 minutes of detection is a strong link, within 15 a moderate one. It never rolls back a rollback."],
+        ["Decide", "A pure-function rulebook: only rollback or restart, only on allowed services, only with high confidence, at most 2 attempts per incident."],
+        ["Act and verify", "Preflight checks, then the executor (the only code that touches Docker) recreates the service on the previous version. 3 healthy checks = recovered, otherwise a human takes over."],
+        ["A real incident", "Payment v2 shipped at 12:25:02, an incident opened 62 s later at 52% failures, diagnosis score 1.00, rollback to v1, resolved at 12:27:54."],
+        ["Tested", "118 unit tests across the investigator, rulebook, safety checks, executor, controller and notifications, run by GitHub Actions on every push."]
+      ],
+      repo: "https://github.com/HemashreeVI/rootlens", game: "incident",
+      video: "./assets/video/rootlens.mp4", videoPoster: "./assets/video/rootlens.jpg",
+      deepDive: "./assets/video/rootlens-deep-dive.mp4", deepDivePoster: "./assets/video/rootlens-deep-dive.jpg", deepDiveLength: "6 min", youtube: "",
+      image: "./assets/img/rootlens-deploys.jpg",
+      imageTall: "./assets/img/rootlens-tall.jpg",
+      gallery: [
+        ["./assets/img/rootlens-overview.jpg", "Overview: live health, the five-step loop, and how an order flows through the services", "contain"],
+        ["./assets/img/rootlens-deploys.jpg", "Deployments: 20 releases recorded, 10 rollbacks, 3 done automatically by RootLens", "contain"]
+      ]
+    },
+    {
+      id: "triage", title: "TriageIQ", genre: "LLM · Streaming", year: "2026",
+      badge: "ON-DEVICE AI", match: 96, color: ["#3a2205", "#F2994A"], art: "stream",
+      logline: "Reads every support email, ranks it, and drafts the reply. A human approves.",
+      synopsis: "An AI support inbox that runs fully on one laptop, so customer text never leaves the machine. Emails become tickets on Kafka, a local Qwen 2.5 3B model classifies each one by category, priority and mood, RAG over solved tickets drafts a grounded reply, and nothing is sent until a support agent approves it.",
+      cast: ["Python", "Kafka", "Ollama", "Qdrant", "FastAPI", "Docker", "SSE", "IMAP / SMTP"],
+      episodes: [
+        ["The pipeline", "An IMAP gateway turns each email into a ticket on Kafka; a consumer classifies and drafts, then publishes to a second topic."],
+        ["Why Kafka", "If the model is slow, tickets wait safely in the topic, and the consumer group resumes from exactly where it stopped after a restart."],
+        ["Classify", "Qwen 2.5 3B in Ollama at temperature 0, with a JSON schema that forces category, priority and mood into fixed lists."],
+        ["Safe fallback", "If the model is down, times out or answers outside the lists, the ticket isn't dropped: it goes to a human with High priority."],
+        ["Grounded drafts", "The 3 most similar solved tickets come from Qdrant (cosine, ignored below 0.55). The model may only use their facts, never invent policies or amounts."],
+        ["Human in the loop", "Tickets stream live over Server-Sent Events. Approve, edit, write your own or escalate; replies go out over SMTP in the same thread."],
+        ["Real-inbox hardening", "Message-ID de-duplication, auto-reply loop protection, 5 tickets per sender per hour, and a lockout after 6 wrong passwords."]
+      ],
+      repo: "https://github.com/HemashreeVI/TriageIQ",
+      video: "./assets/video/triageiq.mp4", videoPoster: "./assets/video/triageiq.jpg",
+      deepDive: "./assets/video/triageiq-deep-dive.mp4", deepDivePoster: "./assets/video/triageiq-deep-dive.jpg", deepDiveLength: "5 min", youtube: "",
+      image: "./assets/img/triageiq-queue.jpg",
+      imageTall: "./assets/img/triageiq-tall.jpg",
+      gallery: [
+        ["./assets/img/triageiq-queue.jpg", "Approval queue: category, priority and mood, the customer's message and the AI's draft (demo mode, simulated data)"],
+        ["./assets/img/triageiq-overview.jpg", "Overview: tickets waiting, by priority"],
+        ["./assets/img/triageiq-system.jpg", "System page: how a ticket travels through the pipeline"],
+        ["./assets/img/triageiq-pipeline.jpg", "The event-driven pipeline, from inbox to approved reply", "contain"]
+      ]
+    },
+    {
       id: "rover", title: "Hazard Rover", genre: "Robotics · Reinforcement Learning", year: "2026",
-      badge: "NEW SEASON", match: 98, color: ["#0b2a1f", "#27AE60"], art: "rover",
+      badge: "NEW SEASON", match: 95, color: ["#0b2a1f", "#27AE60"], art: "rover",
       logline: "An autonomous rover that maps a disaster zone and guides people out.",
       synopsis: "An autonomous ground rover for disaster-response reconnaissance. It runs LIDAR SLAM on a self-upgraded Raspberry Pi 5, overlays a live risk heatmap of hazards, detects victims with a modified YOLOv8n, and computes the safest way out with a modified A* search.",
       cast: ["Python", "Raspberry Pi 5", "BreezySLAM", "YOLOv8n / YOLOv9t", "A*", "Flask", "PyTorch"],
@@ -97,7 +174,7 @@ window.SITE = {
     },
     {
       id: "dental", title: "Dental X-Ray AI", genre: "Computer Vision · Healthcare", year: "2025",
-      badge: "38.7% mAP@50", match: 97, color: ["#0d1b3a", "#56CCF2"], art: "xray",
+      badge: "38.7% mAP@50", match: 94, color: ["#0d1b3a", "#56CCF2"], art: "xray",
       logline: "Reads dental X-rays and explains what it sees.",
       synopsis: "A YOLOv9 pipeline that detects 31 dental conditions and analyses teeth alignment from X-rays, reaching 38.7% mAP@50 (25.1% mAP@50-95) on a 1,380-image held-out test set. Grad-CAM shows which regions drove each prediction, supporting clinical interpretability.",
       cast: ["Python", "YOLOv9", "PyTorch", "OpenCV", "Grad-CAM", "Gradio", "Jupyter"],
@@ -121,47 +198,8 @@ window.SITE = {
       ]
     },
     {
-      id: "rootlens", title: "RootLens", genre: "Reliability · AIOps", year: "2026",
-      badge: "TRENDING", match: 96, color: ["#2a1240", "#9B51E0"], art: "graph",
-      logline: "When a microservice breaks, it finds out why and fixes it.",
-      synopsis: "A reliability control room for FastAPI microservices. It watches live order traffic, and when something breaks it runs five steps on its own: detect, investigate and rank likely causes, decide within safety rules, act by rolling back or restarting, then verify customers are OK again.",
-      cast: ["Python", "FastAPI", "Docker", "Prometheus", "Grafana", "SQLite", "GitHub Actions"],
-      episodes: [
-        ["Detect", "Notices the moment customer orders start failing."],
-        ["Investigate", "Collects evidence and ranks the likely causes."],
-        ["Decide", "Checks the safety rules and picks a fix."],
-        ["Act", "Rolls back or restarts, but only if the rules allow it (robot mode: enforce)."],
-        ["Verify", "Confirms customers are OK again before closing the incident."],
-        ["Control room", "Live success rate, orders per second, p95 response time and open incidents, plus a map of how an order moves through the services."],
-        ["Release history", "Every release and rollback recorded, including the ones RootLens did on its own."]
-      ],
-      repo: "https://github.com/HemashreeVI/rootlens", game: "incident",
-      video: "./assets/video/rootlens.mp4", videoPoster: "./assets/video/rootlens.jpg",
-      image: "./assets/img/rootlens-deploys.jpg",
-      imageTall: "./assets/img/rootlens-tall.jpg",
-      gallery: [
-        ["./assets/img/rootlens-overview.jpg", "Overview: live health, the five-step loop, and how an order flows through the services", "contain"],
-        ["./assets/img/rootlens-deploys.jpg", "Deployments: 20 releases recorded, 10 rollbacks, 3 done automatically by RootLens", "contain"]
-      ]
-    },
-    {
-      id: "triage", title: "TriageIQ", genre: "LLM · Streaming", year: "2026",
-      badge: "TRENDING", match: 95, color: ["#3a2205", "#F2994A"], art: "stream",
-      logline: "Support tickets, triaged the moment they arrive.",
-      synopsis: "Tickets stream through Kafka, a local LLM classifies and prioritises them, and RAG over past tickets drafts the reply, all on a live dashboard.",
-      cast: ["Python", "Kafka", "FastAPI", "Docker", "Ollama", "Qdrant"],
-      episodes: [
-        ["The stream", "Tickets flow in real time through Kafka."],
-        ["The judge", "A local LLM via Ollama classifies and prioritises each one."],
-        ["The memory", "RAG over past tickets in Qdrant drafts a grounded reply."],
-        ["The board", "A live dashboard shows the queue as it moves."]
-      ],
-      repo: "https://github.com/HemashreeVI/TriageIQ",
-      video: "./assets/video/triageiq.mp4", videoPoster: "./assets/video/triageiq.jpg"
-    },
-    {
       id: "grocer", title: "Smart Grocer", genre: "Multimodal AI · Retail", year: "In development",
-      badge: "COMING SOON", match: 94, color: ["#14300a", "#6FCF97"], art: "fresh",
+      badge: "COMING SOON", match: 93, color: ["#14300a", "#6FCF97"], art: "fresh",
       logline: "Knows which mango will spoil first.",
       synopsis: "A multimodal system for fresh-produce spoilage detection, item localization and expiry-aware retail inventory, combining computer-vision freshness classification with gas/VOC sensor fusion.",
       cast: ["Python", "YOLO", "OpenCV", "ESP32", "Raspberry Pi", "Firebase", "Flutter"],
@@ -176,7 +214,7 @@ window.SITE = {
     },
     {
       id: "ids", title: "Intrusion Detection", genre: "Cybersecurity", year: "2025",
-      badge: "", match: 93, color: ["#2b0a0a", "#EB5757"], art: "shield",
+      badge: "", match: 92, color: ["#2b0a0a", "#EB5757"], art: "shield",
       logline: "A bank that notices when something's not right.",
       synopsis: "A behavioral intrusion detection system for a simulated bank: risk scoring across login, access and transactions, automated responses and audit logs, built around a threat model.",
       cast: ["Python", "IDS", "Threat Modeling", "Risk Scoring"],
@@ -190,7 +228,7 @@ window.SITE = {
     },
     {
       id: "jarvis", title: "Jarvis", genre: "Voice Assistant", year: "2024",
-      badge: "AT YOUR SERVICE", match: 92, color: ["#4a0b0e", "#F2C94C"], art: "jarvis",
+      badge: "AT YOUR SERVICE", match: 91, color: ["#4a0b0e", "#F2C94C"], art: "jarvis",
       logline: "A voice assistant that never phones home.",
       synopsis: "An offline, privacy-friendly voice assistant: it opens apps, controls the system, reads battery/status and sends stock notifications.",
       cast: ["Python", "SpeechRecognition"],
@@ -228,8 +266,8 @@ window.SITE = {
     { title: "Languages", tag: "FOUNDATIONS", desc: "The languages I think in: Python for ML and backends, Java for problem solving, C++ on microcontrollers, and the web trio for interfaces.", items: ["Python", "Java", "C++", "JavaScript", "HTML", "CSS"] },
     { title: "AI & Vision", tag: "INTELLIGENCE", desc: "Training and explaining vision models, from YOLO detectors and pose estimation to Grad-CAM heatmaps, local LLMs and retrieval.", items: ["PyTorch", "TensorFlow", "OpenCV", "YOLOv8/v9", "Grad-CAM", "MMPose", "RAG", "Ollama", "IBM watsonx"] },
     { title: "Robotics & IoT", tag: "HARDWARE", desc: "Sensors, microcontrollers and robots that act on the real world: fusion, SLAM mapping, path planning and learning to navigate.", items: ["Arduino", "Raspberry Pi", "ESP32", "Sensor fusion", "LIDAR SLAM", "A*", "Q-learning"] },
-    { title: "Backend & DevOps", tag: "INFRASTRUCTURE", desc: "Services that stay up: FastAPI and Flask APIs, Kafka streams, Docker deploys, and metrics that tell you when something breaks.", items: ["FastAPI", "Flask", "Docker", "Kafka", "Prometheus", "Grafana", "GitHub Actions"] },
-    { title: "Data", tag: "STORAGE", desc: "Relational, realtime and vector stores, picked for the job: MySQL and SQLite, Firebase for apps, Qdrant for RAG.", items: ["MySQL", "SQLite", "Firebase", "Qdrant"] },
+    { title: "Backend & DevOps", tag: "INFRASTRUCTURE", desc: "Services that stay correct under load: Spring Boot and FastAPI APIs, Kafka sagas, Redis locks and queues, Docker deploys, load tests, and metrics that tell you when something breaks.", items: ["Spring Boot", "FastAPI", "Flask", "Docker", "Kafka", "Redis", "Prometheus", "Grafana", "GitHub Actions", "k6"] },
+    { title: "Data", tag: "STORAGE", desc: "Relational, in-memory, realtime and vector stores, picked for the job: PostgreSQL and SQLite, Redis for locks and caches, Firebase for apps, Qdrant for RAG.", items: ["PostgreSQL", "MySQL", "SQLite", "Redis", "Firebase", "Qdrant"] },
     { title: "Security", tag: "DEFENCE", desc: "Thinking like an attacker to protect users: behavioural intrusion detection, threat models and risk scoring.", items: ["Intrusion detection", "Threat modeling", "Risk analysis"] },
     { title: "Tools", tag: "WORKFLOW", desc: "The everyday kit for shipping and experimenting, from Git and Linux to notebooks, datasets and quick ML demos.", items: ["Git", "GitHub", "VS Code", "Linux", "Jupyter", "Colab", "Kaggle", "Roboflow", "Gradio"] },
     { title: "Spoken", tag: "LANGUAGES", desc: "Four languages, one of them written in three scripts.", items: ["Tamil · native", "English · fluent", "Hindi · intermediate", "日本語 · basic"] }

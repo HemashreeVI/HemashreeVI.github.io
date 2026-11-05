@@ -65,6 +65,17 @@
           if (bad) s += '<circle cx="' + (cx + p[0]) + '" cy="' + (cy + p[1]) + '" r="11" fill="none" stroke="#E10600"><animate attributeName="r" values="11;30" dur="1.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0" dur="1.6s" repeatCount="indefinite"/></circle>';
         });
         break;
+      case "seats":
+        // A seat map: everyone races for one seat, exactly one wins.
+        for (var sr = 0; sr < 4; sr++) for (var sc = 0; sc < 7; sc++) {
+          var win = sr === 1 && sc === 3, taken = (sr * 7 + sc) % 5 === 2;
+          s += '<rect x="' + (cx - 104 + sc * 30) + '" y="' + (cy - 52 + sr * 26) + '" width="24" height="20" rx="5" fill="' + (win ? "#46D369" : taken ? "#E10600" : c) + '" opacity="' + (win ? .95 : taken ? .55 : .16) + '"/>';
+        }
+        var tx = cx - 104 + 3 * 30 + 12, ty = cy - 52 + 26 + 10;
+        [[-130, 70], [0, 80], [130, 70]].forEach(function (d, i) {
+          s += '<circle r="5" fill="#fff"><animateMotion dur="2s" begin="' + (i * 0.2) + 's" repeatCount="indefinite" path="M' + (tx + d[0]) + ' ' + (ty + d[1]) + 'L' + tx + ' ' + ty + '"/><animate attributeName="opacity" values="1;1;0" keyTimes="0;.8;1" dur="2s" begin="' + (i * 0.2) + 's" repeatCount="indefinite"/></circle>';
+        });
+        break;
       case "stream":
         s += '<rect x="' + (cx - 10) + '" y="' + (cy - 30) + '" width="60" height="60" rx="10" fill="#0F0F13" stroke="' + c + '" stroke-width="3"/>';
         s += '<text x="' + (cx + 20) + '" y="' + (cy + 6) + '" font-family="Inter,sans-serif" font-weight="800" font-size="16" fill="#fff" text-anchor="middle">LLM</text>';
@@ -175,7 +186,8 @@
     "FastAPI": "fastapi", "Flask": "flask", "Docker": "docker", "Kafka": "apachekafka", "Prometheus": "prometheus",
     "Grafana": "grafana", "GitHub Actions": "githubactions", "MySQL": "mysql", "SQLite": "sqlite", "Firebase": "firebase",
     "Git": "git", "GitHub": "github", "VS Code": "vscode", "Linux": "linux", "Jupyter": "jupyter", "Colab": "googlecolab",
-    "Kaggle": "kaggle", "Roboflow": "roboflow"
+    "Kaggle": "kaggle", "Roboflow": "roboflow",
+    "Spring Boot": "springboot", "PostgreSQL": "postgresql", "Redis": "redis"
   };
   // Drawn icons for tools without a public logo and for concepts.
   var GLYPH = {
@@ -353,7 +365,7 @@
   function renderRow(key) {
     var cards = "";
     if (key === "picks") {
-      cards = ["walker", "dental", "rover", "rootlens", "triage", "grocer"].map(byId).map(projectCard).join("");
+      cards = ["seatlock", "rootlens", "triage", "walker", "dental", "rover"].map(byId).map(projectCard).join("");
     } else if (key === "top10") {
       cards = S.projects.map(function (p, i) {
         return '<button class="card t10card" type="button" data-kind="project" data-id="' + p.id + '" aria-label="Number ' + (i + 1) + ': ' + esc(p.title) + '">' +
@@ -672,6 +684,11 @@
     if (e.target.closest("[data-close]")) closeModal();
     var lb = e.target.closest("[data-lb]");
     if (lb) { lightbox(lb.getAttribute("data-lb"), lb.getAttribute("data-cap")); return; }
+    if (e.target.closest("[data-deepdive]")) {
+      var h = $("#deepDive"), v = h && h.nextElementSibling;
+      if (v) { v.scrollIntoView({ behavior: "smooth", block: "center" }); v.play(); }
+      return;
+    }
     var m = e.target.closest("[data-more]");
     if (m) openProject(byId(m.getAttribute("data-more")));
   });
@@ -684,7 +701,8 @@
   function heroActions(p) {
     var a = "";
     if (p.game) a += '<a class="btn btn-play" href="./classic/#play-' + p.game + '">' + ICON.play + 'Play the demo</a>';
-    if (p.repo) a += '<a class="btn ' + (p.game ? "btn-info" : "btn-play") + '" href="' + esc(p.repo) + '" target="_blank" rel="noopener">' + ICON.code + 'View code</a>';
+    if (p.deepDive) a += '<button class="btn btn-play" type="button" data-deepdive="1">' + ICON.play + 'Watch the deep dive</button>';
+    if (p.repo) a += '<a class="btn ' + (p.game || p.deepDive ? "btn-info" : "btn-play") + '" href="' + esc(p.repo) + '" target="_blank" rel="noopener">' + ICON.code + 'View code</a>';
     if (!a) a = '<span class="btn btn-info" style="cursor:default">Private repository</span>';
     return a;
   }
@@ -707,6 +725,9 @@
       '<div class="m-meta"><span class="gridpos">P' + idx + '</span><span>' + esc(p.year) + '</span>' + (p.badge ? '<span class="badge">' + esc(p.badge) + '</span>' : "") + '</div>' +
       '<p class="m-log">' + esc(p.logline) + '</p><p class="m-syn">' + esc(p.synopsis) + '</p></div>' +
       '<div class="m-side"><p><b>Built with: </b>' + p.cast.map(esc).join(", ") + '</p><p><b>Area: </b>' + p.genre.split(" · ").map(esc).join(", ") + '</p></div></div>' +
+      (p.deepDive ? '<h3 class="m-h3" id="deepDive">Deep Dive <small>' + esc(p.deepDiveLength || "") + ' · problem, design, demo and trade-offs</small></h3>' +
+        '<video class="m-video" controls preload="none" playsinline poster="' + esc(p.deepDivePoster || "") + '"><source src="' + esc(p.deepDive) + '" type="video/mp4"></video>' +
+        (p.youtube ? '<p class="m-yt"><a class="btn btn-info" href="' + esc(p.youtube) + '" target="_blank" rel="noopener">' + ICON.play + 'Watch on YouTube</a></p>' : "") : "") +
       (p.video ? '<h3 class="m-h3">Launch Video <small>20 seconds</small></h3>' + videoTag(p.video, p.videoPoster, 'class="m-video" controls preload="none"') : "") +
       (p.gallery ? '<h3 class="m-h3">Behind the Scenes</h3><div class="bts">' + p.gallery.map(function (g) {
         return '<button type="button" class="bts-item" data-lb="' + esc(g[0]) + '" data-cap="' + esc(g[1]) + '"><img src="' + esc(g[0]) + '" alt="' + esc(g[1]) + '" loading="lazy"' + (g[2] === "contain" ? ' style="object-fit:contain"' : "") + '><span>' + esc(g[1]) + '</span></button>';
