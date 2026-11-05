@@ -76,6 +76,13 @@
           s += '<circle r="5" fill="#fff"><animateMotion dur="2s" begin="' + (i * 0.2) + 's" repeatCount="indefinite" path="M' + (tx + d[0]) + ' ' + (ty + d[1]) + 'L' + tx + ' ' + ty + '"/><animate attributeName="opacity" values="1;1;0" keyTimes="0;.8;1" dur="2s" begin="' + (i * 0.2) + 's" repeatCount="indefinite"/></circle>';
         });
         break;
+      case "loom":
+        // Warp threads with coloured weft rows weaving across them.
+        var wc = ["#3b5bdb", "#c8323c", c, "#91a7ff", "#ff8787"];
+        for (var wr = 0; wr < 6; wr++) for (var wk = 0; wk < 9; wk++)
+          s += '<rect x="' + (cx - 110 + wk * 25) + '" y="' + (cy - 60 + wr * 20) + '" width="' + (wk % 2 === wr % 2 ? 21 : 9) + '" height="12" rx="3" fill="' + wc[(wr + wk) % wc.length] + '" opacity="' + (wk % 2 === wr % 2 ? .9 : .35) + '"/>';
+        s += '<rect x="' + (cx - 112) + '" y="' + (cy + 62) + '" width="0" height="12" rx="3" fill="' + c + '"><animate attributeName="width" values="0;226;226" keyTimes="0;.7;1" dur="2.6s" repeatCount="indefinite"/></rect>';
+        break;
       case "stream":
         s += '<rect x="' + (cx - 10) + '" y="' + (cy - 30) + '" width="60" height="60" rx="10" fill="#0F0F13" stroke="' + c + '" stroke-width="3"/>';
         s += '<text x="' + (cx + 20) + '" y="' + (cy + 6) + '" font-family="Inter,sans-serif" font-weight="800" font-size="16" fill="#fff" text-anchor="middle">LLM</text>';
@@ -365,7 +372,7 @@
   function renderRow(key) {
     var cards = "";
     if (key === "picks") {
-      cards = ["seatlock", "rootlens", "triage", "walker", "dental", "rover"].map(byId).map(projectCard).join("");
+      cards = ["seatlock", "rootlens", "triage", "gitloom", "walker", "dental"].map(byId).map(projectCard).join("");
     } else if (key === "top10") {
       cards = S.projects.map(function (p, i) {
         return '<button class="card t10card" type="button" data-kind="project" data-id="' + p.id + '" aria-label="Number ' + (i + 1) + ': ' + esc(p.title) + '">' +
@@ -701,7 +708,8 @@
   function heroActions(p) {
     var a = "";
     if (p.game) a += '<a class="btn btn-play" href="./classic/#play-' + p.game + '">' + ICON.play + 'Play the demo</a>';
-    if (p.deepDive) a += '<button class="btn btn-play" type="button" data-deepdive="1">' + ICON.play + 'Watch the deep dive</button>';
+    if (p.live) a += '<a class="btn btn-play" href="' + esc(p.live) + '" target="_blank" rel="noopener">' + ICON.play + 'Try it live</a>';
+    if (p.deepDive) a += '<button class="btn ' + (p.live ? "btn-info" : "btn-play") + '" type="button" data-deepdive="1">' + ICON.play + 'Watch the ' + (p.deepDiveTitle ? p.deepDiveTitle.toLowerCase() : "deep dive") + '</button>';
     if (p.repo) a += '<a class="btn ' + (p.game || p.deepDive ? "btn-info" : "btn-play") + '" href="' + esc(p.repo) + '" target="_blank" rel="noopener">' + ICON.code + 'View code</a>';
     if (!a) a = '<span class="btn btn-info" style="cursor:default">Private repository</span>';
     return a;
@@ -725,7 +733,7 @@
       '<div class="m-meta"><span class="gridpos">P' + idx + '</span><span>' + esc(p.year) + '</span>' + (p.badge ? '<span class="badge">' + esc(p.badge) + '</span>' : "") + '</div>' +
       '<p class="m-log">' + esc(p.logline) + '</p><p class="m-syn">' + esc(p.synopsis) + '</p></div>' +
       '<div class="m-side"><p><b>Built with: </b>' + p.cast.map(esc).join(", ") + '</p><p><b>Area: </b>' + p.genre.split(" · ").map(esc).join(", ") + '</p></div></div>' +
-      (p.deepDive ? '<h3 class="m-h3" id="deepDive">Deep Dive <small>' + esc(p.deepDiveLength || "") + ' · problem, design, demo and trade-offs</small></h3>' +
+      (p.deepDive ? '<h3 class="m-h3" id="deepDive">' + esc(p.deepDiveTitle || "Deep Dive") + ' <small>' + esc(p.deepDiveLength || "") + ' · ' + esc(p.deepDiveNote || "problem, design, demo and trade-offs") + '</small></h3>' +
         '<video class="m-video" controls preload="none" playsinline poster="' + esc(p.deepDivePoster || "") + '"><source src="' + esc(p.deepDive) + '" type="video/mp4"></video>' +
         (p.youtube ? '<p class="m-yt"><a class="btn btn-info" href="' + esc(p.youtube) + '" target="_blank" rel="noopener">' + ICON.play + 'Watch on YouTube</a></p>' : "") : "") +
       (p.video ? '<h3 class="m-h3">Launch Video <small>20 seconds</small></h3>' + videoTag(p.video, p.videoPoster, 'class="m-video" controls preload="none"') : "") +

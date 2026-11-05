@@ -150,8 +150,34 @@ window.SITE = {
       ]
     },
     {
+      id: "gitloom", title: "GitLoom", genre: "Web App · Developer Tools", year: "2026",
+      badge: "LIVE", match: 95, color: ["#191c3a", "#e3a72f"], art: "loom",
+      logline: "Your GitHub, woven into a portfolio website.",
+      synopsis: "Type a GitHub username and GitLoom reads the public repos, languages and activity, then lays them into a portfolio site in a live studio. Ten templates, any accent colour, drag-to-reorder sections, and one self-contained index.html to host free on GitHub Pages. No backend, no sign-up, no build step: just HTML, CSS, vanilla JavaScript and the GitHub REST API.",
+      cast: ["JavaScript", "HTML", "CSS", "GitHub REST API", "GitHub Pages"],
+      episodes: [
+        ["The loom", "The landing page weaves a new row of thread for every letter you type."],
+        ["Pulled from GitHub", "Projects with stars, forks and topics, languages by bytes of code, a 90-day activity heatmap and your profile README, with a 30-minute cache."],
+        ["Ten templates", "Editorial, Midnight, Sunrise, Terminal, Bento, Brutalist, Swiss, Aurora, Blueprint and Zen: same data, completely different look."],
+        ["The studio", "Any accent colour, nine headline fonts, drag-to-reorder sections, hand-picked repos, undo and redo, saved designs."],
+        ["Finished properly", "Phone layouts, a Ctrl+K quick menu, project search, and a clean one-colour PDF résumé from the same data."],
+        ["Ship it", "Download one index.html, or share a link that rebuilds the whole design from the URL."]
+      ],
+      repo: "https://github.com/HemashreeVI/GitLoom", live: "https://hemashreevi.github.io/GitLoom/",
+      deepDive: "./assets/video/gitloom-demo.mp4", deepDivePoster: "./assets/video/gitloom-demo.jpg", deepDiveLength: "1 min", deepDiveTitle: "Demo", deepDiveNote: "a real session in the studio",
+      image: "./assets/img/gitloom-templates.jpg",
+      imageTall: "./assets/img/gitloom-tall.jpg",
+      gallery: [
+        ["./assets/img/gitloom-landing.jpg", "The landing page: the loom weaves a row for every letter you type"],
+        ["./assets/img/gitloom-templates.jpg", "The studio: ten templates, live preview"],
+        ["./assets/img/gitloom-phone.jpg", "Every template has a phone layout"],
+        ["./assets/img/gitloom-quickmenu.jpg", "The generated site's Ctrl+K quick menu"],
+        ["./assets/img/gitloom-publish.jpg", "Download one HTML file and publish it on GitHub Pages"]
+      ]
+    },
+    {
       id: "rover", title: "Hazard Rover", genre: "Robotics · Reinforcement Learning", year: "2026",
-      badge: "NEW SEASON", match: 95, color: ["#0b2a1f", "#27AE60"], art: "rover",
+      badge: "NEW SEASON", match: 94, color: ["#0b2a1f", "#27AE60"], art: "rover",
       logline: "An autonomous rover that maps a disaster zone and guides people out.",
       synopsis: "An autonomous ground rover for disaster-response reconnaissance. It runs LIDAR SLAM on a self-upgraded Raspberry Pi 5, overlays a live risk heatmap of hazards, detects victims with a modified YOLOv8n, and computes the safest way out with a modified A* search.",
       cast: ["Python", "Raspberry Pi 5", "BreezySLAM", "YOLOv8n / YOLOv9t", "A*", "Flask", "PyTorch"],
@@ -174,7 +200,7 @@ window.SITE = {
     },
     {
       id: "dental", title: "Dental X-Ray AI", genre: "Computer Vision · Healthcare", year: "2025",
-      badge: "38.7% mAP@50", match: 94, color: ["#0d1b3a", "#56CCF2"], art: "xray",
+      badge: "38.7% mAP@50", match: 93, color: ["#0d1b3a", "#56CCF2"], art: "xray",
       logline: "Reads dental X-rays and explains what it sees.",
       synopsis: "A YOLOv9 pipeline that detects 31 dental conditions and analyses teeth alignment from X-rays, reaching 38.7% mAP@50 (25.1% mAP@50-95) on a 1,380-image held-out test set. Grad-CAM shows which regions drove each prediction, supporting clinical interpretability.",
       cast: ["Python", "YOLOv9", "PyTorch", "OpenCV", "Grad-CAM", "Gradio", "Jupyter"],
