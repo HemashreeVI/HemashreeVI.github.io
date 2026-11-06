@@ -502,3 +502,7 @@ body.locked{overflow:hidden}
   .logo{font-size:18px}
   .logo::before{display:none}
 }
+
+/* profile picker: each avatar lights up in its profile colour */
+.gate-item:hover .av,.gate-item:focus-visible .av{border-color:var(--c,var(--red));box-shadow:0 0 28px color-mix(in srgb,var(--c,#E10600) 45%,transparent)}
+@media (max-width:600px){.gate-list{display:grid;grid-template-columns:repeat(2,minmax(0,38vw));gap:18px 20px}.gate-item{width:100%}}

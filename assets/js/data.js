@@ -23,16 +23,16 @@ window.SITE = {
 
   /* "Who's watching?" profiles. Each one reorders the rows and changes the billboard copy. */
   profiles: [
-    { id: "recruiter", label: "Recruiter", color: "#E10600", photo: "./assets/img/avatar.jpg",
+    { id: "recruiter", label: "Recruiter", color: "#E10600", photo: "./assets/img/avatars/recruiter.jpg",
       pitch: "A software engineer who ships end to end: explainable vision models, a patent-pending smart walker, a booking backend that never double-books, and platforms that diagnose and fix their own failures. Open to opportunities.",
       rows: ["picks", "experience", "top10", "skills", "certs", "building", "singapore", "play", "facts"] },
-    { id: "engineer", label: "Engineer", color: "#2F80ED", glyph: "</>",
+    { id: "engineer", label: "Engineer", color: "#2F80ED", glyph: "</>", photo: "./assets/img/avatars/engineer.jpg",
       pitch: "Race-proof seat locking in Spring Boot, microservices that roll back their own bad releases, Kafka + local-LLM triage, YOLOv9 with Grad-CAM and LIDAR SLAM on a Raspberry Pi 5. Each backend project has a deep-dive video. Pull up a chair.",
       rows: ["top10", "building", "skills", "picks", "experience", "certs", "play", "singapore", "facts"] },
-    { id: "explorer", label: "Explorer", color: "#27AE60", glyph: "✈",
+    { id: "explorer", label: "Explorer", color: "#27AE60", glyph: "✈", photo: "./assets/img/avatars/explorer.jpg",
       pitch: "From Chennai to Singapore: NUS Industry 4.0, a visit to NTU, SuperAI at Marina Bay Sands, four spoken languages and an F1 habit. The story behind the code.",
       rows: ["singapore", "facts", "experience", "picks", "certs", "top10", "skills", "building", "play"] },
-    { id: "gamer", label: "Gamer", color: "#F2C94C", glyph: "▶",
+    { id: "gamer", label: "Gamer", color: "#F2C94C", glyph: "▶", photo: "./assets/img/avatars/gamer.jpg",
       pitch: "A chess board against Stockfish, plus four mini-games built from real projects: stop a fall, save a mango, hunt a broken microservice, sprint through hiragana. Press play.",
       rows: ["play", "top10", "picks", "building", "facts", "singapore", "skills", "experience", "certs"] }
   ],

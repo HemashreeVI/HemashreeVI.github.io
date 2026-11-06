@@ -266,7 +266,7 @@
     $("#app").hidden = true;
     var list = $("#gateList");
     list.innerHTML = S.profiles.map(function (p) {
-      return '<button class="gate-item" type="button" data-p="' + p.id + '"><div class="av">' + avatar(p) + '</div><span>' + esc(p.label) + '</span></button>';
+      return '<button class="gate-item" type="button" data-p="' + p.id + '" style="--c:' + p.color + '"><div class="av">' + avatar(p) + '</div><span>' + esc(p.label) + '</span></button>';
     }).join("");
     $("#gate").hidden = false;
     document.body.classList.remove("locked");
