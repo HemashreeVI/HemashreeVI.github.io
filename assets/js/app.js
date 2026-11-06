@@ -245,7 +245,6 @@
     var fromUrl = params.get("profile");
     var pick = S.profiles.filter(function (p) { return p.id === fromUrl; })[0];
     var intro = $("#intro");
-    var reduce = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
     var seen = store.sget("introSeen");
 
     function afterIntro() {
@@ -254,7 +253,7 @@
       store.sset("introSeen", "1");
       if (pick) choose(pick, false); else showGate();
     }
-    if (seen || reduce) { intro.hidden = true; if (pick) choose(pick, false); else showGate(); return; }
+    if (seen) { intro.hidden = true; if (pick) choose(pick, false); else showGate(); return; }
     var done = false;
     var finish = function () { if (!done) { done = true; afterIntro(); } };
     setTimeout(finish, 4300);
@@ -522,9 +521,8 @@
 
   var racing = false;
   function raceTo(action, label) {
-    var reduce = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
     if (racing) return;
-    if (reduce || !document.body.animate) { action(); return; }
+    if (!document.body.animate) { action(); return; }
     racing = true;
     hidePreview();
     var lane = $("#pitlane"), track = $("#plTrack");

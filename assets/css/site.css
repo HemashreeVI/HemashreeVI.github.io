@@ -270,6 +270,7 @@ body.locked{overflow:hidden}
 .foot-note a{color:#999}
 
 /* ------------------------------------------------------------- responsive */
+/* Animations play even when the device asks for reduced motion (owner's choice). */
 @media (max-width:1100px){
   .card{width:calc((100vw - 2*var(--pad) - 4*.4vw)/4.3)}
   .card.t10card{width:calc((100vw - 2*var(--pad))/3.3)}
@@ -310,9 +311,6 @@ body.locked{overflow:hidden}
   .about-grid{grid-template-columns:1fr}
   .about-grid img{max-width:220px}
   .foot-grid{grid-template-columns:1fr 1fr}
-}
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
 }
 
 
@@ -452,10 +450,6 @@ body.locked{overflow:hidden}
   .bb-stats div{padding:2px 12px}
   .pl-car{height:46vh}
 }
-@media (prefers-reduced-motion:reduce){
-  .row .track > .card{opacity:1;transform:none}
-  .intro-word,.intro-sub{opacity:1;transform:none}
-}
 
 .bb-title{display:inline-block;white-space:nowrap;padding-right:.12em;font-size:clamp(56px,8.6vw,132px)}
 .bb-content{max-width:min(720px,60vw)}
@@ -487,7 +481,6 @@ body.locked{overflow:hidden}
   .btn:active,.circ:active{transform:scale(.94)}
   .row h2 .explore{opacity:1;transform:none}
 }
-@media (prefers-reduced-motion:reduce){.billboard.touch .bb-spot{animation:none;opacity:0}}
 
 /* phone nav: keep logo, Browse, Résumé and the profile picture inside the screen */
 @media (max-width:800px){
