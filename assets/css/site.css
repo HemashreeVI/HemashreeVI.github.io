@@ -480,8 +480,9 @@ body.locked{overflow:hidden}
   100%{transform:translate3d(calc(100vw - 260px),70vh,0)}
 }
 @media (hover:none){
-  .row.in .track > .card{transition:transform .18s}
-  .row.in .track > .card:active{transform:scale(.95)}
+  /* press effect uses the separate `scale` property so the slide-in transition stays intact */
+  .row.in .track > .card{transition:transform .8s cubic-bezier(.16,.84,.24,1) var(--d,0ms),opacity .6s ease var(--d,0ms),scale .18s}
+  .row.in .track > .card:active{scale:.95}
   .card.skill .chips > span:active{background:rgba(225,6,0,.16);border-color:rgba(225,6,0,.55);transform:translateY(-2px)}
   .btn:active,.circ:active{transform:scale(.94)}
   .row h2 .explore{opacity:1;transform:none}
