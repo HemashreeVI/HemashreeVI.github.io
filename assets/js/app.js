@@ -448,17 +448,16 @@
       var sec = $("#row-skills.skill-arc");
       if (!sec) return;
       var cards = sec.querySelectorAll(".sa-card"), count = $("#saCount");
-      if (mobile.matches) {
-        Array.prototype.forEach.call(cards, function (c) { c.style.transform = ""; c.style.opacity = ""; c.style.zIndex = ""; });
-        return;
-      }
+      var small = mobile.matches;
       var r = sec.getBoundingClientRect();
       var total = sec.offsetHeight - window.innerHeight;
       var prog = Math.min(1, Math.max(0, -r.top / Math.max(1, total)));
       var p = prog * (cards.length - 1);
-      var R = Math.max(1400, window.innerWidth * 1.3);
+      // Phones get a tighter arc so the next card peeks in from the edge.
+      var R = small ? Math.max(900, window.innerWidth * 2.6) : Math.max(1400, window.innerWidth * 1.3);
+      var step = small ? 15 : 17;
       Array.prototype.forEach.call(cards, function (c, i) {
-        var off = i - p, ang = off * 17, rad = ang * Math.PI / 180;
+        var off = i - p, ang = off * step, rad = ang * Math.PI / 180;
         var x = Math.sin(rad) * R, y = R - Math.cos(rad) * R;
         var sc = Math.max(0.5, 1 - Math.abs(off) * 0.13);
         c.style.transform = "translate(-50%,-50%) translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) rotate(" + ang.toFixed(2) + "deg) scale(" + sc.toFixed(3) + ")";
@@ -593,12 +592,28 @@
     raceTo(function () { choose(np, true); }, np.label.toUpperCase());
   });
 
-  // billboard spotlight (desktop)
+  // billboard spotlight: follows the mouse on desktop; on phones it drifts on its own and follows your finger
   var bb = $("#billboard"), spot = $("#bbSpot");
-  if (canHover) bb.addEventListener("mousemove", function (e) {
-    var r = bb.getBoundingClientRect();
-    spot.style.transform = "translate3d(" + (e.clientX - r.left - 320) + "px," + (e.clientY - r.top - 320) + "px,0)";
-  });
+  function moveSpot(x, y) {
+    var r = bb.getBoundingClientRect(), half = spot.offsetWidth / 2;
+    spot.style.transform = "translate3d(" + (x - r.left - half) + "px," + (y - r.top - half) + "px,0)";
+  }
+  if (canHover) bb.addEventListener("mousemove", function (e) { moveSpot(e.clientX, e.clientY); });
+  else {
+    bb.classList.add("touch");
+    var spotTimer = null;
+    var onTouch = function (e) {
+      var t = e.touches[0]; if (!t) return;
+      clearTimeout(spotTimer);
+      bb.classList.add("touching");
+      moveSpot(t.clientX, t.clientY);
+    };
+    bb.addEventListener("touchstart", onTouch, { passive: true });
+    bb.addEventListener("touchmove", onTouch, { passive: true });
+    bb.addEventListener("touchend", function () {
+      spotTimer = setTimeout(function () { bb.classList.remove("touching"); spot.style.transform = ""; }, 900);
+    }, { passive: true });
+  }
 
   $("#bbPlay").addEventListener("click", function () { raceTo(function () { jumpTo("#row-top10"); }, "PROJECTS"); });
   $("#bbInfo").addEventListener("click", openAbout);
