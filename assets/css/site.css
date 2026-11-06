@@ -487,3 +487,18 @@ body.locked{overflow:hidden}
   .row h2 .explore{opacity:1;transform:none}
 }
 @media (prefers-reduced-motion:reduce){.billboard.touch .bb-spot{animation:none;opacity:0}}
+
+/* phone nav: keep logo, Browse, Résumé and the profile picture inside the screen */
+@media (max-width:800px){
+  .nav{gap:10px}
+  .logo,.gate-logo.logo{font-size:20px}
+  .logo::before{width:18px;height:10px}
+  .nav-browse{font-size:13px;padding:0}
+  .nav-right{gap:10px;flex:none}
+  .nav-resume{font-size:12px;padding:5px 9px}
+  .avatar-btn{width:32px;height:32px;flex:none}
+}
+@media (max-width:370px){
+  .logo{font-size:18px}
+  .logo::before{display:none}
+}
